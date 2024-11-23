@@ -1,0 +1,189 @@
+@model C500Hemis.Models.TbNganhDungTenGiangDay
+
+@{
+    ViewData["Title"] = "Thêm mới thông tin";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Thêm mới thông tin </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: white;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Add padding to containers */
+        .container {
+            padding: 16px;
+            background-color: white;
+        }
+
+        /* Full-width input fields */
+        input[type=text], input[type=date], input[type=email], input[type=number], select {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+
+            input[type=text]:focus, input[type=date], input[type=email], input[type=number], select :focus {
+                background-color: #ddd;
+                outline: none;
+            }
+
+        /* Overwrite default styles of hr */
+        hr {
+            border: 1px solid #f1f1f1;
+            margin-bottom: 25px;
+        }
+
+        /* Set a style for the submit button */
+        .registerbtn {
+            background-color: rgb(236 171 83);
+            color: white;
+            padding: 16px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+        }
+
+            .registerbtn:hover {
+                opacity: 1;
+            }
+
+        /* Add a blue text color to */
+        a {
+            color: dodgerblue;
+        }
+
+
+        .signin {
+            background-color: #f1f1f1;
+            text-align: center;
+        }
+
+        .button1 {
+            background-color: #58257b;
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            -webkit-transition-duration: 0.4s;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+
+
+        .button8 {
+            background-color: forestgreen;
+            color: white;
+            border: 2px solid forestgreen;
+        }
+
+            .button8:hover {
+                background-color: white;
+                color: black;
+                border: 2px solid forestgreen;
+            }
+
+        .btn {
+            background-color: DodgerBlue;
+            border: none;
+            color: white;
+            padding: 12px 16px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 30px;
+        }
+
+            .btn:hover {
+                background-color: RoyalBlue;
+            }
+    </style>
+</head>
+<body>
+
+    <h1 style="text-align:center; color: #CCCC00; font-family: Arial, Helvetica, sans-serif"><b>Thêm mới thông tin</b></h1>
+    <p style="text-align: center;"><img src="https://upload.wikimedia.org/wikipedia/vi/8/85/Logo_hoc_vien_ANND.png" alt="Học viện An ninh nhân dân"></p>
+
+    <hr />
+    <div>
+        <div>
+            <form asp-action="Create" style="width:100%">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div>
+                    <button asp-action="Index" class="btn" style=" background-color: Forestgreen;text-decoration:none; color: black"><i class="fa fa-home"></i> <b>Trở về</b></button>
+
+                </div> <br />
+
+                <div>
+                    <label for="IdNganhDungTenGiangDay"><b>Nhập mã số ngành giảng dạy: </b></label>
+                    <input type="number" placeholder="" name="IdNganhDungTenGiangDay" id="IdNganhDungTenGiangDay">
+                </div>
+
+                <div>
+                    <label for="IdCanBo"><b style="text-align:center">Nhập mã cán bộ:</b></label>
+                    <select for="IdCanBo" asp-items="ViewBag.IdCanBo"></select><br />
+                </div>
+
+                <div>
+                    <label for="TenCanBo"><b>Nhập tên cán bộ giảng dạy: </b></label>
+                    <input type="text" placeholder="" name="TenCanBo" id="TenCanBo">
+                </div>
+
+                <div>
+                    <label for="IdNganhDaoTao"><b style="text-align:center"> Nhập mã đào tạo: </b></label>
+                    <select for="IdNganhDaoTao" asp-items="ViewBag.IdNganhDaoTao"></select>
+                </div>
+
+                <div>
+                    <label for="TenNganhGiangDay"><b>Nhập tên ngành giảng dạy: </b></label>
+                    <input type="text" placeholder="" name="TenNganhGiangDay" id="TenNganhGiangDay">
+                </div>
+
+                <div>
+                    <label for="NgayBatDau"><b>Nhập ngày giảng dạy: </b></label>
+                    <input type="date" name="NgayBatDau" id="NgayBatDau">
+                </div>
+
+                <div>
+                    <label for="NgayKetThuc"><b>Nhập ngày kết thúc giảng dạy: </b></label>
+                    <input type="date" name="NgayKetThuc" id="NgayKetThuc">
+                </div>
+
+                <div>
+                    <label for="TrongSo"><b> Nhập trọng số:</b></label>
+                    <input type="number" name="TrongSo" id="TrongSo">
+                </div>
+
+                <div style="text-align:center">
+                    <button type="submit" class="button1 button8"><b>Tạo mới</b></button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
+

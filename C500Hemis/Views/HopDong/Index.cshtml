@@ -1,0 +1,71 @@
+﻿@model IEnumerable<C500Hemis.Models.TbHopDong>
+
+@{
+    ViewData["Title"] = "Danh sách Hợp Đồng";
+}
+
+<h1 class="text-center mt-4 mb-4">@ViewData["Title"]</h1>
+
+<p class="text-end">
+    <a asp-action="Create" class="btn btn-success">
+        <i class="bi bi-plus-circle"></i> Tạo Hợp Đồng Mới
+    </a>
+</p>
+
+<table class="table table-striped table-hover table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.SoHopDong)</th>
+            <th>@Html.DisplayNameFor(model => model.SoQuyetDinh)</th>
+            <th>@Html.DisplayNameFor(model => model.NgayQuyetDinh)</th>
+            <th>@Html.DisplayNameFor(model => model.CoGiaTriTu)</th>
+            <th>@Html.DisplayNameFor(model => model.CoGiaTriDen)</th>
+            <th>@Html.DisplayNameFor(model => model.LamViecToanThoiGian)</th>
+            <th>@Html.DisplayNameFor(model => model.IdCanBoNavigation)</th>
+            <th>@Html.DisplayNameFor(model => model.IdLoaiHopDongNavigation)</th>
+            <th>@Html.DisplayNameFor(model => model.IdTinhTrangHopDongNavigation)</th>
+            <th class="text-center">Thao Tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.SoHopDong)</td>
+                <td>@Html.DisplayFor(modelItem => item.SoQuyetDinh)</td>
+                <td>@Html.DisplayFor(modelItem => item.NgayQuyetDinh)</td>
+                <td>@Html.DisplayFor(modelItem => item.CoGiaTriTu)</td>
+                <td>@Html.DisplayFor(modelItem => item.CoGiaTriDen)</td>
+                <td>
+                    @if (item.LamViecToanThoiGian.HasValue)
+                    {
+                        @if (item.LamViecToanThoiGian.Value)
+                        {
+                            <span class="badge bg-success">Toàn thời gian</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-secondary">Bán thời gian</span>
+                        }
+                    }
+                </td>
+                <td>@Html.DisplayFor(modelItem => item.IdCanBoNavigation.IdCanBo)</td>
+                <td>@Html.DisplayFor(modelItem => item.IdLoaiHopDongNavigation.IdLoaiHopDong)</td>
+                <td>@Html.DisplayFor(modelItem => item.IdTinhTrangHopDongNavigation.IdTinhTrangHopDong)</td>
+                <td class="text-center">
+                    <div class="btn-group" role="group">
+                        <a asp-action="Edit" asp-route-id="@item.IdHopDong" class="btn btn-sm btn-primary">
+                            <i class="bi bi-pencil-square"></i> Sửa
+                        </a>
+                        <a asp-action="Details" asp-route-id="@item.IdHopDong" class="btn btn-sm btn-info">
+                            <i class="bi bi-info-circle"></i> Chi Tiết
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@item.IdHopDong" class="btn btn-sm btn-danger">
+                            <i class="bi bi-trash"></i> Xóa
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

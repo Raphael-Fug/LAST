@@ -1,0 +1,280 @@
+﻿@model C500Hemis.Models.TbCanBo
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<style>
+    h1 {
+        font-size: 40px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    h3 {
+        text-align: center;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    h4 {
+        text-align: center;
+        font-size: 28px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .form-container {
+        padding: 30px;
+        margin: 0 auto;
+        width: 70%;
+    }
+
+    dl.row dt, dl.row dd {
+        margin-bottom: 10px;
+    }
+
+    dt {
+        font-weight: bold;
+        border: 2px solid #dee2e6;
+        border-radius: 8px;
+        padding: 10px;
+    }
+
+    dd {
+        margin-bottom: 10px;
+        border: 2px solid #dee2e6;
+        border-radius: 8px;
+        padding: 10px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 16px;
+        margin-top: 10px;
+        margin-right: 10px;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+    hr {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border: 0;
+        border-top: 1px solid #dee2e6;
+    }
+    form{
+        padding-bottom: 50px;
+    }
+</style>
+<h1>Xóa</h1>
+
+<h3>Bạn có chắc muốn xóa không?</h3>
+<div>
+    <h4>Cán bộ</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MaCanBo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MaCanBo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SoBaoHiemXaHoi)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SoBaoHiemXaHoi)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DienThoai)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DienThoai)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NgayChuyenTrangThai)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NgayChuyenTrangThai)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SoQuyetDinhHuuNghiViec)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SoQuyetDinhHuuNghiViec)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NgayQuyetDinhHuuNghiViec)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NgayQuyetDinhHuuNghiViec)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.HinhThucChuyenDen)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HinhThucChuyenDen)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NgayKetThucTamNghi)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NgayKetThucTamNghi)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CoQuanCongTac)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CoQuanCongTac)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NgayTuyenDung)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NgayTuyenDung)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ChungChiSuPhamGiangVien)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ChungChiSuPhamGiangVien)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LaCongChuc)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LaCongChuc)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LaVienChuc)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LaVienChuc)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CoDayMonMacLeNin)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CoDayMonMacLeNin)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CoDayMonSuPham)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CoDayMonSuPham)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SoGiayPhepLaoDong)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SoGiayPhepLaoDong)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ThamNienCongTac)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ThamNienCongTac)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TenDoanhNghiep)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TenDoanhNghiep)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NamKinhNghiemGiangDay)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NamKinhNghiemGiangDay)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GiangVienDapUngTt03)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GiangVienDapUngTt03)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdChucDanhGiangVienNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdChucDanhGiangVienNavigation.IdChucDanhGiangVien)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdChucDanhNgheNghiepNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdChucDanhNgheNghiepNavigation.IdChucDanhNgheNghiep)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdChucDanhNghienCuuKhoaHocNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdChucDanhNghienCuuKhoaHocNavigation.IdChucDanhNghienCuuKhoaHoc)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdChucVuCongTacNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdChucVuCongTacNavigation.IdChucVu)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdHuyenNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdHuyenNavigation.IdHuyen)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdNgachNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdNgachNavigation.IdNgach)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdNguoiNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdNguoiNavigation.IdNguoi)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdTinhNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdTinhNavigation.IdTinh)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdTrangThaiLamViecNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdTrangThaiLamViecNavigation.IdTrangThaiCanBo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdXaNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdXaNavigation.IdXa)
+        </dd>
+    </dl>
+    
+    <table>
+        <tr>
+            <td>
+                <form asp-action="Delete">
+                    <input type="hidden" asp-for="IdCanBo" />
+                    <input type="submit" value="Xóa" class="btn btn-danger" />
+                </form>
+            </td>
+            <td>
+                <form asp-action="Index">
+                    <input type="hidden" asp-for="IdCanBo" />
+                    <input type="submit" value="Về trang chủ" class="btn btn-danger" />
+                </form>
+            </td>
+        </tr>
+    </table>
+</div>

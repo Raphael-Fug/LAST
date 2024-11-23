@@ -1,0 +1,113 @@
+﻿@model C500Hemis.Models.TbHopDong
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container mt-5">
+    <!-- Giới hạn chiều rộng card và căn giữa -->
+    <div class="card shadow-lg border-0 mx-auto w-50">
+        <div class="card-header bg-primary text-white text-center">
+            <h3 class="mb-0">Chỉnh Sửa Hợp Đồng</h3>
+        </div>
+        <div class="card-body">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                <input type="hidden" asp-for="IdHopDong" />
+
+               
+                <div class="form-group mb-3">
+                    <label asp-for="IdCanBo" class="control-label font-weight-bold">Cán Bộ</label>
+                    <select asp-for="IdCanBo" class="form-control">
+                        <option value="">--- Chọn Cán Bộ ---</option>
+                        @foreach (var item in ViewBag.IdCanBo as SelectList)
+                        {
+                            <option value="@item.Value">@item.Text</option>
+                        }
+                    </select>
+                    <span asp-validation-for="IdCanBo" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="SoHopDong" class="control-label font-weight-bold">Số Hợp Đồng</label>
+                    <input asp-for="SoHopDong" class="form-control" placeholder="Nhập số hợp đồng" />
+                    <span asp-validation-for="SoHopDong" class="text-danger"></span>
+                </div>
+
+                <!-- Các form group tương tự cho các trường khác -->
+                <div class="form-group mb-3">
+                    <label asp-for="IdLoaiHopDong" class="control-label font-weight-bold">Loại Hợp Đồng</label>
+                    <select asp-for="IdLoaiHopDong" class="form-control">
+                        <option value="">--- Chọn Loại Hợp Đồng ---</option>
+                        @foreach (var item in ViewBag.IdLoaiHopDong as SelectList)
+                        {
+                            <option value="@item.Value">@item.Text</option>
+                        }
+                    </select>
+                    <span asp-validation-for="IdLoaiHopDong" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="SoQuyetDinh" class="control-label font-weight-bold">Số Quyết Định</label>
+                    <input asp-for="SoQuyetDinh" class="form-control" placeholder="Nhập số quyết định" />
+                    <span asp-validation-for="SoQuyetDinh" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="NgayQuyetDinh" class="control-label font-weight-bold">Ngày Quyết Định</label>
+                    <input asp-for="NgayQuyetDinh" class="form-control" type="date" />
+                    <span asp-validation-for="NgayQuyetDinh" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="CoGiaTriTu" class="control-label font-weight-bold">Có Giá Trị Từ</label>
+                    <input asp-for="CoGiaTriTu" class="form-control" type="date" />
+                    <span asp-validation-for="CoGiaTriTu" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="CoGiaTriDen" class="control-label font-weight-bold">Có Giá Trị Đến</label>
+                    <input asp-for="CoGiaTriDen" class="form-control" type="date" />
+                    <span asp-validation-for="CoGiaTriDen" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="IdTinhTrangHopDong" class="control-label font-weight-bold">Tình Trạng Hợp Đồng</label>
+                    <select asp-for="IdTinhTrangHopDong" class="form-control">
+                        <option value="">--- Chọn Tình Trạng ---</option>
+                        @foreach (var item in ViewBag.IdTinhTrangHopDong as SelectList)
+                        {
+                            <option value="@item.Value">@item.Text</option>
+                        }
+                    </select>
+                    <span asp-validation-for="IdTinhTrangHopDong" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="LamViecToanThoiGian" class="control-label font-weight-bold">Làm Việc Toàn Thời Gian</label>
+                    <select asp-for="LamViecToanThoiGian" class="form-control">
+                        <option value="true">Có</option>
+                        <option value="false">Không</option>
+                    </select>
+                    <span asp-validation-for="LamViecToanThoiGian" class="text-danger"></span>
+                </div>
+
+                <!-- Buttons -->
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success me-2">
+                        <i class="bi bi-save"></i> Lưu Lại
+                    </button>
+                    <a asp-action="Index" class="btn btn-secondary">
+                        <i class="bi bi-arrow-left-circle"></i> Quay Lại
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

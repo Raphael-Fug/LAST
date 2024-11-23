@@ -1,0 +1,60 @@
+﻿@model C500Hemis.Models.TbDoanhNghiepKhcn
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>TbDoanhNghiepKhcn</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MaDoanhNghiep)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MaDoanhNghiep)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TenDoanhNghiep)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TenDoanhNghiep)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DiaDiemThanhLap)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DiaDiemThanhLap)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.QuyMoDauTu)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.QuyMoDauTu)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.KinhPhiGopVonTuTaiSanTriTue)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.KinhPhiGopVonTuTaiSanTriTue)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TyLeGopVonCuaCsgddh)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TyLeGopVonCuaCsgddh)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdHinhThucDoanhNghiepKhcnNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdHinhThucDoanhNghiepKhcnNavigation.IdHinhThucDoanhNghiepKhcn)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.IdDoanhNghiepKhcn">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,84 @@
+﻿@model C500Hemis.Models.TbHoiThaoHoiNghi
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<style>
+    table {
+        width: 100%; /* Chiều rộng bảng 100% */
+        border-collapse: collapse; /* Gộp đường viền ô */
+    }
+
+    th, td {
+        border: 1px solid #000; /* Đường viền đen cho các ô */
+        text-align: left;
+        padding: 8px; /* Khoảng cách giữa nội dung và đường viền ô */
+    }
+
+    th {
+        font-weight: bold; /* Chữ đậm cho tiêu đề */
+    }
+
+    tr:hover {
+        background-color: transparent; /* Không có màu nền khi di chuột qua hàng */
+    }
+</style>
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Hội thảo hội nghị</h4>
+    <hr />
+    <table>
+        <tr>
+            <th>Mã hội thảo hội nghị</th>
+            <td>@Html.DisplayFor(model => model.MaHoiThaoHoiNghi)</td>
+        </tr>
+        <tr>
+            <th>Tên hội thảo hội nghị</th>
+            <td>@Html.DisplayFor(model => model.TenHoiThaoHoiNghi)</td>
+        </tr>
+        <tr>
+            <th>Cơ quan có thẩm quyền cấp phép</th>
+            <td>@Html.DisplayFor(model => model.CoQuanCoThamQuyenCapPhep)</td>
+        </tr>
+        <tr>
+            <th>Mục tiêu</th>
+            <td>@Html.DisplayFor(model => model.MucTieu)</td>
+        </tr>
+        <tr>
+            <th>Nội dung</th>
+            <td>@Html.DisplayFor(model => model.NoiDung)</td>
+        </tr>
+        <tr>
+            <th>Số lượng đại biểu tham dự</th>
+            <td>@Html.DisplayFor(model => model.SoLuongDaiBieuThamDu)</td>
+        </tr>
+        <tr>
+            <th>Số lượng đại biểu quốc tế tham dự</th>
+            <td>@Html.DisplayFor(model => model.SoLuongDaiBieuQuocTeThamDu)</td>
+        </tr>
+        <tr>
+            <th>Thời gian tổ chức</th>
+            <td>@Html.DisplayFor(model => model.ThoiGianToChuc)</td>
+        </tr>
+        <tr>
+            <th>Địa điểm tổ chức</th>
+            <td>@Html.DisplayFor(model => model.DiaDiemToChuc)</td>
+        </tr>
+        <tr>
+            <th>Đơn vị chủ trị</th>
+            <td>@Html.DisplayFor(model => model.DonViChuTri)</td>
+        </tr>
+        <tr>
+            <th>Nguồn kinh phí hội thảo</th>
+            <td>@Html.DisplayFor(model => model.IdNguonKinhPhiHoiThaoNavigation.IdNguonKinhPhi)</td>
+        </tr>
+    </table>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdHoiThaoHoiNghi" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

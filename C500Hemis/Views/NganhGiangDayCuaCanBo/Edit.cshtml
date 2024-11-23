@@ -1,0 +1,70 @@
+﻿@model C500Hemis.Models.TbNganhGiangDayCuaCanBo
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<body style="background-color: #e0f7fa; font-family: Arial, sans-serif; margin: 0; padding: 20px;">
+
+    <h1 style="font-size: 32px; color: #c0392b; text-align: center; background-color: #A8E6CE; padding: 15px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+        Edit
+    </h1>
+
+    <h4 style="font-size: 24px; color: #34495e; text-align: center; margin-bottom: 20px;">Ngành Giảng Dạy Của Cán Bộ</h4>
+
+    <hr style="border-top: 1px solid #bdc3c7; margin-bottom: 30px;" />
+
+    <div class="row" style="display: flex; justify-content: center;">
+        <div class="col-md-4" style="background-color: #ffffff; padding: 25px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); max-width: 600px;">
+
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="IdNganhGiangDayCuaCanBo" />
+
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label asp-for="IdCanBo" class="control-label" style="color: #00796b; font-weight: bold;"></label>
+                    <input asp-for="IdCanBo" class="form-control" style="border: 1px solid #bdc3c7; padding: 8px;"/>
+                    <span asp-validation-for="IdCanBo" class="text-danger" style="margin-top: 5px; display: block;"></span>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label asp-for="IdTrinhDoDaoTao" class="control-label" style="color: #00796b; font-weight: bold;"></label>
+                    <input asp-for="IdTrinhDoDaoTao" class="form-control" style="border: 1px solid #bdc3c7; padding: 8px;"/>
+                    <span asp-validation-for="IdTrinhDoDaoTao" class="text-danger" style="margin-top: 5px; display: block;"></span>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label asp-for="IdNganh" class="control-label" style="color: #00796b; font-weight: bold;"></label>
+                    <input asp-for="IdNganh" class="form-control" style="border: 1px solid #bdc3c7; padding: 8px;"/>
+                    <span asp-validation-for="IdNganh" class="text-danger" style="margin-top: 5px; display: block;"></span>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label asp-for="LaNganhChinh" class="control-label" style="color: #00796b; font-weight: bold;"></label>
+                    <input asp-for="LaNganhChinh" class="form-control" style="border: 1px solid #bdc3c7; padding: 8px;" />
+                    <span asp-validation-for="LaNganhChinh" class="text-danger" style="margin-top: 5px; display: block;"></span>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label asp-for="DonViThinhGiang" class="control-label" style="color: #00796b; font-weight: bold;"></label>
+                    <input asp-for="DonViThinhGiang" class="form-control" style="border: 1px solid #bdc3c7; padding: 8px;" />
+                    <span asp-validation-for="DonViThinhGiang" class="text-danger" style="margin-top: 5px; display: block;"></span>
+                </div>
+
+                <div class="form-group" style="text-align: center;">
+                    <input type="submit" value="Save" class="btn btn-primary" style="padding: 12px 30px; background-color: #3498db; border: none; color: white; border-radius: 5px; cursor: pointer; font-size: 16px;" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 30px;">
+        <a asp-action="Index" style="color: #3498db; text-decoration: none; font-size: 18px; padding: 10px 20px; background-color: #ecf0f1; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">Back to List</a>
+    </div>
+
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+</body>

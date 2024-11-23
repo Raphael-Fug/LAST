@@ -1,0 +1,98 @@
+﻿@model C500Hemis.Models.TbLinhVucNghienCuuCuaCanBo
+
+@{
+    ViewData["Title"] = "Tạo mới";
+}
+
+<h1>Tạo mới</h1>
+
+<h4>Lĩnh Vực Nghiên Cứu Của Cán Bộ</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="container">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IdLinhVucNghienCuuCuaCanBo" class="control-label"></label>
+                <input asp-for="IdLinhVucNghienCuuCuaCanBo" class="form-control" />
+                <span asp-validation-for="IdLinhVucNghienCuuCuaCanBo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdCanBo" class="control-label"></label>
+                <select asp-for="IdCanBo" class ="form-control" asp-items="ViewBag.IdCanBo"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdLinhVucNghienCuu" class="control-label"></label>
+                <select asp-for="IdLinhVucNghienCuu" class ="form-control" asp-items="ViewBag.IdLinhVucNghienCuu"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="LaLinhVucNghienCuuChuyenSau" class="control-label"></label>
+                <input asp-for="LaLinhVucNghienCuuChuyenSau" class="form-control" />
+                <span asp-validation-for="LaLinhVucNghienCuuChuyenSau" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SoNamNghienCuu" class="control-label"></label>
+                <input asp-for="SoNamNghienCuu" class="form-control" />
+                <span asp-validation-for="SoNamNghienCuu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+
+<div>
+    <a asp-action="Index">Trở về danh sách</a>
+</div>
+<style>
+    /* Định dạng form */
+    form {
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Định dạng tiêu đề và nhãn */
+    h1, h4 {
+        text-align: center;
+        color: black;
+    }
+
+    label {
+        font-weight: bold;
+        color: #343a40;
+    }
+
+    /* Định dạng input */
+    input[type="text"], select, input[type="number"] {
+        border: 1px solid #ced4da;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    /* Định dạng nút bấm */
+    .btn-primary {
+        background-color: #28a745;
+        border-color: #28a745;
+        padding: 10px 15px;
+        font-size: 16px;
+        border-radius: 5px;
+    }
+
+    /* Định dạng lỗi */
+    .text-danger {
+        color: #dc3545;
+    }
+
+    
+</style>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

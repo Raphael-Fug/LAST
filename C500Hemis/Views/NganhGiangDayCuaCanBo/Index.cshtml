@@ -1,0 +1,82 @@
+﻿@model IEnumerable<C500Hemis.Models.TbNganhGiangDayCuaCanBo>
+
+    @{
+    ViewData["Title"] = "Ngành Giảng Dạy Của Cán Bộ";
+    }
+
+    <body style="background-color: #e0f7fa; font-family: Arial, sans-serif; margin: 0; padding: 20px;">
+
+        <h1 style="font-size: 50px; color: #c0392b; text-align: center; margin-bottom: 20px;">Ngành Giảng Dạy Của Cán Bộ</h1>
+
+        <p style="text-align: center; font-size: 25px; margin-bottom: 30px;">
+            <a asp-action="Create" style="color: #3498db; text-decoration: none; font-weight: bold; border: 2px solid #3498db; padding: 10px 20px; border-radius: 5px;">Create New</a>
+        </p>
+
+        <table id="ntable" style="width: 100%; border-collapse: collapse; background-color: #ffffff; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+            <thead>
+                <tr style="background-color: #34495e; color: white;">
+                    <th style="padding: 12px; border: 1px solid #ddd; text-align: center; font-size: 18px;">@Html.DisplayNameFor(model => model.LaNganhChinh)</th>
+                    <th style="padding: 12px; border: 1px solid #ddd; text-align: center; font-size: 18px;">@Html.DisplayNameFor(model => model.DonViThinhGiang)</th>
+                    <th style="padding: 12px; border: 1px solid #ddd; text-align: center; font-size: 18px;">@Html.DisplayNameFor(model => model.IdCanBoNavigation)</th>
+                    <th style="padding: 12px; border: 1px solid #ddd; text-align: center; font-size: 18px;">@Html.DisplayNameFor(model => model.IdNganhNavigation)</th>
+                    <th style="padding: 12px; border: 1px solid #ddd; text-align: center; font-size: 18px;">@Html.DisplayNameFor(model => model.IdTrinhDoDaoTaoNavigation)</th>
+                    <th style="padding: 12px; border: 1px solid #ddd; text-align: center; background-color: #34495e;"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+            {
+                <tr style="border-bottom: 1px solid #ddd;">
+                    <td style="padding: 12px; border: 1px solid #ddd; text-align: center; color: #34495e;">@Html.DisplayFor(modelItem => item.LaNganhChinh)</td>
+                    <td style="padding: 12px; border: 1px solid #ddd; text-align: center; color: #34495e;">@Html.DisplayFor(modelItem => item.DonViThinhGiang)</td>
+                    <td style="padding: 12px; border: 1px solid #ddd; text-align: center; color: #34495e;">@Html.DisplayFor(modelItem => item.IdCanBoNavigation.IdCanBo)</td>
+                    <td style="padding: 12px; border: 1px solid #ddd; text-align: center; color: #34495e;">@Html.DisplayFor(modelItem => item.IdNganhNavigation.IdNganhDaoTao)</td>
+                    <td style="padding: 12px; border: 1px solid #ddd; text-align: center; color: #34495e;">@Html.DisplayFor(modelItem => item.IdTrinhDoDaoTaoNavigation.IdTrinhDoDaoTao)</td>
+                    <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">
+                        <a asp-action="Edit" asp-route-id="@item.IdNganhGiangDayCuaCanBo" class="btn btn-primary" style="background-color: #3498db; color: white; text-decoration: none;">
+                            <i class="fas fa-edit"></i> Sửa
+                        </a>
+                        <a asp-action="Details" asp-route-id="@item.IdNganhGiangDayCuaCanBo" class="btn btn-success" style="background-color: #456512; color: white; text-decoration: none;">
+                            <i class="fas fa-info-circle"></i> Chi tiết
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@item.IdNganhGiangDayCuaCanBo" class="btn btn-danger" style="background-color: #e74c3c; color: white; text-decoration: none;">
+                            <i class="fas fa-trash"></i> Xóa
+                        </a>
+
+                        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+
+    </body>
+    <script>
+    new DataTable('#ntable', {
+        searching: true, // Mặc định là true, set false để tắt chức năng search
+        processing: true,
+        info: false, // Tắt thông tin về table VD: Showing 1 to 14 of 14 entries
+        language: {
+            processing: "Message khi đang tải dữ liệu",
+            search: "Tìm kiếm",
+            lengthMenu: "Điều chỉnh số lượng bản ghi trên 1 trang MENU ",
+            info: "Bản ghi từ START đến END Tổng công TOTAL bản ghi",
+            infoEmpty: "Khi không có dữ liệu, Hiển thị 0 bản ghi trong 0 tổng cộng 0 ",
+            infoFiltered: "(Message bổ sung cho info khi không search đc record nào MAX)",
+            infoPostFix: "Alo Alo", // Cái này khi thêm vào nó sẽ đứng sau info
+            loadingRecords: "",
+            zeroRecords: "Khi tìm kiếm không match với record nào",
+            emptyTable: "Không có dữ liệu",
+            paginate: {
+                first: "Trang đầu",
+                previous: "Trang trước",
+                next: "Trang sau",
+                last: "Trang cuối"
+            },
+            aria: {
+                sortAscending: ": Message khi đang sắp xếp theo column",
+                sortDescending: ": Message khi đang sắp xếp theo column",
+            }
+        },
+    });
+    </script>

@@ -1,0 +1,69 @@
+﻿@model C500Hemis.Models.TbGvduocCuDiDaoTao
+
+@{
+    ViewData["Title"] = "Details";
+}
+<style>
+    table {
+        width: 100%; /* Chiều rộng bảng 100% */
+        border-collapse: collapse; /* Gộp đường viền ô */
+    }
+
+    th, td {
+        border: 1px solid #000; /* Đường viền đen cho các ô */
+        text-align: left;
+        padding: 8px; /* Khoảng cách giữa nội dung và đường viền ô */
+    }
+
+    th {
+        font-weight: bold; /* Chữ đậm cho tiêu đề */
+    }
+
+    tr:hover {
+        background-color: transparent; /* Không có màu nền khi di chuột qua hàng */
+    }
+</style>
+<h1>Details</h1>
+
+<div>
+    <h4>TbGvduocCuDiDaoTao</h4>
+    <hr />
+    <table>
+        <tr>
+            <th>Tên cơ sở giáo dục tham gia ôn</th>
+            <td>@Html.DisplayFor(model => model.TenCoSoGiaoDucThamGiaOnn)</td>
+        </tr>
+        <tr>
+            <th>Thời Gian Bắt Đầu </th>
+            <td>@Html.DisplayFor(model => model.ThoiGianBatDau)
+        </tr>
+        <tr>
+            <th>Thời Gian Kết Thúc</th>
+            <td>@Html.DisplayFor(model => model.ThoiGianKetThuc)
+        </tr>
+       <tr>
+           <th>Cán Bộ</th>
+            <td>@Html.DisplayFor(model => model.IdCanBoNavigation.IdCanBo)</td>
+       </tr>
+         <tr>
+             <th>Hình Thức Tham Gia GV Được Cử Đi Đào Tạo</th>
+            <td>@Html.DisplayFor(model => model.IdHinhThucThamGiaGvduocCuDiDaoTaoNavigation.IdHinhThucThamGiaGvduocCuDiDaoTao)</td>
+         </tr>
+        <tr>
+            <th>Nguồn Kinh Phí</th>
+            <td> @Html.DisplayFor(model => model.IdNguonKinhPhiCuaGvNavigation.IdNguonKinhPhiCuaGvduocCuDiDaoTao)</td>
+        </tr>
+        <tr>
+            <th>Quốc Gia Đến</th>
+            <td>@Html.DisplayFor(model => model.IdQuocGiaDenNavigation.IdQuocTich)</td>
+        </tr>
+        <tr>
+            <th>Tình Trạng Gv Được Cử Đi Học</th>
+            <td>@Html.DisplayFor(model => model.IdTinhTrangGvduocCuDiDaoTaoNavigation.IdTinhTrangGiangVienDuocCuDiDaoTao)</td>
+        </tr>
+    </table>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.IdGvduocCuDiDaoTao">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

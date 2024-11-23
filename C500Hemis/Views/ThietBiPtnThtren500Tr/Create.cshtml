@@ -1,0 +1,182 @@
+﻿@model C500Hemis.Models.TbThietBiPtnThtren500Tr
+
+@{
+    ViewData["Title"] = "Create";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-image: linear-gradient(to right, rgb(124, 182, 191), rgb(200, 223, 227), #ffff);
+        }
+
+        .wrapper {
+            background: transparent;
+            border: 2px solid rgba(255,255,255,.2);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            color: black;
+            padding: 30px 40px;
+        }
+
+        .form-group {
+            /* display:table; */
+            padding-bottom: 30px;
+        }
+
+        .form-control {
+            padding: 40px;
+            background: rgba(255,255,255,.2);
+            height: 50px;
+            border: 10px;
+            border-radius: 20px;
+            outline: none;
+            transition: .2s ease;
+        }
+
+        .row {
+            background: transparent;
+            border: 2px solid rgba(255,255,255,.2);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            color: black;
+            padding: 30px 30px;
+        }
+
+        label {
+            display: flex;
+            font-size: 30px;
+            font-weight: 500;
+            padding-bottom: 20px;
+        }
+
+        #main-text {
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 45px;
+            font-weight: 600;
+        }
+
+        .button {
+            border-radius: 24px;
+            border: none;
+            color: #fff;
+            font-weight: 24px;
+            font-size: 30px;
+            margin: 0 10px;
+            padding: 8px 24px;
+            background-color: #4070f4;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+            .button:hover {
+                background-color: #0e4bf1;
+            }
+
+        .form-button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main-function {
+            background: transparent;
+            border: 2px solid rgba(255,255,255,.2);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            color: black;
+            margin-bottom: 10px;
+        }
+
+        .back {
+            text-align: left;
+            font-size: 30px;
+            font-weight: 300;
+        }
+
+        #main-text-2 {
+            text-align: center;
+            font-size: 70px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="main-function">
+            <h1 id="main-text">THÊM THÔNG TIN</h1>
+</div>
+        <div class="row">
+            <h1 id="main-text-2">PHÒNG THIẾT BỊ</h1>
+            <hr>
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="IdThietBiPtnTh" class="control-label"></label>
+                        <input asp-for="IdThietBiPtnTh" class="form-control" />
+                        <span asp-validation-for="IdThietBiPtnTh" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MaThietBi" class="control-label"></label>
+                        <input asp-for="MaThietBi" class="form-control" />
+                        <span asp-validation-for="MaThietBi" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="IdCongTrinhCsvc" class="control-label"></label>
+                        <select asp-for="IdCongTrinhCsvc" class="form-control" asp-items="ViewBag.IdCongTrinhCsvc"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="TenThietBi" class="control-label"></label>
+                        <input asp-for="TenThietBi" class="form-control" />
+                        <span asp-validation-for="TenThietBi" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="NamSanXuat" class="control-label"></label>
+                        <input asp-for="NamSanXuat" class="form-control" />
+                        <span asp-validation-for="NamSanXuat" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="IdQuocGiaXuatXu" class="control-label"></label>
+                        <select asp-for="IdQuocGiaXuatXu" class="form-control" asp-items="ViewBag.IdQuocGiaXuatXu"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="HangSanXuat" class="control-label"></label>
+                        <input asp-for="HangSanXuat" class="form-control" />
+                        <span asp-validation-for="HangSanXuat" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SoLuongThietBiCungLoai" class="control-label"></label>
+                        <input asp-for="SoLuongThietBiCungLoai" class="form-control" />
+                        <span asp-validation-for="SoLuongThietBiCungLoai" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="NamDuaVaoSuDung" class="control-label"></label>
+                        <input asp-for="NamDuaVaoSuDung" class="form-control" />
+                    <span asp-validation-for="NamDuaVaoSuDung" class="text-danger"></span>
+                </div>
+                <div class="form-button">
+                    <input type="submit" value="Thêm mới" class="button" />
+                </div>
+            </form>
+        </div>
+        <div class="back">
+            <a asp-action="Index">Trở lại</a>
+        </div>
+    </div>
+</body>
+</html>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

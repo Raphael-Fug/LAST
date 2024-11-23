@@ -1,0 +1,72 @@
+﻿@model C500Hemis.Models.TbToChucHopTacQuocTe
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Thông tin chi tiết</h1>
+
+<style>
+    table {
+        width: 100%; /* Chiều rộng bảng 100% */
+        border-collapse: collapse; /* Gộp đường viền ô */
+    }
+
+    th, td {
+        border: 1px solid #000; /* Đường viền đen cho các ô */
+        text-align: left;
+        padding: 8px; /* Khoảng cách giữa nội dung và đường viền ô */
+    }
+
+    th {
+        font-weight: bold; /* Chữ đậm cho tiêu đề */
+    }
+
+    tr:hover {
+        background-color: transparent; /* Không có màu nền khi di chuột qua hàng */
+    }
+</style>
+
+
+<div>
+    <h4>Tổ chức hợp tác quốc tế</h4>
+    <hr />
+    <table>
+        <tr>
+            <th>Mã hợp tác</th>
+            <td>@Html.DisplayFor(model => model.MaHopTac)</td>
+        </tr>
+        <tr>
+            <th>Tên tổ chức /cơ sở giáo dục quốc tế</th>
+            <td>@Html.DisplayFor(model => model.TenToChuc)</td>
+        </tr>
+        <tr>
+            <th>Quốc gia</th>
+            <td>@Html.DisplayFor(model => model.IdQuocGiaNavigation)</td>
+        </tr>
+        <tr>
+            <th>Nội dung</th>
+            <td>@Html.DisplayFor(model => model.NoiDung)</td>
+        </tr>
+        <tr>
+            <th>Thời gian kí kết</th>
+            <td>@Html.DisplayFor(model => model.ThoiGianKyKet)</td>
+        </tr>
+        <tr>
+            <th>Kết quả hợp tác</th>
+            <td>@Html.DisplayFor(model => model.KetQuaHopTac)</td>
+        </tr>
+        <tr>
+            <th>Loại tổ chức</th>
+            <td>@Html.DisplayFor(model => model.LoaiToChuc)</td>
+        </tr>
+
+
+    </table>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdToChucHopTacQuocTe" />
+        <input type="submit" value="Xóa" class="btn btn-danger" /> |
+        <a asp-action="Index">Quay lại </a>
+    </form>
+</div>

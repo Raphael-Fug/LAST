@@ -1,0 +1,165 @@
+﻿@model C500Hemis.Models.TbDoanCongTac
+
+@{
+    ViewData["Title"] = "Tạo mới";
+}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+    <!-- DateTimePicker CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" />
+</head>
+
+<h1>Tạo mới</h1>
+
+<h4>Đoàn Công Tác</h4>
+<hr />
+<style>
+    div {
+        margin: auto
+    }
+
+    body {
+        background-color: #05c46b;
+        font-family: Verdana;
+    }
+
+    /* Căn giữa toàn bộ nội dung */
+    .center-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Chiều cao toàn màn hình */
+    }
+
+    form {
+        background-color: #fff;
+        max-width: 500px;
+        padding: 30px 20px;
+        box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+    }
+
+    h1, h4 {
+        text-align: center;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+        .form-group label {
+            margin-bottom: 5px;
+            display: block;
+        }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .btn-primary {
+        width: 100%;
+        padding: 10px;
+        background-color: #05c46b;
+        border: none;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+        .btn-primary:hover {
+            background-color: #048a55;
+        }
+</style>
+<body>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="MaDoanCongTac" class="control-label"> Mã đoàn công tác </label>
+                <input asp-for="MaDoanCongTac" class="form-control" />
+                <span asp-validation-for="MaDoanCongTac" class="text-danger">  </span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdPhanLoaiDoanRaDoanVao" class="control-label">Phân loại đoàn ra/vào</label>
+                <select asp-for="IdPhanLoaiDoanRaDoanVao" class="form-control" asp-items="ViewBag.IdPhanLoaiDoanRaDoanVao"></select>
+                <span asp-validation-for="IdPhanLoaiDoanRaDoanVao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TenDoanCongTac" class="control-label">Tên đoàn công tác</label>
+                <input asp-for="TenDoanCongTac" class="form-control" />
+                <span asp-validation-for="TenDoanCongTac" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SoQuyetDinh" class="control-label"> Số quyết định </label>
+                <input asp-for="SoQuyetDinh" class="form-control" />
+                <span asp-validation-for="SoQuyetDinh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NgayQuyetDinh" class="control-label"> Ngày tháng năm quyết định</label>
+                <input asp-for="NgayQuyetDinh" class="form-control" />
+                <span asp-validation-for="NgayQuyetDinh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdQuocGiaDoan" class="control-label"> Quốc gia đoàn được cử </label>
+                <select asp-for="IdQuocGiaDoan" class="form-control" asp-items="ViewBag.IdQuocGiaDoan"></select>
+                <span asp-validation-for="IdQuocGiaDoan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ThoiGianBatDau" class="control-label">Thời gian bắt đầu</label>
+                <input asp-for="ThoiGianBatDau" class="form-control" />
+                <span asp-validation-for="ThoiGianBatDau" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ThoiGianketThuc" class="control-label">Thời gian kết thúc</label>
+                <input asp-for="ThoiGianketThuc" class="form-control" />
+                <span asp-validation-for="ThoiGianketThuc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MucDichCongTac" class="control-label">Mục đích công tác</label>
+                <input asp-for="MucDichCongTac" class="form-control" />
+                <span asp-validation-for="MucDichCongTac" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KetQuaCongTac" class="control-label"> Kết quả công tác</label>
+                <input asp-for="KetQuaCongTac" class="form-control" />
+                <span asp-validation-for="KetQuaCongTac" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Tạo mới" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Quay lại</a>
+</div>
+</body>
+<!-- Scripts for DateTimePicker -->
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+    <script>
+        $(function () {
+            $('.datetimepicker').datetimepicker({
+                format: ' d/m/Y ', // Định dạng ngày tháng
+                timepicker: false // Tắt chọn giờ
+            });
+        });
+    </script>
+
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

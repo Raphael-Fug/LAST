@@ -1,0 +1,110 @@
+﻿@model IEnumerable<C500Hemis.Models.TbTrinhDoTiengDanToc>
+
+@{
+    ViewData["Title"] = "Danh Sách Trình Độ Tiếng Dân Tộc";
+}
+
+<h1 class="text-center mb-5">Danh Sách Trình Độ Tiếng Dân Tộc</h1>
+
+<p class="text-center">
+    <a asp-action="Create" class="btn btn-success mb-4 px-4 py-2">+ Thêm mới</a>
+</p>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="bg-primary text-white">
+            <tr>
+                <th class="text-center">ID Cán bộ</th>
+                <th class="text-center">Khung năng lực Ngoại ngữ</th>
+                <th class="text-center">Tiếng dân tộc</th>
+                <th class="text-center">Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="text-center">@Html.DisplayFor(modelItem => item.IdCanBoNavigation.IdCanBo)</td>
+                    <td class="text-center">@Html.DisplayFor(modelItem => item.IdKhungNangLucNgoaiNguNavigation.IdKhungNangLucNgoaiNgu)</td>
+                    <td class="text-center">@Html.DisplayFor(modelItem => item.IdTiengDanTocNavigation.IdTiengDanToc)</td>
+                    <td class="text-center">
+                        <a asp-action="Edit" asp-route-id="@item.IdTrinhDoTiengDanToc" class="btn btn-primary btn-sm mx-1">Sửa</a>
+                        <a asp-action="Details" asp-route-id="@item.IdTrinhDoTiengDanToc" class="btn btn-info btn-sm mx-1">Chi tiết</a>
+                        <a asp-action="Delete" asp-route-id="@item.IdTrinhDoTiengDanToc" class="btn btn-danger btn-sm mx-1">Xóa</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- CSS Styling -->
+<style>
+    body {
+        background-color: #f4f7fa;
+        font-family: 'Arial', sans-serif;
+    }
+
+    h1 {
+        color: #212529;
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+    }
+
+    .table {
+        background-color: #ffffff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+    }
+
+        .table th, .table td {
+            padding: 20px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .table thead {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+        }
+
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: #f9f9f9;
+    }
+
+    .btn {
+        border-radius: 50px;
+        padding: 10px 20px;
+        font-size: 14px;
+        transition: all 0.3s ease;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        border-color: #28a745;
+    }
+
+    .btn:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+    }
+
+    .btn-sm {
+        padding: 5px 15px;
+        font-size: 13px;
+    }
+
+    .mx-1 {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    .bg-primary {
+        background-color: #007bff !important;
+    }
+
+    .text-white {
+        color: white !important;
+    }
+</style>

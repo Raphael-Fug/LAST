@@ -1,0 +1,73 @@
+﻿@model C500Hemis.Models.TbThongTinHopTac
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1> Thông tin chi tiết</h1>
+
+<div>
+    <h4>TbThongTinHopTac</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Mã hợp tác
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdToChucHopTacNavigation.IdToChucHopTacQuocTe)
+        </dd>
+        <dt class = "col-sm-2">
+            Thời gian hợp tác từ
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ThoiGianHopTacTu)
+        </dd>
+        <dt class = "col-sm-2">
+            Thời gian hợp tác đến
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ThoiGianHopTacDen)
+        </dd>
+        <dt class = "col-sm-2">
+            Tên thỏa thuận
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TenThoaThuan)
+        </dd>
+        <dt class = "col-sm-2">
+            Thông tin liên hệ đối tác
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ThongTinLienHeDoiTac)
+        </dd>
+        <dt class = "col-sm-2">
+            Mục tiêu
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MucTieu)
+        </dd>
+        <dt class = "col-sm-2">
+            Đơn vị triển khai
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DonViTrienKhai)
+        </dd>
+        <dt class="col-sm-2">
+            Hình thức hợp tác
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdHinhThucHopTacNavigation.IdHinhThucHopTac)
+        </dd>
+        <dt class = "col-sm-2">
+            Sản phẩm chính
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SanPhamChinh)
+        </dd>
+        
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.IdThongTinHopTac"> Sửa </a> |
+    <a asp-action="Index">Quay lại </a>
+</div>

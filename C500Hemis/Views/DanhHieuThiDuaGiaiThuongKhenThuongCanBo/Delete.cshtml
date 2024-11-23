@@ -1,0 +1,68 @@
+﻿@model C500Hemis.Models.TbDanhHieuThiDuaGiaiThuongKhenThuongCanBo
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>DELETE</h1>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-dy+Dvhgi7KkKbP4qxFqDncdchCRO1GfBPOIQFxDb/WIOVQ5SWEphI8MNsxF9auhgGChlpS+nfsP24i7IbxNwOQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: center;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
+<div>
+    <hr />
+    <table class="table table-striped">
+        <thead style="background-color:#dddddd">
+            <tr>
+                <th>Số Quyết Định</th>
+                <th>Năm Khen Thưởng</th>
+                <th>ID Cán Bộ</th>
+                <th>ID Cấp Khen Thưởng</th>
+                <th>ID Loại Danh Hiệu Thi Đua Giải Thưởng Khen Thường</th>
+                <th>ID Phương Thức Khen Thưởng</th>
+                <th>ID Thi Đua Giải Thưởng Khen Thưởng</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.SoQuyetDinh</td>
+                <td>
+                    @Model.NamKhenThuong?.ToString("yyyy")
+                </td>
+                <td>@Model.IdCanBoNavigation?.IdCanBo</td>
+                <td>@Model.IdCapKhenThuongNavigation?.IdCapKhenThuong</td>
+                <td>@Model.IdLoaiDanhHieuThiDuaGiaiThuongKhenThuongNavigation?.IdLoaiDanhHieuThiDuaGiaiThuongKhenThuong</td>
+                <td>@Model.IdPhuongThucKhenThuongNavigation?.IdPhuongThucKhenThuong</td>
+                <td>@Model.IdThiDuaGiaiThuongKhenThuongNavigation?.IdThiDuaGiaiThuongKhenThuong</td>
+            </tr>
+        </tbody>
+    </table>
+    <hr />
+    <h4>Bạn có chắc chắn muốn xóa không?</h4>
+    <form asp-action="Delete" asp-controller="DanhHieuThiDuaGiaiThuongKhenThuongCanBo">
+        <input type="hidden" asp-for="IdDanhHieuThiDuaGiaiThuongKhenThuongCanBo" />
+        <div>
+            <input type="submit" value="Delete" class="btn btn-danger" />
+            <a asp-action="Index" asp-controller="DanhHieuThiDuaGiaiThuongKhenThuongCanBo" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>

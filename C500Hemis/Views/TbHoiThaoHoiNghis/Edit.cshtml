@@ -1,0 +1,145 @@
+﻿@model C500Hemis.Models.TbHoiThaoHoiNghi
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<style>
+    div{
+        margin:auto
+    }
+    body {
+        background-color: #05c46b;
+        font-family: Verdana;
+    }
+
+    /* Căn giữa toàn bộ nội dung */
+    .center-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Chiều cao toàn màn hình */
+    }
+
+    form {
+        background-color: #fff;
+        max-width: 500px;
+        padding: 30px 20px;
+        box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+    }
+
+    h1, h4 {
+        text-align: center;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+        .form-group label {
+            margin-bottom: 5px;
+            display: block;
+        }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .btn-primary {
+        width: 100%;
+        padding: 10px;
+        background-color: #05c46b;
+        border: none;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+        .btn-primary:hover {
+            background-color: #048a55;
+        }
+</style>
+
+<h1 style="background-color:white">Edit</h1>
+
+<h4 style="background-color:white">TbHoiThaoHoiNghi</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdHoiThaoHoiNghi" />
+            <div class="form-group">
+                <label asp-for="MaHoiThaoHoiNghi" class="control-label">Mã hội thảo hội nghị</label>
+                <input asp-for="MaHoiThaoHoiNghi" class="form-control" />
+                <span asp-validation-for="MaHoiThaoHoiNghi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TenHoiThaoHoiNghi" class="control-label">Tên hội thảo hội nghị</label>
+                <input asp-for="TenHoiThaoHoiNghi" class="form-control" />
+                <span asp-validation-for="TenHoiThaoHoiNghi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoQuanCoThamQuyenCapPhep" class="control-label">Cơ quan có thẩm quyền cấp phép</label>
+                <input asp-for="CoQuanCoThamQuyenCapPhep" class="form-control" />
+                <span asp-validation-for="CoQuanCoThamQuyenCapPhep" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MucTieu" class="control-label">Mục tiêu</label>
+                <input asp-for="MucTieu" class="form-control" />
+                <span asp-validation-for="MucTieu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NoiDung" class="control-label">Nội dung</label>
+                <input asp-for="NoiDung" class="form-control" />
+                <span asp-validation-for="NoiDung" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SoLuongDaiBieuThamDu" class="control-label">Số lượng đại biểu tham dự</label>
+                <input asp-for="SoLuongDaiBieuThamDu" class="form-control" />
+                <span asp-validation-for="SoLuongDaiBieuThamDu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SoLuongDaiBieuQuocTeThamDu" class="control-label">Số lượng đại biểu quốc tế tham dự</label>
+                <input asp-for="SoLuongDaiBieuQuocTeThamDu" class="form-control" />
+                <span asp-validation-for="SoLuongDaiBieuQuocTeThamDu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ThoiGianToChuc" class="control-label">Thời gian tổ chức</label>
+                <input asp-for="ThoiGianToChuc" class="form-control" />
+                <span asp-validation-for="ThoiGianToChuc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DiaDiemToChuc" class="control-label">Địa điểm tổ chức</label>
+                <input asp-for="DiaDiemToChuc" class="form-control" />
+                <span asp-validation-for="DiaDiemToChuc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdNguonKinhPhiHoiThao" class="control-label">Nguồn kinh phí hội thảo</label>
+                <select asp-for="IdNguonKinhPhiHoiThao" class="form-control" asp-items="ViewBag.IdNguonKinhPhiHoiThao"></select>
+                <span asp-validation-for="IdNguonKinhPhiHoiThao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DonViChuTri" class="control-label">Đơn vị chủ trì</label>
+                <input asp-for="DonViChuTri" class="form-control" />
+                <span asp-validation-for="DonViChuTri" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

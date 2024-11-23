@@ -1,0 +1,174 @@
+﻿@model C500Hemis.Models.TbChuyenGiaoCongNgheVaDaoTao
+
+@{
+    ViewData["Title"] = "Chỉnh sửa";
+}
+
+<hr />
+<div class="container mt-5">
+    <div class="card shadow-lg border-0">
+        <div class="card-header text-center">
+            <h3 class="mb-0">Chỉnh sửa chuyển Giao Công Nghệ và Đào Tạo</h3>
+        </div>
+        <div class="card-body">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="IdChuyenGiaoCongNgheVaDaoTao" />
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="IdNhiemVuKhcn" class="form-label">ID nhiệm vụ</label>
+                        <select asp-for="IdNhiemVuKhcn" class="form-control" asp-items="ViewBag.IdNhiemVuKhcn"></select>
+                        <span asp-validation-for="IdNhiemVuKhcn" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="MaSoHopDong" class="form-label">Mã hợp đồng</label>
+                        <input asp-for="MaSoHopDong" class="form-control" />
+                        <span asp-validation-for="MaSoHopDong" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Ten" class="form-label">Tên công nghệ và đào tạo chuyển giao</label>
+                        <input asp-for="Ten" class="form-control" />
+                        <span asp-validation-for="Ten" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="TongChiPhiThucHien" class="form-label">Tổng chi phí thực hiện</label>
+                        <input asp-for="TongChiPhiThucHien" class="form-control" />
+                        <span asp-validation-for="TongChiPhiThucHien" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="TongThoiGianThucHien" class="form-label">Tổng thời gian thực hiện (tháng)</label>
+                        <input asp-for="TongThoiGianThucHien" class="form-control" />
+                        <span asp-validation-for="TongThoiGianThucHien" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="IdHinhThucChuyenGiaoCongNghe" class="form-label">ID hình thức chuyển giao</label>
+                        <select asp-for="IdHinhThucChuyenGiaoCongNghe" class="form-control" asp-items="ViewBag.IdHinhThucChuyenGiaoCongNghe"></select>
+                        <span asp-validation-for="IdHinhThucChuyenGiaoCongNghe" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="PhuongThucChuyenGiaoCongNghe" class="form-label">Phương thức chuyển giao</label>
+                        <input asp-for="PhuongThucChuyenGiaoCongNghe" class="form-control" />
+                        <span asp-validation-for="PhuongThucChuyenGiaoCongNghe" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="ChuSoHuu" class="form-label">Chủ sở hữu</label>
+                        <input asp-for="ChuSoHuu" class="form-control" />
+                        <span asp-validation-for="ChuSoHuu" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="DonViChuTri" class="form-label">Đơn vị chủ trì</label>
+                        <input asp-for="DonViChuTri" class="form-control" />
+                        <span asp-validation-for="DonViChuTri" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="DonViPhoiHop" class="form-label">Đơn vị phối hợp</label>
+                        <input asp-for="DonViPhoiHop" class="form-control" />
+                        <span asp-validation-for="DonViPhoiHop" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="DonViNhanChuyenGiao" class="form-label">Đơn vị nhận chuyển giao</label>
+                        <input asp-for="DonViNhanChuyenGiao" class="form-control" />
+                        <span asp-validation-for="DonViNhanChuyenGiao" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="TomTat" class="form-label">Tóm tắt (nếu có)</label>
+                        <input asp-for="TomTat" class="form-control" />
+                        <span asp-validation-for="TomTat" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="TenDuAn" class="form-label">Tên dự án</label>
+                        <input asp-for="TenDuAn" class="form-control" />
+                        <span asp-validation-for="TenDuAn" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="GiaTriHopDong" class="form-label">Giá trị hợp đồng (USD)</label>
+                        <input asp-for="GiaTriHopDong" class="form-control" />
+                        <span asp-validation-for="GiaTriHopDong" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="IdNganhKinhTe" class="form-label">Ngành kinh tế</label>
+                        <select asp-for="IdNganhKinhTe" class="form-control" asp-items="ViewBag.IdNganhKinhTe"></select>
+                        <span asp-validation-for="IdNganhKinhTe" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="IdTrangThaiHopDong" class="form-label">Trạng thái hợp đồng</label>
+                        <select asp-for="IdTrangThaiHopDong" class="form-control" asp-items="ViewBag.IdTrangThaiHopDong"></select>
+                        <span asp-validation-for="IdTrangThaiHopDong" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="SoNguoiDuocDaoTaoChuyenGiaoCn" class="form-label">Số người được đào tạo</label>
+                        <input asp-for="SoNguoiDuocDaoTaoChuyenGiaoCn" class="form-control" />
+                        <span asp-validation-for="SoNguoiDuocDaoTaoChuyenGiaoCn" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between mt-3">
+                    <a asp-action="Index" class="btn btn-outline-primary">Quay lại danh sách</a>
+                    <input type="submit" value="Lưu" class="btn btn-outline-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        background-image: url('@Url.Content("~/images/snapedit_1729475551212.jpeg")'); /* Đường dẫn đến hình ảnh nền */
+        background-size: cover; /* Tự động căn chỉnh */
+        background-position: center; /* Căn giữa hình ảnh */
+        background-repeat: no-repeat; /* Không lặp lại hình ảnh */
+    }
+
+    .card {
+        background-color: rgba(255, 255, 255, 0.9); /* Nền trắng với độ trong suốt */
+    }
+
+    .card-header {
+        background-color: #96D4D4;
+        color: black;
+        font-family: 'Times New Roman', Times, serif;
+    }
+
+    .form-label {
+        font-weight: bold;
+    }
+
+    .form-control {
+        border: 1px solid #ced4da; /* Màu viền */
+    }
+
+    .form-control:focus {
+        border-color: #007bff; /* Màu viền khi focus */
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Hiệu ứng bóng */
+    }
+
+    .btn-primary {
+        background-color: #007bff; /* Màu nút chính */
+        border-color: #007bff;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3; /* Màu nút khi hover */
+        border-color: #0056b3;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d; /* Màu nút phụ */
+        border-color: #6c757d;
+    }
+
+    .btn-secondary:hover {
+        background-color: #5a6268; /* Màu nút phụ khi hover */
+        border-color: #545b62;
+    }
+
+    footer {
+        visibility: hidden;
+    }
+</style>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

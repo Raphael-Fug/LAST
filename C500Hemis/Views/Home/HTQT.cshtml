@@ -1,0 +1,147 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<style>
+    /* CSS to style the navigation bar */
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #1a1a1a; /* Nền tối hơn một chút so với màu đen */
+    }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://inuvdp.com/wp-content/uploads/2023/09/Download-Background-Chuyen-Doi-So-Vector-04.jpg'); /* URL của hình nền vũ trụ */
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.6); /* Giảm độ sáng để làm nền tối hơn */
+            z-index: -1; /* Đưa hình nền xuống dưới bảng */
+        }
+
+    h1 {
+        color: white;
+        text-align: center;
+    }
+
+    /* Style the navbar container */
+    .navbar {
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
+    }
+
+    /* Style the table */
+    table {
+        border-collapse: collapse;
+        width: 60%;
+        background-color: #000; /* Màu bảng là màu đen */
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        opacity: 0.9; /* Làm bảng mờ đi với opacity */
+    }
+
+    /* Table cells */
+    td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid #444;
+    }
+
+    .navbar a {
+        color: white;
+        text-decoration: none;
+        font-family: Arial, sans-serif;
+        font-size: 18px;
+        position: relative;
+        display: block;
+        padding-bottom: 2px;
+    }
+
+        /* Add underline effect on hover from left to right */
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0; /* Bắt đầu với độ dài 0 */
+            height: 2px; /* Độ dày của dòng underline */
+            background-color: white;
+            transition: width 0.4s ease-out; /* Tạo hiệu ứng từ từ */
+        }
+
+        /* Khi hover vào link, underline sẽ chạy từ trái sang phải */
+        .navbar a:hover::after {
+            width: 100%; /* Khi hover, dòng underline sẽ chạy toàn bộ chiều rộng */
+        }
+
+    /* Add hover effect for table rows */
+    td:hover {
+        background-color: #333;
+        transition: background-color 0.3s;
+    }
+
+    /* Add a sparkling effect to table on hover */
+    table:hover {
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+    }
+</style>
+
+<h1>THÔNG TIN HỢP TÁC QUỐC TẾ</h1>
+
+<div class="navbar">
+    <table>
+        <tr>
+            <td>
+                <a href="/TbToChucHopTacQuocTes">Tổ chức hợp tác quốc tế</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="/TbThongTinHopTacs">Thông tin hợp tác với tổ chức</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="/TbHoiThaoHoiNghis">Hội thảo/ Hội nghị</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="/TbDeAnDuAnChuongTrinhs">Đề án/ Dự án/ Chương trình</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="/TbLuuHocSinhSinhVienNns">Lưu học sinh, sinh viên nước ngoài</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="/TbGvduocCuDiDaoTaos">Giảng viên được cử đi đào tạo</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="/TbDoanCongTacs">Đoàn công tác</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="/TbThanhPhanThamGiaDoanCongTacs">Thành phần tham gia đoàn công tác</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="/TbToChucHopTacDoanhNghieps">Tổ chức hợp tác doanh nghiệp</a>
+            </td>
+        </tr>
+    </table>
+    <div>
+    </div>
+</div> 

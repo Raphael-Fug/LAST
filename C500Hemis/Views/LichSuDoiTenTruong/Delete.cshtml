@@ -1,0 +1,75 @@
+﻿@model C500Hemis.Models.TbLichSuDoiTenTruong
+
+@{
+    ViewData["Title"] = "Xóa";
+}
+
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h1 class="text-danger">Xóa Bản Ghi</h1>
+        <h3 class="text-warning">Bạn có chắc chắn muốn xóa bản ghi này không?</h3>
+    </div>
+    <div class="card shadow-lg">
+        <div class="card-body">
+            <h4 class="card-title text-left">Thông tin chính</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-3">
+                    Tên trường cũ
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.TenTruongCu)
+                </dd>
+                <dt class="col-sm-3">
+                    Tên trường cũ bằng tiếng anh
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.TenTruongCuTiengAnh)
+                </dd>
+                <dt class="col-sm-3">
+                    Số quyết định đổi tên
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.SoQuyetDinhDoiTen)
+                </dd>
+                <dt class="col-sm-3">
+                    Ngày ký quyết định
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.NgayKyQuyetDinhDoiTen)
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="IdLichSuDoiTenTruong" />
+        <div class="text-center">
+            <input type="submit" value="Xóa" class="btn btn-outline-primary" />
+            <a asp-action="Index" class="btn btn-outline-primary">Quay lại danh sách</a>
+        </div>
+    </form>
+</div>
+
+<style>
+    body {
+        background-image: url('@Url.Content("~/images/snapedit_1729475551212.jpeg")'); /* Đường dẫn đến hình ảnh nền */
+        background-size: cover; /* Tự động căn chỉnh */
+        background-position: center; /* Căn giữa hình ảnh */
+        background-repeat: no-repeat; /* Không lặp lại hình ảnh */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .card {
+        background-color: rgba(255, 255, 255, 0.95); /* Nền trắng với độ trong suốt */
+        border-radius: 10px;
+    }
+
+    .btn:hover {
+        opacity: 0.8;
+    }
+
+    footer {
+        visibility: hidden;
+    }
+</style>

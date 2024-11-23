@@ -1,0 +1,87 @@
+﻿@model IEnumerable<C500Hemis.Models.TbDatDai>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <style>
+        .create-new {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .action-links a {
+            padding: 5px 10px;
+            margin-right: 5px;
+            background-color: #ffcccc;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 3px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+    </style>
+</head>
+<body1>
+    <div class="container">
+        <h1 align="center">Cơ Sở Vật Chất Và Trang Thiết Bị Đất Đai</h1>
+        <p>
+            <a class="create-new" asp-action="Create">Tạo Mới</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.MaGiayChungNhanQuyenSoHuu)</th>
+                    <th>@Html.DisplayNameFor(model => model.DienTichDat)</th>
+                    <th>@Html.DisplayNameFor(model => model.TenDonViSoHuu)</th>
+                    <th>@Html.DisplayNameFor(model => model.MinhChungQuyenSoHuuDatDai)</th>
+                    <th>@Html.DisplayNameFor(model => model.MucDichSuDungDat)</th>
+                    <th>@Html.DisplayNameFor(model => model.NamBatDauSuDungDat)</th>
+                    <th>@Html.DisplayNameFor(model => model.ThoiGianSuDungDat)</th>
+                    <th>@Html.DisplayNameFor(model => model.DienTichDatDaSuDung)</th>
+                    <th>@Html.DisplayNameFor(model => model.IdHinhThucSoHuuNavigation)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.MaGiayChungNhanQuyenSoHuu)</td>
+                        <td>@Html.DisplayFor(modelItem => item.DienTichDat)</td>
+                        <td>@Html.DisplayFor(modelItem => item.TenDonViSoHuu)</td>
+                        <td>@Html.DisplayFor(modelItem => item.MinhChungQuyenSoHuuDatDai)</td>
+                        <td>@Html.DisplayFor(modelItem => item.MucDichSuDungDat)</td>
+                        <td>@Html.DisplayFor(modelItem => item.NamBatDauSuDungDat)</td>
+                        <td>@Html.DisplayFor(modelItem => item.ThoiGianSuDungDat)</td>
+                        <td>@Html.DisplayFor(modelItem => item.DienTichDatDaSuDung)</td>
+                        <td>@Html.DisplayFor(modelItem => item.IdHinhThucSoHuuNavigation.IdHinhThucSoHuu)</td>
+                        <td>
+                            <div class="action-links">
+                                <a asp-action="Edit" asp-route-id="@item.IdDatDai">Edit</a>
+                                <hr>
+                                <a asp-action="Details" asp-route-id="@item.IdDatDai">Details</a>
+                                <hr>
+                                <a asp-action="Delete" asp-route-id="@item.IdDatDai">Delete</a>
+                                <hr>
+                            </div>
+                        </td>
+                       
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body1>
+</html>

@@ -1,0 +1,48 @@
+﻿@model C500Hemis.Models.TbChucDanhKhoaHocCuaCanBo
+
+@{
+    ViewData["Title"] = "Chi Tiết";
+}
+
+<div class="container mt-5">
+    <h1>Chi Tiết</h1>
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-info text-white">
+            <h4 class="mb-0">Thông Tin Chức Danh Khoa Học Của Cán Bộ</h4>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.SoQuyetDinh)</th>
+                        <td>@Html.DisplayFor(model => model.SoQuyetDinh)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.NgayQuyetDinh)</th>
+                        <td>@Html.DisplayFor(model => model.NgayQuyetDinh)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.IdCanBoNavigation)</th>
+                        <td>@Html.DisplayFor(model => model.IdCanBoNavigation.IdCanBo)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.IdChucDanhKhoaHocNavigation)</th>
+                        <td>@Html.DisplayFor(model => model.IdChucDanhKhoaHocNavigation.IdChucDanhKhoaHoc)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.IdThamQuyenQuyetDinhNavigation)</th>
+                        <td>@Html.DisplayFor(model => model.IdThamQuyenQuyetDinhNavigation.IdLoaiQuyetDinh)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer text-center">
+            <a asp-action="Edit" asp-route-id="@Model?.IdChucDanhKhoaHocCuaCanBo" class="btn btn-primary">
+                Chỉnh Sửa
+            </a>
+            <a asp-action="Index" class="btn btn-secondary">
+                Quay Lại Danh Sách
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,88 @@
+﻿@model C500Hemis.Models.TbLichSuDoiTenTruong
+
+@{
+    ViewData["Title"] = "Chi Tiết Thông Tin";
+}
+
+
+
+<div class="table-container">
+    <div class="table-responsive">
+        <h1 style="text-align:center; font-family:'Times New Roman', Times, serif;">
+            Chi tiết hợp đồng
+        </h1>
+        <table class="table table-custom table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th scope="col" style="background-color: #96D4D4; color:black">Tên thuộc tính</th>
+                    <th scope="col" style="background-color: #96D4D4; color:black">Giá trị</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>ID lịch sử đổi tên</td>
+                    <td>@Html.DisplayFor(model => model.IdLichSuDoiTenTruong)</td>
+                </tr>
+                <tr>
+                    <td>Tên trường cũ</td>
+                    <td>@Html.DisplayFor(model => model.TenTruongCu)</td>
+                </tr>
+                <tr>
+                    <td>Tên trường cũ bằng tiếng anh</td>
+                    <td>@Html.DisplayFor(model => model.TenTruongCuTiengAnh)</td>
+                </tr>
+                <tr>
+                    <td>Số quyết định đổi tên</td>
+                    <td>@Html.DisplayFor(model => model.SoQuyetDinhDoiTen)</td>
+                </tr>
+                <tr>
+                    <td>Ngày ký quyết định</td>
+                    <td>@Html.DisplayFor(model => model.NgayKyQuyetDinhDoiTen)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="d-flex justify-content-between mt-3">
+    <a asp-action="Edit" asp-route-id="@Model?.IdLichSuDoiTenTruong" class="btn btn-outline-primary">Chỉnh sửa</a>
+    <a asp-action="Index" class="btn btn-outline-primary">Quay lại danh sách</a>
+</div>
+<style>
+    body {
+        background-image: url('@Url.Content("~/images/snapedit_1729475551212.jpeg")'); /* Thay thế bằng URL hình nền của bạn */
+        background-size: cover; /* Làm cho hình nền tự căn chỉnh */
+        background-repeat: no-repeat; /* Không lặp lại hình nền */
+        background-position: center; /* Căn giữa hình nền */
+        color: #333; /* Màu chữ chính */
+    }
+
+    .table-container {
+        background-color: rgba(255, 255, 255, 0.8); /* Nền trắng trong suốt cho bảng */
+        padding: 20px; /* Khoảng cách bên trong */
+        border-radius: 10px; /* Bo tròn góc */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Đổ bóng cho bảng */
+    }
+
+    .table-custom {
+        background-color: #f9f9f9; /* Màu nền nhẹ cho bảng */
+    }
+
+        .table-custom th {
+            background-color: lightslategray; /* Màu nền tiêu đề */
+            color: white; /* Màu chữ tiêu đề */
+        }
+
+        .table-custom td {
+            background-color: #ffffff; /* Màu nền ô dữ liệu */
+        }
+
+        .table-custom tr:hover td {
+            background-color: #e9ecef; /* Màu nền khi hover */
+        }
+
+    footer {
+        visibility: hidden;
+    }
+</style>
+

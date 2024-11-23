@@ -1,0 +1,77 @@
+﻿@model C500Hemis.Models.TbQuaTrinhDaoTaoCuaCanBo
+
+@{
+    ViewData["Title"] = "Xóa";
+}
+
+<h1 class="text-center">Xóa</h1>
+
+<h3 class="text-center">Bạn có chắc chắn muốn xóa không?</h3>
+<div class="container">
+    <h4>Thông tin chi tiết</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            Cơ sở đào tạo
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.CoSoDaoTao)
+        </dd>
+        <dt class="col-sm-3">
+            Thời gian bắt đầu
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.ThoiGianBatDau)
+        </dd>
+        <dt class="col-sm-3">
+            Thời gian kết thúc
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.ThoiGianKetThuc)
+        </dd>
+        <dt class="col-sm-3">
+            Năm tốt nghiệp
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.NamTotNghiep)
+        </dd>
+        <dt class="col-sm-3">
+            Id Cán bộ
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.IdCanBoNavigation.IdCanBo)
+        </dd>
+        <dt class="col-sm-3">
+            Loại hình đào tạo
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.IdLoaiHinhDaoTaoNavigation.IdLoaiHinhDaoTao)
+        </dd>
+        <dt class="col-sm-3">
+            Nghành đào tạo
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.IdNganhDaoTaoNavigation.IdNganhDaoTao)
+        </dd>
+        <dt class="col-sm-3">
+            Quốc gia đào tạo
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.IdQuocGiaDaoTaoNavigation.IdQuocTich)
+        </dd>
+        <dt class="col-sm-3">
+            Trình độ đào tạo
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.IdTrinhDoDaoTaoNavigation.IdTrinhDoDaoTao)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdQuaTrinhDaoTaoCuaCanBo" />
+        <div class="text-center">
+            <input type="submit" value="Xóa" class="btn btn-danger" />
+            <a class="btn btn-secondary" asp-action="Index">Quay lại danh sách</a>
+        </div>
+    </form>
+</div>

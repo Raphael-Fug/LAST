@@ -1,0 +1,148 @@
+﻿@model IEnumerable<C500Hemis.Models.TbQuaTrinhCongTacCuaCanBo>
+
+@{
+    ViewData["Title"] = "Danh sách Quá trình Công tác";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .table-custom {
+            background-color: #fff;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Thêm bóng đổ cho bảng */
+        }
+
+            .table-custom th, .table-custom td {
+                vertical-align: middle;
+                text-align: center; /* Căn giữa nội dung */
+            }
+
+        .btn-custom {
+            margin: 0 5px;
+            transition: background-color 0.3s ease; /* Thêm hiệu ứng chuyển đổi màu */
+        }
+
+            .btn-custom:hover {
+                background-color: #0056b3; /* Màu khi hover */
+                color: #fff;
+            }
+
+        h1 {
+            color: #343a40;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #dee2e6; /* Thêm đường viền dưới tiêu đề */
+        }
+
+        .input-group {
+            max-width: 400px;
+            margin: 20px auto; /* Thêm khoảng cách trên dưới */
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px; /* Khoảng cách giữa các nút */
+            margin-bottom: 20px; /* Thêm khoảng cách dưới */
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">@ViewData["Title"]</h1>
+
+        <form asp-controller="QuaTrinhCongTacCuaCanBo" asp-action="Index" method="get" class="text-center mb-3">
+            <div class="input-group">
+                <input type="number" name="Search" class="form-control" placeholder="Tìm kiếm theo ID cán bộ" />
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit">Tìm kiếm</button>
+                </div>
+            </div>
+        </form>
+
+        <div class="button-group mb-3">
+            <a class="btn btn-success btn-custom" asp-action="Create">Tạo mới</a>
+            <form class="d-inline" method="get">
+                <button class="btn btn-info btn-custom" type="submit" name="SapXep" value="SapXep">
+                    <i class="bi bi-sort-numeric-down"></i> Sắp xếp
+                </button>
+            </form>
+        </div>
+
+        <table class="table table-custom table-hover table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Từ ngày</th>
+                    <th>Đến ngày</th>
+                    <th>Đơn vị công tác</th>
+                    <th>ID Cán bộ</th>
+                    <th>ID Chức danh giảng viên</th>
+                    <th>ID Chức vụ</th>
+                    <th>ID Quá trình ct</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.TuThangNam)</td>
+                        <td>@Html.DisplayFor(modelItem => item.DenThangNam)</td>
+                        <td>@Html.DisplayFor(modelItem => item.DonViCongTac)</td>
+                        <td>@Html.DisplayFor(modelItem => item.IdCanBo)</td>
+                        <td>@Html.DisplayFor(modelItem => item.IdChucDanhGiangVien)</td>
+                        <td>@Html.DisplayFor(modelItem => item.IdChucVu)</td>
+                        <td>@Html.DisplayFor(modelItem => item.IdQuaTrinhCongTacCuaCanBo)</td>
+                        <td>
+                            <a class="btn btn-primary btn-sm btn-custom" asp-action="Edit" asp-route-id="@item.IdQuaTrinhCongTacCuaCanBo">Sửa</a>
+                            <a class="btn btn-info btn-sm btn-custom" asp-action="Details" asp-route-id="@item.IdQuaTrinhCongTacCuaCanBo">Chi tiết</a>
+                            <a class="btn btn-danger btn-sm btn-custom" asp-action="Delete" asp-route-id="@item.IdQuaTrinhCongTacCuaCanBo">Xóa</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.table-custom').DataTable({
+                "paging": true,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "language": {
+                    "lengthMenu": "Hiển thị _MENU_ mục mỗi trang",
+                    "zeroRecords": "Không tìm thấy dữ liệu",
+                    "info": "Trang _PAGE_ trong _PAGES_",
+                    "infoEmpty": "Không có dữ liệu",
+                    "infoFiltered": "(lọc từ _MAX_ tổng số mục)",
+                    "search": "Tìm kiếm:",
+                    "paginate": {
+                        "first": "Đầu tiên",
+                        "last": "Cuối cùng",
+                        "next": "Sau",
+                        "previous": "Trước"
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

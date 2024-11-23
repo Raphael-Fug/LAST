@@ -1,0 +1,208 @@
+﻿@model IEnumerable<C500Hemis.Models.TbKyLuatCanBo>
+
+@{
+    ViewData["Title"] = "DANH SÁCH KỶ LUẬT";
+}
+@section Heads {
+    <link href="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-2.1.7/r-3.0.3/datatables.min.css" rel="stylesheet">
+    <style>
+        /* HỒ SƠ CÁN BỘ BỊ KỶ LUẬT */
+        h1 {
+            font-size: 40px;
+        }
+
+        /* BẢNG CHUNG */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #f1f3f3;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+        }
+
+            table th, table td {
+                padding: 12px;
+                text-align: center;
+                border-bottom: 5px solid #ddd;
+            }
+
+            table th {
+                background-color: #AAAAAA;
+                color: black;
+                font-size: 16px;
+            }
+
+            .value:hover {
+                background-color: #D3D3D3;
+            }
+
+        p {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        /* NÚT SỬA, XÓA */
+        .button_a_edit, .button_a_del {
+            border-style: solid;
+            border-width: 0.5px;
+            font-size: 14px;
+            display: inline-block;
+            padding: 4px 8px;
+            text-decoration: none;
+            color: black;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            transition: transform 0.3s ease, background-color 0.3s ease; /* Hiệu ứng chuyển màu khi di chuột */
+            margin: 2px; /* Khoảng cách giữa các nút */
+        }
+
+        /* màu mặc định của 2 nút trùng màu khi hover vào dòng */
+        .button_a_edit, .button_a_del {
+            background-color: #D3D3D3; /* Trùng màu bảng */
+        }
+
+            /* Khi di chuột vào nút "SỬA" */
+            .button_a_edit:hover {
+                background-color: #007bff; /*màu xanh dương*/
+                color: white;
+            }
+
+            /* Khi di chuột vào nút "XÓA" */
+            .button_a_del:hover {
+                background-color: #dc3545; /* Màu đỏ */
+                color: white;
+            }
+
+        /* Đặt kiểu bố cục cho khối chứa các nút */
+        .edit_del {
+            width: 100%;
+            display: flex;
+            justify-content: center; /* Canh giữa các nút trong div */
+            align-items: center;
+        }
+
+        .contain {
+            margin-bottom: 100px;
+        }
+    </style>
+}
+
+<h1 style="text-align: center">HỒ SƠ CÁN BỘ BỊ KỶ LUẬT (@Model.Count())</h1>
+
+<div class="contain">
+    <table class="table" id="view_table">
+        <thead>
+
+            <tr style="text-align: center">
+                <th>
+                    CÁN BỘ
+                </th>
+                <th>
+                    LÝ DO
+                </th>
+                <th>
+                    NGÀY NHẬN QĐ
+                </th>
+                <th>
+                    SỐ QĐ
+                </th>
+                <th>
+                    NĂM BỊ KỶ LUẬT
+                </th>
+
+                <th>
+                    CẤP QĐ
+                </th>
+                <th>
+                    HÌNH THỨC
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr class="value" style="text-align: center; cursor: pointer;"
+                    onclick="window.location.href='@Url.Action("Details", new { id = item.IdKyLuatCanBo })'">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdCanBoNavigation.IdNguoiNavigation.Ho) @Html.DisplayFor(modelItem => item.IdCanBoNavigation.IdNguoiNavigation.Ten)
+                    </td>
+
+                    <td style="text-align: left">
+                        @Html.DisplayFor(modelItem => item.LyDo)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NgayThangNamQuyetDinh)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SoQuyetDinh)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NamBiKyLuat)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdCapQuyetDinhNavigation.CapKhenThuong)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdLoaiKyLuatNavigation.LoaiKyLuat)
+                    </td>
+
+                    <td>
+                        <div class="edit_del">
+
+                            <a class="button_a_edit" asp-action="Edit" asp-route-id="@item.IdKyLuatCanBo">SỬA</a>
+
+                            <a class="button_a_del" asp-action="Delete" asp-route-id="@item.IdKyLuatCanBo">XÓA</a>
+
+
+                        </div>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/v/dt/jszip-3.10.1/dt-2.1.8/b-3.1.2/b-colvis-3.1.2/b-html5-3.1.2/b-print-3.1.2/datatables.min.js"></script>
+    <script>
+        //Datatable trong datatable.net. Tìm hiểu thêm thông tin: https://datatables.net/manual/
+        var table = new DataTable("#view_table", {
+            language: {
+                //Điều chỉnh phần hiển thị label của thanh tìm kiếm - Xem thêm thông tin: https://datatables.net/reference/option/language.search
+                search: "Tìm kiếm",
+                //Điều chỉnh phần hiển thị thông tin của table - Xem thêm thông tin: https://datatables.net/reference/option/language.info
+                info: "Hiển thị _MAX_ trong _TOTAL_ bản ghi",
+            },
+            createdRow: (row, data, index) => {
+            },
+            layout: {//Layout: https://datatables.net/examples/layout/index.html
+                topStart: {
+                    buttons: [//extension buttons: https://datatables.net/extensions/buttons/config
+                        {
+                            className: 'btn btn-primary', //Thêm class cho button
+                            text: 'Thêm hồ sơ bị kỷ luật',
+                            action: function (e, dt, node, config) {//Hành động của button
+                                window.location.href = '@Url.Action("Create")';
+                            }
+                        }
+                    ]
+                }
+            }
+        });
+        //HTMLDOM Element: https://developer.mozilla.org/en-US/docs/Web/API/Element
+        //Datatables API: https://datatables.net/reference/api/table().header()
+        var row = table.table().header().lastElementChild;
+        row.lastElementChild.remove();
+        row.appendChild(document.createElement('th'));
+        console.log(row.lastElementChild);
+    </script>
+}

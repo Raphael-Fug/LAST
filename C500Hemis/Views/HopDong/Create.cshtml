@@ -1,0 +1,97 @@
+﻿@model C500Hemis.Models.TbHopDong
+
+@{
+    ViewData["Title"] = "Tạo Hợp Đồng";
+}
+
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="card shadow-lg border-0" style="width: 800px;">
+        <div class="card-header bg-primary text-white text-center">
+            <h3 class="mb-0">Tạo Hợp Đồng Mới</h3>
+        </div>
+        <div class="card-body">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+                <div class="row">
+                    <!-- Số hợp đồng -->
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="SoHopDong" class="form-label font-weight-bold">Số Hợp Đồng</label>
+                        <input asp-for="SoHopDong" class="form-control" placeholder="Nhập số hợp đồng" />
+                        <span asp-validation-for="SoHopDong" class="text-danger"></span>
+                    </div>
+
+                    <!-- Số quyết định -->
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="SoQuyetDinh" class="form-label font-weight-bold">Số Quyết Định</label>
+                        <input asp-for="SoQuyetDinh" class="form-control" placeholder="Nhập số quyết định" />
+                        <span asp-validation-for="SoQuyetDinh" class="text-danger"></span>
+                    </div>
+
+                    <!-- Ngày quyết định -->
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="NgayQuyetDinh" class="form-label font-weight-bold">Ngày Quyết Định</label>
+                        <input asp-for="NgayQuyetDinh" type="date" class="form-control" />
+                        <span asp-validation-for="NgayQuyetDinh" class="text-danger"></span>
+                    </div>
+
+                    <!-- Có giá trị từ -->
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="CoGiaTriTu" class="form-label font-weight-bold">Có Giá Trị Từ</label>
+                        <input asp-for="CoGiaTriTu" type="date" class="form-control" />
+                        <span asp-validation-for="CoGiaTriTu" class="text-danger"></span>
+                    </div>
+
+                    <!-- Có giá trị đến -->
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="CoGiaTriDen" class="form-label font-weight-bold">Có Giá Trị Đến</label>
+                        <input asp-for="CoGiaTriDen" type="date" class="form-control" />
+                        <span asp-validation-for="CoGiaTriDen" class="text-danger"></span>
+                    </div>
+
+                    <!-- Cán bộ -->
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="IdCanBo" class="form-label font-weight-bold">Cán Bộ</label>
+                        <select asp-for="IdCanBo" class="form-select" asp-items="ViewBag.IdCanBo"></select>
+                        <span asp-validation-for="IdCanBo" class="text-danger"></span>
+                    </div>
+
+                    <!-- Loại hợp đồng -->
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="IdLoaiHopDong" class="form-label font-weight-bold">Loại Hợp Đồng</label>
+                        <select asp-for="IdLoaiHopDong" class="form-select" asp-items="ViewBag.IdLoaiHopDong"></select>
+                        <span asp-validation-for="IdLoaiHopDong" class="text-danger"></span>
+                    </div>
+
+                    <!-- Tình trạng hợp đồng -->
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="IdTinhTrangHopDong" class="form-label font-weight-bold">Tình Trạng Hợp Đồng</label>
+                        <select asp-for="IdTinhTrangHopDong" class="form-select" asp-items="ViewBag.IdTinhTrangHopDong"></select>
+                        <span asp-validation-for="IdTinhTrangHopDong" class="text-danger"></span>
+                    </div>
+
+                    <!-- Làm việc toàn thời gian -->
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="LamViecToanThoiGian" class="form-label font-weight-bold">Làm Việc Toàn Thời Gian</label>
+                        <input asp-for="LamViecToanThoiGian" class="form-control" placeholder="Nhập thông tin làm việc" />
+                        <span asp-validation-for="LamViecToanThoiGian" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <!-- Nút điều hướng -->
+                <div class="d-flex justify-content-between mt-4">
+                    <a asp-action="Index" class="btn btn-secondary">
+                        <i class="bi bi-arrow-left-circle"></i> Quay lại danh sách
+                    </a>
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-check-circle"></i> Tạo hợp đồng
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <!-- Sử dụng Bootstrap Icons nếu chưa có -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+}

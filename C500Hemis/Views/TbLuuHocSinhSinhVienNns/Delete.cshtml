@@ -1,0 +1,51 @@
+﻿@model C500Hemis.Models.TbLuuHocSinhSinhVienNn
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<style>
+    table {
+        width: 100%; /* Chiều rộng bảng 100% */
+        border-collapse: collapse; /* Gộp đường viền ô */
+    }
+
+    th, td {
+        border: 1px solid #000; /* Đường viền đen cho các ô */
+        text-align: left;
+        padding: 8px; /* Khoảng cách giữa nội dung và đường viền ô */
+    }
+
+    th {
+        font-weight: bold; /* Chữ đậm cho tiêu đề */
+    }
+
+    tr:hover {
+        background-color: transparent; /* Không có màu nền khi di chuột qua hàng */
+    }
+</style>
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>TbLuuHocSinhSinhVienNn</h4>
+    <hr />
+    <table>
+        <tr>
+            <th>Người học</th>
+            <td>@Html.DisplayFor(model => model.IdNguoiHoc)</td>
+        </tr>
+        <tr>
+            <th>Loại Lưu Học Sinh</th>
+            <td>@Html.DisplayFor(model => model.IdLoaiLuuHocSinh)</td>
+        </tr>
+        <tr>
+            <th>Nguồn Kinh Phí Lưu Học Sinh</th>
+            <td>@Html.DisplayFor(model => model.IdNguonKinhPhiLuuHocSinh)</td>
+        </tr>
+    </table>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdLuuHocSinhSinhVienNn" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

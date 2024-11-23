@@ -1,0 +1,117 @@
+﻿@model C500Hemis.Models.TbDanhGiaXepLoaiCanBo
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<head>
+
+    <style>
+        body {
+            background-color: rgb(226 227 200);
+        }
+
+        .tieude {
+            color: rgb(184 88 30);
+            padding-top: 3%;
+            font-size: 80px;
+            text-align: center;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        b {
+            color: rgb(28, 99, 110);
+        }
+
+        .arrow-button:hover {
+            background-color: rgb(187 18 18);
+        }
+
+        .arrow-button {
+            background-color: rgb(184 88 30);
+            color: white;
+            padding: 10px 40px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            clip-path: polygon( 0% 50%, 10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100% );
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 30px;
+            width: 150px;
+            margin: auto;
+            margin-top: 5px;
+            padding-top: 4px;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .arrow-button a:hover {
+            color: white;
+        }
+
+        .row dt {
+            text-align: right;
+            font-weight: bold;
+        }
+
+        .row dt, dd {
+            font-size: 30px;
+            color: rgb(166 86 45);
+        }
+
+        .back:hover {
+            background-color: rgb(222 158 120);
+        }
+    </style>
+</head>
+<h1 class="tieude">Delete</h1>
+
+<h3 class="text-center" style="color: rgb(171 31 31);">Are you sure you want to delete this?</h3>
+<div>
+
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-6">
+            @Html.DisplayNameFor(model => model.NamDanhGia):
+        </dt>
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.NamDanhGia)
+        </dd>
+        <dt class="col-sm-6">
+            @Html.DisplayNameFor(model => model.NganhDuocKhenThuong):
+        </dt>
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.NganhDuocKhenThuong)
+        </dd>
+        <dt class="col-sm-6">
+            @Html.DisplayNameFor(model => model.IdCanBoNavigation):
+        </dt>
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.IdCanBoNavigation.IdCanBo)
+        </dd>
+        <dt class="col-sm-6">
+            @Html.DisplayNameFor(model => model.IdDanhGiaNavigation):
+        </dt>
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.IdDanhGiaNavigation.IdDanhGiaCongChucVienChuc)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdDanhGiaXepLoaiCanBo" />
+        <input type="submit" value="Delete" class="btn arrow-button" />
+        <div>
+
+            <p class="btn arrow-button back">
+                <a asp-action="Index">Back</a>
+            </p>
+
+        </div>
+    </form>
+</div>

@@ -1,0 +1,151 @@
+﻿@model IEnumerable<C500Hemis.Models.TbLinhVucNghienCuuCuaCanBo>
+
+@{
+    ViewData["Title"] = "Lĩnh vực nghiên cứu của cán bộ";
+}
+
+<link href="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-2.1.7/r-3.0.3/datatables.min.css" rel="stylesheet">
+<script src="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-2.1.7/r-3.0.3/datatables.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+<h1 class="text-center my-4">Lĩnh vực nghiên cứu của cán bộ</h1>
+
+<div class="text-right mb-3">
+    <a asp-action="Create" class="btn btn-success">
+        <i class="fas fa-plus"></i> Thêm mới
+    </a>
+</div>
+
+<table class="table table-striped table-hover" id="ntable">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <thead class="thead-dark">
+        <tr>
+            <th class="lvnc">@Html.DisplayNameFor(model => model.LaLinhVucNghienCuuChuyenSau)</th>
+            <th>@Html.DisplayNameFor(model => model.SoNamNghienCuu)</th>
+            <th>@Html.DisplayNameFor(model => model.IdCanBoNavigation)</th>
+            <th>@Html.DisplayNameFor(model => model.IdLinhVucNghienCuuNavigation)</th>
+            @* <th class="text-center">Hành động</th> *@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="lvnc">@Html.DisplayFor(modelItem => item.LaLinhVucNghienCuuChuyenSau)</td>
+                <td>@Html.DisplayFor(modelItem => item.SoNamNghienCuu)</td>
+
+                       
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.IdCanBoNavigation.IdNguoiNavigation.Ho) @Html.DisplayFor(modelItem => item.IdCanBoNavigation.IdNguoiNavigation.Ten)
+                </td>
+          
+                <td>@Html.DisplayFor(modelItem => item.IdLinhVucNghienCuuNavigation.IdLinhVucNghienCuu)</td>
+                <td class="text-center">
+                    <a asp-action="Edit" asp-route-id="@item.IdLinhVucNghienCuuCuaCanBo" class="btn btn-sm btn-warning mx-1">
+                        <i class="fas fa-edit"></i> Sửa
+                    </a>
+                    <a asp-action="Details" asp-route-id="@item.IdLinhVucNghienCuuCuaCanBo" class="btn btn-sm btn-info mx-1">
+                        <i class="fas fa-info-circle"></i> Chi tiết
+                    </a>
+                    <a asp-action="Delete" asp-route-id="@item.IdLinhVucNghienCuuCuaCanBo" class="btn btn-sm btn-danger mx-1">
+                        <i class="fas fa-trash-alt"></i> Xóa
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    new DataTable('#ntable', {
+        searching: true, // Mặc định là true, set false để tắt chức năng search
+        processing: true,
+        info: false, // Tắt thông tin về table VD: Showing 1 to 14 of 14 entries
+        lengthMenu: [2, 3, 4, 5, 6],
+        language: {
+            processing: "Message khi đang tải dữ liệu",
+            search: "Tìm kiếm",
+            lengthMenu: "Điều chỉnh số lượng bản ghi trên 1 trang _MENU_ ",
+            info: "Bản ghi từ _START_ đến _END_ Tổng công _TOTAL_ bản ghi",
+            infoEmpty: "Khi không có dữ liệu, Hiển thị 0 bản ghi trong 0 tổng cộng 0 ",
+            infoFiltered: "(Message bổ sung cho info khi không search đc record nào _MAX_)",
+            infoPostFix: "Alo Alo", // Cái này khi thêm vào nó sẽ đứng sau info
+            loadingRecords: "",
+            zeroRecords: "Khi tìm kiếm không match với record nào",
+            emptyTable: "Không có dữ liệu",
+            paginate: {
+                first: "Trang đầu",
+                previous: "Trang trước",
+                next: "Trang sau",
+                last: "Trang cuối"
+            },
+            aria: {
+                sortAscending: ": Message khi đang sắp xếp theo column",
+                sortDescending: ": Message khi đang sắp xếp theo column",
+            }
+        },
+    });
+</script>
+
+<!-- Đoạn CSS -->
+<style>
+    /* Hình nền cho toàn bộ trang */
+    body {
+        position: revert-layer;
+        background-color: palegreen;
+    }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://static.wixstatic.com/media/9d8ed5_80206ab61cf14532924c2295418701a0~mv2.jpg/v1/fit/w_1000%2Ch_710%2Cal_c%2Cq_80/file.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            opacity: 0.5; /* Độ mờ của ảnh */
+            z-index: -1;
+        }
+    .h1{
+        position: relative; /* Đảm bảo nội dung nổi lên trên lớp mờ */
+        color: black; /* Đảm bảo chữ hiển thị rõ ràng */
+    }
+    }
+    .table {
+        position: relative; /* Đảm bảo nội dung nổi lên trên lớp mờ */
+        color: white; /* Đảm bảo chữ hiển thị rõ ràng */
+    }
+
+    .table {
+        background-color: rgba(255, 255, 255, 0.8); /* Nền trắng mờ cho bảng */
+    }
+
+
+    /* Nút hành động */
+    .btn-warning {
+        background-color: #f0ad4e;
+        border-color: #eea236;
+        background-size: cover;
+    }
+
+    .btn-info {
+        background-color: #5bc0de;
+        border-color: #46b8da;
+        background-size: cover;
+    }
+
+    .btn-danger {
+        background-color: #d9534f;
+        border-color: #d43f3a;
+        background-size: cover;
+    }
+    .lvnc{
+        width:20%;
+    }
+
+</style>

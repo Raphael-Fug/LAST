@@ -1,0 +1,60 @@
+﻿@model C500Hemis.Models.TbKyLuatCanBo
+
+@{
+    ViewData["Title"] = "CHI TIẾT";
+}
+
+<h1>THÔNG TIN CHI TIẾT</h1>
+
+<div>
+    <h4>Họ và tên: @Model.IdCanBoNavigation.IdNguoiNavigation.Ho @Model.IdCanBoNavigation.IdNguoiNavigation.Ten </h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Lý do kỷ luật
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LyDo)
+        </dd>
+        <dt class = "col-sm-2">
+            Ngày nhận quyết định
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NgayThangNamQuyetDinh)
+        </dd>
+        <dt class = "col-sm-2">
+            Số quyết định
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SoQuyetDinh)
+        </dd>
+        <dt class = "col-sm-2">
+            Năm kỷ luật
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NamBiKyLuat)
+        </dd>
+        <dt class = "col-sm-2">
+            ID cán bộ
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdCanBoNavigation.IdCanBo)
+        </dd>
+        <dt class = "col-sm-2">
+            Cấp quyết định
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdCapQuyetDinhNavigation.IdCapKhenThuong)
+        </dd>
+        <dt class = "col-sm-2">
+            Hình thức kỷ luật
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdLoaiKyLuatNavigation.IdLoaiKyLuat)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.IdKyLuatCanBo">Chỉnh sửa</a> |
+    <a asp-action="Index">Quay lại</a>
+</div>

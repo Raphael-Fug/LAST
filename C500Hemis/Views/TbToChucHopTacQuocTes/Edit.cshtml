@@ -1,0 +1,125 @@
+﻿@model C500Hemis.Models.TbToChucHopTacQuocTe
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Chỉnh sửa</h1>
+
+<h4>Tổ chức hợp tác quốc tế </h4>
+<hr />
+<style>
+    div {
+        margin: auto
+    }
+
+    body {
+        background-color: #05c46b;
+        font-family: Verdana;
+    }
+
+    /* Căn giữa toàn bộ nội dung */
+    .center-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Chiều cao toàn màn hình */
+    }
+
+    form {
+        background-color: #fff;
+        max-width: 500px;
+        padding: 30px 20px;
+        box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+    }
+
+    h1, h4 {
+        text-align: center;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+        .form-group label {
+            margin-bottom: 5px;
+            display: block;
+        }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .btn-primary {
+        width: 100%;
+        padding: 10px;
+        background-color: #05c46b;
+        border: none;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+        .btn-primary:hover {
+            background-color: #048a55;
+        }
+</style>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdToChucHopTacQuocTe" />
+            <div class="form-group">
+                <label asp-for="MaHopTac" class="control-label"></label>
+                <input asp-for="MaHopTac" class="form-control" />
+                <span asp-validation-for="MaHopTac" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TenToChuc" class="control-label"></label>
+                <input asp-for="TenToChuc" class="form-control" />
+                <span asp-validation-for="TenToChuc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdQuocGia" class="control-label"></label>
+                <select asp-for="IdQuocGia" class="form-control" asp-items="ViewBag.IdQuocGia"></select>
+                <span asp-validation-for="IdQuocGia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NoiDung" class="control-label"></label>
+                <input asp-for="NoiDung" class="form-control" />
+                <span asp-validation-for="NoiDung" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ThoiGianKyKet" class="control-label"></label>
+                <input asp-for="ThoiGianKyKet" class="form-control" />
+                <span asp-validation-for="ThoiGianKyKet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KetQuaHopTac" class="control-label"></label>
+                <input asp-for="KetQuaHopTac" class="form-control" />
+                <span asp-validation-for="KetQuaHopTac" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LoaiToChuc" class="control-label"></label>
+                <input asp-for="LoaiToChuc" class="form-control" />
+                <span asp-validation-for="LoaiToChuc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

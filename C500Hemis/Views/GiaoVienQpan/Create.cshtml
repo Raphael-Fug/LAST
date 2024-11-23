@@ -1,0 +1,219 @@
+﻿@model C500Hemis.Models.TbGiaoVienQpan
+<script src="https://kit.fontawesome.com/5c202d0407.js" crossorigin="anonymous"></script>
+@{
+    ViewData["Title"] = "Tạo";
+}
+@section Heads{
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+}
+<h1>THÊM THÔNG TIN</h1>
+<body>
+<div class="container">
+    <div class="title">Thông tin chi tiết</div>
+    <div class="content">
+        <form asp-action="Create">
+                <div class="user-details">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="input-box" class="form-group">
+                <label asp-for="IdGiaoVienQpan" class="control-label"></label>
+                <input asp-for="IdGiaoVienQpan" class="form-control" />
+                <span asp-validation-for="IdGiaoVienQpan" class="text-danger"></span>
+            </div>
+                    <div class="input-box" class="form-group">
+                <label asp-for="IdCanBo" class="control-label"></label>
+                        <select  asp-for="IdCanBo" class="form-control" asp-items="ViewBag.IdCanBo"></select>
+            </div>
+                    <div class="input-box" class="form-group">
+                <label asp-for="NamBatDauBietPhai" class="control-label"></label>
+                <input asp-for="NamBatDauBietPhai" class="form-control" />
+                <span asp-validation-for="NamBatDauBietPhai" class="text-danger"></span>
+            </div>
+                    <div class="input-box" class="form-group">
+                <label asp-for="SoNamBietPhai" class="control-label"></label>
+                <input asp-for="SoNamBietPhai" class="form-control" />
+                <span asp-validation-for="SoNamBietPhai" class="text-danger"></span>
+            </div>
+                    <div class="input-box" class="form-group">
+                <label asp-for="IdLoaiGiangVienQp" class="control-label"></label>
+                        <select  asp-for="IdLoaiGiangVienQp" class="form-control" asp-items="ViewBag.IdLoaiGiangVienQp"></select>
+            </div>
+                    <div class="input-box" class="form-group">
+                <label asp-for="DaoTaoGdqpan" class="control-label"></label>
+                <input asp-for="DaoTaoGdqpan" class="form-control" />
+                <span asp-validation-for="DaoTaoGdqpan" class="text-danger"></span>
+            </div>
+                    <div class="input-box" class="form-group">
+                <label asp-for="IdQuanHam" class="control-label"></label>
+                        <select  asp-for="IdQuanHam" class="form-control" asp-items="ViewBag.IdQuanHam"></select>
+            </div>
+                    <div class="input-box" class="form-group">
+                <label asp-for="SoTruongCongTac" class="control-label"></label>
+                <input asp-for="SoTruongCongTac" class="form-control" />
+                <span asp-validation-for="SoTruongCongTac" class="text-danger"></span>
+            </div>
+                </div>
+
+            
+            <div class="form-group">
+                    <input class="btn1" id="btn-add" type="submit" value="Thêm" class="btn btn-primary" />
+            </div>
+            
+                
+        </form>
+    </div>
+        
+</div>
+    <div>
+        <a class="btn1" id="btn-back" style="margin-right:auto" asp-action="Index"><i style="margin-right:10px" class="fa-solid fa-arrow-left"></i>Quay lại</a>
+    </div>
+
+</body>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+}
+
+
+<style>
+    a{
+        text-decoration:none;
+    }
+    /* ========= common ======== */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        
+    }
+
+    body {
+        height: 130vh;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        background-color: #fafbed;
+    }
+
+    .container {
+        max-width: 700px;
+        width: 100%;
+        background-color: #fff;
+        padding: 25px 30px;
+        border-radius: 5px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .container .title {
+            font-size: 25px;
+            font-weight: 500;
+            position: relative;
+        }
+
+    .container .title::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                height: 3px;
+                width: 60px;
+                border-radius: 5px;
+                background: linear-gradient(135deg, #71b7e6, #9b59b6);
+            }
+
+    .content form .user-details {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 20px 0 12px 0;
+    }
+
+    form .user-details .input-box {
+        margin-bottom: 15px;
+        width: calc(100% / 2 - 20px);
+    }
+    /* ======= chỉnh sửa các option chọn ======== */
+    .user-details .input-box input,
+    .user-details .input-box select,
+    {
+        height: 45px;
+        width: 100%;
+        outline: none;
+        font-size: 16px;
+        border-radius: 5px;
+        padding-left: 15px;
+        border: 1px solid #ccc;
+        border-bottom-width: 2px;
+        transition: all 0.3s ease;
+    }
+   /*  ===== hiệu ứng khi chọn vào ô  ========= */
+        .user-details .input-box input:focus,
+        .user-details .input-box select:focus,
+        .user-details .input-box select:valid,
+        .user-details .input-box input:valid {
+            border-color: #9b59b6;
+        }
+
+    .button-option{
+        display:flex;
+    }
+    
+    /* ====== button ======== */
+    .btn1 {
+        border-radius: 6px;
+        box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+        box-sizing: border-box;
+        color: #FFFFFF;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 16px;
+        min-height: 40px;
+        outline: 0;
+        padding: 10px 14px;
+        text-align: center;
+        text-rendering: geometricprecision;
+        text-transform: none;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        vertical-align: middle;
+    }
+    /* ============= add ========== */
+    #btn-add {
+        background: green;
+        border: 1px solid green;
+    }
+
+    #btn-add:hover,
+    #btn-add:active {
+        background-color: initial;
+        background-position: 0 0;
+        color: green;
+    }
+
+    #btn-add:active {
+        opacity: .5;
+    }
+
+   /*  ====== back ====== */
+    #btn-back {
+        background: blue;
+        border: 1px solid blue;
+        margin-top:10px;
+    }
+
+        #btn-back:hover,
+        #btn-back:active {
+            background-color: initial;
+            background-position: 0 0;
+            color: blue;
+        }
+
+        #btn-back:active {
+            opacity: .5;
+        }
+</style>
+

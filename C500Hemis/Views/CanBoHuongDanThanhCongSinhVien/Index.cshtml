@@ -1,0 +1,80 @@
+﻿@model IEnumerable<C500Hemis.Models.TbCanBoHuongDanThanhCongSinhVien>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+<body>
+    <h1 class="tieude" align="center";>Thông Tin</h1>
+
+    <p>
+        <h2 class="btn" style="background-color:currentColor"><a asp-action="Create">Create New</a></h2>
+    </p>
+
+    <div class="table-container" style="margin-bottom:15px;">
+        <table class="table table-bordered" id="customers">
+
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdSinhVien)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TrachNhiemHuongDan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ThoiGianBatDau)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ThoiGianKetThuc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCanBoNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdSinhVien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrachNhiemHuongDan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThoiGianBatDau)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThoiGianKetThuc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCanBoNavigation.IdCanBo)
+            </td>
+                        <td class="tuychon">
+                            <a asp-action="Edit"
+                               asp-route-id="@item.IdCanBoHuongDanThanhCongSinhVien"
+                               class="btn btn-warning">Edit</a>
+                            <a asp-action="Details"
+                               asp-route-id="@item.IdCanBoHuongDanThanhCongSinhVien"
+                               class="btn btn-warning">Details</a>
+                            <a asp-action="Delete"
+                               asp-route-id="@item.IdCanBoHuongDanThanhCongSinhVien"
+                               class="btn btn-warning">Delete</a>
+                        </td>
+        </tr>
+}
+      </tbody>
+        </table>
+    </div>
+</body>

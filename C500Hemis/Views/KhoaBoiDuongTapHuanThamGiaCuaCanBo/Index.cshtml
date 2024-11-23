@@ -1,0 +1,134 @@
+﻿@model IEnumerable<C500Hemis.Models.TbKhoaBoiDuongTapHuanThamGiaCuaCanBo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<style>
+    th, h1, td{
+        text-align:center;
+    }
+    table{
+        border-bottom: solid;
+    }
+    body {
+        background-image: url(https://upload.wikimedia.org/wikipedia/vi/8/85/Logo_hoc_vien_ANND.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: rgb(230,241,216);
+    }
+</style>
+<body>
+<h1>KHÓA HUẤN LUYỆN TẬP HUẤN THAM GIA CỦA CÁN BỘ</h1>
+    <table class="table" style="background-color:rgba(200,226,177,0.85)" id="ntable">
+    <thead>
+            <tr style="background-color:rgba(54,117,23,0.8)">
+            <th>
+                TÊN KHÓA BỒI DƯỠNG TẬP HUẤN
+            </th>
+            <th>
+                ĐƠN VỊ TỔ CHỨC
+            </th>
+            <th>
+                ĐỊA ĐIỂM TỔ CHỨC
+            </th>
+            <th>
+                THỜI GIAN BẮT ĐẦU
+            </th>
+            <th>
+                THỜI GIAN KẾT THÚC
+            </th>
+            <th>
+                CHỨNG CHỈ
+            </th>
+            <th>
+                NGÀY CẤP
+            </th>
+            <th>
+                ID CÁN BỘ
+            </th>
+            <th>
+                ID LOẠI BỒI DƯỠNG
+            </th>
+            <th>
+                ID NGUỒN KINH PHÍ
+            </th>
+            <th width="125px">CHỨC NĂNG</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenKhoaBoiDuongTapHuan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DonViToChuc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaDiemToChuc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThoiGianBatDau)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThoiGianKetThuc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChungChi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayCap)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCanBoNavigation.IdCanBo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdLoaiBoiDuongNavigation.IdLoaiBoiDuong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdNguonKinhPhiNavigation.IdNguonKinhPhi)
+            </td>
+            <td>
+                        <a asp-action="Edit" asp-route-id="@item.IdKhoaBoiDuongTapHuanThamGiaCuaCanBo"><img src="https://cdn-icons-png.freepik.com/512/32/32355.png" width="16px" title="SỬA" /></a> |
+                            <a asp-action="Details" asp-route-id="@item.IdKhoaBoiDuongTapHuanThamGiaCuaCanBo"><img src="https://cdn-icons-png.flaticon.com/512/1/1755.png" width="16px" title="CHI TIẾT"/></a> |
+                            <a asp-action="Delete" asp-route-id="@item.IdKhoaBoiDuongTapHuanThamGiaCuaCanBo"><img src="https://cdn-icons-png.freepik.com/512/1345/1345874.png" width="16px" title="XÓA" /></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <form>
+        <input type="submit" value="Tạo mới" class="btn btn-primary" style="background-color:darkolivegreen" asp-action="Create" />
+    </form>
+
+</body>
+<script>
+
+    new DataTable('#ntable', {
+        searching: true, // Mặc định là true, set false để tắt chức năng search
+        processing: true,
+        info: false, // Tắt thông tin về table VD: Showing 1 to 14 of 14 entries
+        language: {
+            processing: "Message khi đang tải dữ liệu",
+            search: "Tìm kiếm",
+            lengthMenu: "Điều chỉnh số lượng bản ghi trên 1 trang _MENU_ ",
+            info: "Bản ghi từ _START_ đến _END_ Tổng công _TOTAL_ bản ghi",
+            infoEmpty: "Khi không có dữ liệu, Hiển thị 0 bản ghi trong 0 tổng cộng 0 ",
+            infoFiltered: "(Message bổ sung cho info khi không search đc record nào _MAX_)",
+            infoPostFix: "Alo Alo", // Cái này khi thêm vào nó sẽ đứng sau info
+            loadingRecords: "",
+            zeroRecords: "Khi tìm kiếm không match với record nào",
+            emptyTable: "Không có dữ liệu",
+            paginate: {
+                first: "Trang đầu",
+                previous: "Trang trước",
+                next: "Trang sau",
+                last: "Trang cuối"
+            },
+            aria: {
+                sortAscending: ": Message khi đang sắp xếp theo column",
+                sortDescending: ": Message khi đang sắp xếp theo column",
+            }
+        },
+    });
+</script>

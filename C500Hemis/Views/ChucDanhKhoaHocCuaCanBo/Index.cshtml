@@ -1,0 +1,203 @@
+﻿@model IEnumerable<C500Hemis.Models.TbChucDanhKhoaHocCuaCanBo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>CHỨC DANH KHOA HỌC CÁN BỘ</h1>
+<link href="~/themify-icons/themify-icons.css" rel="stylesheet" />
+<p>
+    <a asp-action="Create" id="moi"><i class="ti-plus"></i> Thêm mới</a>
+</p>
+
+<style>
+    body{
+        background-color: #fffaf0;
+    }
+
+    .nen{
+        background-color: #31473A;
+        color: #EDF4F2;
+    }
+
+    table.dataTable th.dt-type-numeric, table.dataTable th.dt-type-date, table.dataTable td.dt-type-numeric, table.dataTable td.dt-type-date {
+        text-align: center;
+    }
+
+    h1{
+        text-align: center;
+        margin-bottom: 50px;
+        text-shadow: 2px 2px 4px #000000;
+    }
+
+    /* Điều chỉnh bố cục cho các nút */
+    .them {
+        display: inline-block; /* Đặt tất cả các nút là block */
+        margin-right: 10px; /* Khoảng cách giữa các nút */
+        padding: 5px 15px; /* Tăng padding để các nút có kích thước đồng đều */
+        border-radius: 5px; /* Bo góc cho nút */
+    }
+
+/* Điều chỉnh cho cả khối chứa các nút để căn đều hơn */
+    .them {
+        display: flex; /* Dùng flexbox để căn chỉnh các nút */
+        justify-content: space-between; /* Căn đều khoảng cách giữa các nút */
+        align-items: center; /* Căn giữa theo chiều dọc */
+    }
+
+
+    /* Màu cho nút Create New */
+    #moi{
+        color: white;
+        background-color: #4CAF50; /* Xanh lá cây tươi sáng */
+        text-decoration: none;
+        padding: 8px 10px; /* Tăng padding để các nút có kích thước đồng đều */
+        border-radius: 5px; /* Bo góc cho nút */
+    }
+
+    /* Màu cho nút Edit */
+    #sua{
+        color: white;
+        background-color: #42A5F5; /* Xanh dương nhạt */
+        text-decoration: none;
+    }
+
+    /* Màu cho nút Delete */
+    #xoa{
+        color: white;
+        background-color: #F44336; /* Đỏ đậm */
+        text-decoration: none;
+    }
+
+    /* Màu cho nút Details */
+    #chi-tiet{
+        color: white;
+        background-color: #81C784; /* Xanh lá cây nhạt */
+        text-decoration: none;
+    }
+
+    #moi:hover,
+    #sua:hover,
+    #chi-tiet:hover,
+    #xoa:hover {
+        transform: scale(1.1);
+        background-color: #90CAF9; /* Ví dụ hover cho Chỉnh sửa */
+        transition: background-color 0.3s ease; /* Hiệu ứng chuyển mượt mà */
+    }
+
+    /* Đặt màu nền cho các hàng chẵn */
+    table.dataTable tbody tr:nth-child(even) {
+        background-color: #f2f2f2; /* Màu nền cho hàng chẵn */
+    }
+
+    /* Đặt màu nền cho các hàng lẻ */
+    table.dataTable tbody tr:nth-child(odd) {
+        background-color: #ffffff; /* Màu nền cho hàng lẻ */
+    }
+
+    /* Hiệu ứng hover với transition */
+    table.dataTable tbody tr {
+        transition: background-color 0.3s ease; /* Hiệu ứng mượt khi hover */
+    }
+
+        table.dataTable tbody tr:hover {
+            background-color: #d4edda; /* Màu hover */
+        }
+
+    /* Tùy chọn thêm để thay đổi màu chữ */
+    table.dataTable tbody tr td {
+        padding: 8px; /* Thêm padding cho các ô */
+    }
+
+</style>
+
+<table class="table">
+    <thead>
+        <tr class="nen">
+            <th>
+                @Html.DisplayNameFor(model => model.SoQuyetDinh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayQuyetDinh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCanBoNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdChucDanhKhoaHocNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdThamQuyenQuyetDinhNavigation)
+            </th>
+            <th>Thêm</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="select">
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoQuyetDinh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayQuyetDinh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdCanBoNavigation.IdCanBo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdChucDanhKhoaHocNavigation.IdChucDanhKhoaHoc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdThamQuyenQuyetDinhNavigation.IdLoaiQuyetDinh)
+                </td>
+                <td>
+                        <a asp-action="Edit" asp-route-id="@item.IdChucDanhKhoaHocCuaCanBo" id="sua" class="them"><i class="ti-pencil-alt"></i> Chỉnh sửa</a>
+                        <a asp-action="Details" asp-route-id="@item.IdChucDanhKhoaHocCuaCanBo" id="chi-tiet" class="them"><i class="ti-info-alt"></i> Chi tiết</a>
+                        <a asp-action="Delete" asp-route-id="@item.IdChucDanhKhoaHocCuaCanBo" id="xoa" class="them"><i class="ti-trash" title="Xóa bản ghi này"></i> Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- DataTables JS -->
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+<!-- DataTables CSS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+
+<script>
+    new DataTable('.table', {
+        lengthMenu: [10, 15, 20, 25, 30],
+        language: {
+            processing: "Đang tải dữ liệu",
+            search: "Tìm kiếm: ",
+            lengthMenu: "Số bản ghi hiển thị trên trang _MENU_ ",
+            info: "Tổng bản ghi: _TOTAL_",
+            infoEmpty: "Chưa có nội dung nào trong danh sách",
+            infoFiltered: "",
+            infoPostFix: "", // Cái này khi thêm vào nó sẽ đứng sau info
+            loadingRecords: "",
+            zeroRecords: "Không tìm thấy dữ liệu",
+            emptyTable: "Không có dữ liệu",
+            paginate: {
+                first: "<<",
+                previous: "<",
+                next: ">",
+                last: ">>"
+            },
+            aria: {
+                sortAscending: ": Đang sắp xếp",
+                sortDescending: ": Đang sắp xếp",
+            }
+        },
+    });
+</script>
+        
+
+
+
+

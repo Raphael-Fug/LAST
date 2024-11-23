@@ -1,0 +1,189 @@
+﻿@model IEnumerable<C500Hemis.Models.TbGiangVienNn>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Import Bootstrap and JQuery-->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--DataTables-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.1.7/css/dataTables.dataTables.css" />
+
+    <script type="text/javascript"
+            charset="utf8" src="https://cdn.datatables.net/2.1.7/js/dataTables.js"></script>
+    <!--My CSS anf JQuery-->
+    <link href="./css/style.css" rel="stylesheet" />
+    <script type="text/javascript" src="./js/FileName.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Font+Name&display=swap">
+    <style>
+        body {
+            background-color: #fff9e9;
+            color: #553f3a;
+            font-family: "IBM Plex Serif", serif;
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        .table {
+            color: #553f3a;
+            background-color: #e4f2ef;
+            width: 90%;
+            margin: auto;
+        }
+
+
+
+        tr {
+            transition: background-color 0.3s ease; /* Thêm hiệu ứng cho hàng */
+        }
+
+            tr:hover {
+                background-color: #f1f1f1; /* Màu nền khi di chuột vào hàng */
+            }
+
+        th {
+            background-color: #007BFF;
+            color: #553f3a;
+            font-size: 14px;
+        }
+
+            th:hover {
+                background-color: #388895; /* Màu nền khi di chuột vào tiêu đề */
+            }
+
+        h1 {
+            color: #553f3a;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: #007BFF;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+            }
+
+        .btn-edit {
+            background-color: #88a764; /* Màu xanh lá cho Chỉnh sửa */
+        }
+
+            .btn-edit:hover {
+                background-color: #f5f6b4;
+                transform: scale(1.05); /* Tạo hiệu ứng phóng to nhẹ khi hover */
+            }
+
+        .btn-details {
+            background-color: #8fc8d9; /* Màu xanh dương nhạt cho Chi tiết */
+        }
+
+            .btn-details:hover {
+                background-color: #c4faf0;
+                transform: scale(1.05); /* Tạo hiệu ứng phóng to nhẹ khi hover */
+            }
+
+        .btn-delete {
+            background-color: #dc3f1c; /* Màu đỏ cho Xóa bỏ */
+        }
+
+            .btn-delete:hover {
+                background-color: #df8584;
+                transform: scale(1.05); /* Tạo hiệu ứng phóng to nhẹ khi hover */
+            }
+
+        .btn-create {
+            background-color: null;
+        }
+
+            .btn-create:hover {
+                font-weight: bold; /* Chữ sẽ đậm hơn khi hover */
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Thêm hiệu ứng bóng đổ khi hover */
+                transform: scale(1.05); /* Tạo hiệu ứng phóng to nhẹ khi hover */
+            }
+
+            /* Khi nhấn nút */
+            .btn-create:active {
+                font-weight: bolder; /* Chữ sẽ đậm hơn khi nhấn */
+                text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Thay đổi bóng đổ khi nhấn */
+            }
+    </style>
+</head>
+<body>
+    <h1> GIẢNG VIÊN NƯỚC NGOÀI</h1>
+
+    <p>
+        <a asp-action="Create" style="margin-left:6%;" class="btn btn-create">
+            Tạo Mới  <i class="fa-solid fa-plus"></i>
+        </a>
+    </p>
+    <div class="container mt-4">
+        <table id="example" class="table">
+            <thead>
+                <tr>
+                    <th style="text-align:center;">
+                        @Html.DisplayNameFor(model => model.IdCanBoNavigation)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CoQuanChuQuanOnuocNgoai)
+                    </th>
+
+                    <th style="text-align:center;">
+                        @Html.DisplayNameFor(model => model.IdNoiDungHoatDongTaiVietNamNavigation)
+                    </th>
+                    <th style=" text-align:center;">
+                        TÙY CHỌN
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="text-align:center;">
+                            @Html.DisplayFor(modelItem => item.IdCanBoNavigation.IdNguoiNavigation.name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CoQuanChuQuanOnuocNgoai)
+                        </td>
+
+                        <td style="text-align:center;">
+                            @Html.DisplayFor(modelItem => item.IdNoiDungHoatDongTaiVietNamNavigation.NoiDungHoatDongTaiVietNam)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.IdGvnn" class="btn btn-edit">
+                                <i class="fa-solid fa-pen-to-square"></i> Sửa
+                            </a>
+                            <a asp-action="Details" asp-route-id="@item.IdGvnn" class="btn btn-details">
+                                <i class="fa-solid fa-circle-info"></i> Xem
+                            </a>
+                            <a asp-action="Delete" asp-route-id="@item.IdGvnn" class="btn btn-delete">
+                                <i class="fa-solid fa-trash"></i> Xóa
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <script>
+        $('#example').DataTable({
+            "language": {
+                "url": "https://cdn.datatables.net/plug-ins/1.10.20/i18n/Vietnamese.json"
+            },
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false
+        });
+
+    </script>
+</body>

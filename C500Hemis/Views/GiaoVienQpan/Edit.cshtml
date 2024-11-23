@@ -1,0 +1,176 @@
+﻿@model C500Hemis.Models.TbGiaoVienQpan
+
+@{
+    ViewData["Title"] = "Chỉnh sửa";
+}
+
+<h1>Chỉnh sửa</h1>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdGiaoVienQpan" />
+
+            <div class="form-group">
+                <label asp-for="IdCanBo" class="control-label"></label>
+                <select asp-for="IdCanBo" class="form-control" asp-items="ViewBag.IdCanBo"></select>
+                <span asp-validation-for="IdCanBo" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="NamBatDauBietPhai" class="control-label"></label>
+                <input asp-for="NamBatDauBietPhai" class="form-control" />
+                <span asp-validation-for="NamBatDauBietPhai" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="SoNamBietPhai" class="control-label"></label>
+                <input asp-for="SoNamBietPhai" class="form-control" />
+                <span asp-validation-for="SoNamBietPhai" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="IdLoaiGiangVienQp" class="control-label"></label>
+                <select asp-for="IdLoaiGiangVienQp" class="form-control" asp-items="ViewBag.IdLoaiGiangVienQp"></select>
+                <span asp-validation-for="IdLoaiGiangVienQp" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DaoTaoGdqpan" class="control-label"></label>
+                <input asp-for="DaoTaoGdqpan" class="form-control" />
+                <span asp-validation-for="DaoTaoGdqpan" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="IdQuanHam" class="control-label"></label>
+                <select asp-for="IdQuanHam" class="form-control" asp-items="ViewBag.IdQuanHam"></select>
+                <span asp-validation-for="IdQuanHam" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="SoTruongCongTac" class="control-label"></label>
+                <input asp-for="SoTruongCongTac" class="form-control" />
+                <span asp-validation-for="SoTruongCongTac" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-check"></i> Xác nhận
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="back-link">Trở về danh sách</a>
+</div>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+<style>
+        body {
+            font-family: Arial, sans-serif;
+    background-color: #f9fbe7; /* Nền tổng thể màu vàng nhạt */
+            background-image: url('https://www.transparenttextures.com/patterns/asfalt-light.png'); /* Họa tiết nền */
+            background-size: cover; /* Kích thước hình ảnh nền */
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4a4a4a; /* Màu tiêu đề chính */
+        }
+
+        h4 {
+            color: #ff6f61; /* Màu tiêu đề phụ */
+            text-align: center;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .col-md-4 {
+            background: linear-gradient(135deg, #ffafbd, #ffc3a0); /* Nền gradient cho form */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+            .form-control:focus {
+                border-color: #ff6f61; /* Màu khi focus */
+                outline: none;
+                box-shadow: 0 0 5px rgba(255, 111, 97, 0.5);
+            }
+
+        .btn-primary {
+            background-color: #ff6f61;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            width: 100%;
+            display: flex; /* Flexbox để căn giữa icon và text */
+            align-items: center; /* Căn giữa theo chiều dọc */
+            justify-content: center; /* Căn giữa theo chiều ngang */
+        }
+
+            .btn-primary i {
+                margin-right: 5px; /* Khoảng cách giữa icon và text */
+            }
+
+            .btn-primary:hover {
+                background-color: #ff9270; /* Màu khi hover */
+            }
+
+        .text-danger {
+            color: #ff0000;
+            font-size: 0.9em;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #007bff; /* Màu liên kết */
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+            .back-link:hover {
+                text-decoration: underline; /* Gạch chân khi hover */
+            }
+</style>

@@ -1,0 +1,81 @@
+﻿@model C500Hemis.Models.TbDanhHieuThiDuaGiaiThuongKhenThuongCanBo
+
+@{
+    ViewData["Title"] = "Create";
+}
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-dy+Dvhgi7KkKbP4qxFqDncdchCRO1GfBPOIQFxDb/WIOVQ5SWEphI8MNsxF9auhgGChlpS+nfsP24i7IbxNwOQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!--Link sử dụng bootstrap icon-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<h1>Create</h1>
+
+<hr />
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4>Danh Hiệu Thi Đua Khen Thưởng Cán Bộ</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="IdDanhHieuThiDuaGiaiThuongKhenThuongCanBo" class="control-label">ID Danh Hiệu Thi Đua Giải Thưởng Khen Thưởng Cán Bộ</label>
+                            <input asp-for="IdDanhHieuThiDuaGiaiThuongKhenThuongCanBo" class="form-control" />
+                            <span asp-validation-for="IdDanhHieuThiDuaGiaiThuongKhenThuongCanBo" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="IdCanBo" class="control-label">ID Cán Bộ</label>
+                            <select asp-for="IdCanBo" class="form-control" asp-items="ViewBag.IdCanBo"></select>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="IdLoaiDanhHieuThiDuaGiaiThuongKhenThuong" class="control-label"> Loại Danh Hiệu Thi Đua Giải Thưởng Khen Thưởng</label>
+                            <select asp-for="IdLoaiDanhHieuThiDuaGiaiThuongKhenThuong" class="form-control" asp-items="ViewBag.IdLoaiDanhHieuThiDuaGiaiThuongKhenThuong"></select>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="IdThiDuaGiaiThuongKhenThuong" class="control-label"> Thi Đua Giải Thưởng Khen Thưởng</label>
+                            <select asp-for="IdThiDuaGiaiThuongKhenThuong" class="form-control" asp-items="ViewBag.IdThiDuaGiaiThuongKhenThuong"></select>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="SoQuyetDinh" class="control-label">Số Quyết Định</label>
+                            <input asp-for="SoQuyetDinh" class="form-control" />
+                            <span asp-validation-for="SoQuyetDinh" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="IdPhuongThucKhenThuong" class="control-label"> Phương Thức Khen Thưởng</label>
+                            <select asp-for="IdPhuongThucKhenThuong" class="form-control" asp-items="ViewBag.IdPhuongThucKhenThuong"></select>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="NamKhenThuong" class="control-label">Năm Khen Thưởng</label>
+                            <input asp-for="NamKhenThuong" class="form-control" />
+                            <span asp-validation-for="NamKhenThuong" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="IdCapKhenThuong" class="control-label">Cấp Khen Thưởng</label>
+                            <select asp-for="IdCapKhenThuong" class="form-control" asp-items="ViewBag.IdCapKhenThuong"></select>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-file-earmark-plus-fill"></i>
+                                Create
+                            </button>
+
+                            <a asp-action="Index" asp-controller="DanhHieuThiDuaGiaiThuongKhenThuongCanBo" class="btn btn-secondary">
+                                <i class="bi bi-arrow-left-circle"></i> Cancel
+                            </a>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

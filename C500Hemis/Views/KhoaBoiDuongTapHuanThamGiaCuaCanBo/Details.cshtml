@@ -1,0 +1,111 @@
+﻿@model C500Hemis.Models.TbKhoaBoiDuongTapHuanThamGiaCuaCanBo
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<h1 align="center"><strong>Chi tiết thông tin cán bộ</strong></h1>
+<div>
+
+    <h4 align="center">Khoa bồi dưỡng tập huấn tham gia của cán bộ</h4>
+    <hr />
+    <table class="table table-bordered" style="border: 2px solid black;">
+        <tr>
+            <th style="border: 2px solid black;">Tên khoa bồi dưỡng tập huấn</th>
+            <td style="border: 2px solid black;">@Html.DisplayFor(model => model.TenKhoaBoiDuongTapHuan)</td>
+        </tr>
+        <tr>
+            <th style="border: 2px solid black;">Đơn vị tổ chức</th>
+            <td style="border: 2px solid black;">@Html.DisplayFor(model => model.DonViToChuc)</td>
+        </tr>
+        <tr>
+            <th style="border: 2px solid black;">Địa điểm tổ chức</th>
+            <td style="border: 2px solid black;">@Html.DisplayFor(model => model.DiaDiemToChuc)</td>
+        </tr>
+        <tr>
+            <th style="border: 2px solid black;">Thời gian bắt đầu</th>
+            <td style="border: 2px solid black;">@Html.DisplayFor(model => model.ThoiGianBatDau)</td>
+        </tr>
+        <tr>
+            <th style="border: 2px solid black;">Thời gian kết thúc</th>
+            <td style="border: 2px solid black;">@Html.DisplayFor(model => model.ThoiGianKetThuc)</td>
+        </tr>
+        <tr>
+            <th style="border: 2px solid black;">Chứng chỉ</th>
+            <td style="border: 2px solid black;">@Html.DisplayFor(model => model.ChungChi)</td>
+        </tr>
+        <tr>
+            <th style="border: 2px solid black;">Ngày cấp</th>
+            <td style="border: 2px solid black;">@Html.DisplayFor(model => model.NgayCap)</td>
+        </tr>
+        <tr>
+            <th style="border: 2px solid black;">ID cán bộ giảng dạy</th>
+            <td style="border: 2px solid black;">@Html.DisplayFor(model => model.IdCanBoNavigation.IdCanBo)</td>
+        </tr>
+        <tr>
+            <th style="border: 2px solid black;">ID loại bồi dưỡng cán bộ</th>
+            <td style="border: 2px solid black;">@Html.DisplayFor(model => model.IdLoaiBoiDuongNavigation.IdLoaiBoiDuong)</td>
+        </tr>
+        <tr>
+            <th style="border: 2px solid black;">Nguồn kinh phí cán bộ</th>
+            <td style="border: 2px solid black;">@Html.DisplayFor(model => model.IdNguonKinhPhiNavigation.IdNguonKinhPhi)</td>
+        </tr>
+    </table>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.IdKhoaBoiDuongTapHuanThamGiaCuaCanBo" class="btn-red">Chỉnh sửa</a> |
+    <a asp-action="Index" class="btn-blue">Quay lại danh sách</a>
+</div>
+
+<style>
+    body {
+        background-image: url(https://upload.wikimedia.org/wikipedia/vi/8/85/Logo_hoc_vien_ANND.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: rgb(230,241,216);
+    }
+
+    .btn-red, .btn-blue {
+display: inline-block;
+        padding: 10px 20px;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+
+    .btn-red {
+        background-color: red;
+    }
+
+        .btn-red:hover {
+            background-color: darkred;
+        }
+
+    .btn-blue {
+        background-color: blue;
+    }
+
+        .btn-blue:hover {
+            background-color: darkblue;
+        }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border: 2px solid black;
+        width: 100px;
+    }
+    div{
+        background-color: rgba(230,241,216,0.65);
+    }
+    tr{
+        width:400px;
+    }
+</style>

@@ -1,0 +1,138 @@
+﻿@model C500Hemis.Models.TbNguoi
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 style="text-align:center">Chi tiết thông tin</h1>
+
+<div class="card">
+    <div class="card-header " style="text-align:center">
+        <h1><strong>  Thông tin cá nhân</strong></h1>
+       
+    </div>
+    <div class="card-body" style="background-color:lightcyan">
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Ho)</th>
+                <td>@Html.DisplayFor(model => model.Ho)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Ten)</th>
+                <td>@Html.DisplayFor(model => model.Ten)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.SoCccd)</th>
+                <td>@Html.DisplayFor(model => model.SoCccd)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.NgayCapCccd)</th>
+                <td>@Html.DisplayFor(model => model.NgayCapCccd)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.NoiCapCccd)</th>
+                <td>@Html.DisplayFor(model => model.NoiCapCccd)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.NgaySinh)</th>
+                <td>@Html.DisplayFor(model => model.NgaySinh)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.IdTonGiao)</th>
+                <td>@Html.DisplayFor(model => model.IdTonGiao)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.NgayVaoDoan)</th>
+                <td>@Html.DisplayFor(model => model.NgayVaoDoan)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.NgayVaoDang)</th>
+                <td>@Html.DisplayFor(model => model.NgayVaoDang)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.NgayVaoDangChinhThuc)</th>
+                <td>@Html.DisplayFor(model => model.NgayVaoDangChinhThuc)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.NgayNhapNgu)</th>
+                <td>@Html.DisplayFor(model => model.NgayNhapNgu)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.NgayXuatNgu)</th>
+                <td>@Html.DisplayFor(model => model.NgayXuatNgu)</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="card mt-4 ">
+    <div class="card-header" style="text-align:center">
+        <h1><strong> Thông tin khác</strong></h1>
+       
+    </div>
+    <div class="card-body" style="background-color:lightcyan">
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th class="hover-effect">@Html.DisplayNameFor(model => model.IdChucDanhKhoaHocNavigation)</th>
+                <td>@Html.DisplayFor(model => model.IdChucDanhKhoaHocNavigation.IdChucDanhKhoaHoc)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.IdChuyenMonDaoTaoNavigation)</th>
+                <td>@Html.DisplayFor(model => model.IdChuyenMonDaoTaoNavigation.IdNganhDaoTao)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.IdTonGiaoNavigation)</th>
+                <td>@Html.DisplayFor(model => model.IdTonGiaoNavigation.IdTonGiao)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.IdDanTocNavigation)</th>
+                <td>@Html.DisplayFor(model => model.IdDanTocNavigation.IdDanToc)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.IdGiaDinhChinhSachNavigation)</th>
+                <td>@Html.DisplayFor(model => model.IdGiaDinhChinhSachNavigation.IdHoGiaDinhChinhSach)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.IdGioiTinhNavigation)</th>
+                <td>@Html.DisplayFor(model => model.IdGioiTinhNavigation.IdGioiTinh)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.IdKhungNangLucNgoaiNgucNavigation)</th>
+                <td>@Html.DisplayFor(model => model.IdKhungNangLucNgoaiNgucNavigation.IdKhungNangLucNgoaiNgu)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.IdNgoaiNguNavigation)</th>
+                <td>@Html.DisplayFor(model => model.IdNgoaiNguNavigation.IdNgoaiNgu)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.IdQuocTichNavigation)</th>
+                <td>@Html.DisplayFor(model => model.IdQuocTichNavigation.IdQuocTich)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.IdThuongBinhHangNavigation)</th>
+                <td>@Html.DisplayFor(model => model.IdThuongBinhHangNavigation.IdHangThuongBinh)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.IdTrinhDoDaoTaoNavigation)</th>
+                <td>@Html.DisplayFor(model => model.IdTrinhDoDaoTaoNavigation.IdTrinhDoDaoTao)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.IdTrinhDoLyLuanChinhTriNavigation)</th>
+                <td>@Html.DisplayFor(model => model.IdTrinhDoLyLuanChinhTriNavigation.IdTrinhDoLyLuanChinhTri)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.IdTrinhDoQuanLyNhaNuocNavigation)</th>
+                <td>@Html.DisplayFor(model => model.IdTrinhDoQuanLyNhaNuocNavigation.IdTrinhDoQuanLyNhaNuoc)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.IdTrinhDoTinHocNavigation)</th>
+                <td>@Html.DisplayFor(model => model.IdTrinhDoTinHocNavigation.IdTrinhDoTinHoc)</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="d-flex justify-content-end mt-3">
+    <a asp-action="Edit" asp-route-id="@Model?.IdNguoi" class="btn btn-primary">Sửa</a>
+    <a asp-action="Index" class="btn btn-secondary ml-2">Quay lại</a>
+</div>

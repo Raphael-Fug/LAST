@@ -1,0 +1,127 @@
+﻿@model IEnumerable<C500Hemis.Models.TbDanhGiaXepLoaiCanBo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap"
+          rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+          <style>
+        .tieude {
+            color: rgb(28, 99, 110);
+            padding-top: 3%;
+            font-size: 55px;
+            text-align: center;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .arrow-button:hover {
+            background-color: rgb(127, 193, 203);
+            color: white;
+        }
+
+        .arrow-button a:hover {
+            color: white;
+        }
+
+        .arrow-button {
+            background-color: rgb(28, 99, 110);
+            color: white;
+            padding: 10px 40px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            clip-path: polygon( 0% 50%, 10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100% );
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 30px;
+            width: 150px;
+            margin-top: 5px;
+            padding-top: 4px;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        body {
+            background-color: rgb(200, 223, 227);
+        }
+
+        table {
+            font-size: 15px;
+            box-shadow: 12px 10px 6px 1px rgba(0, 0, 0, 0.2), 0px 4px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .tieudebang th {
+            text-align: center;
+            background-color: rgb(103 177 189);
+        }
+        .nut {
+            background-color: rgb(200, 223, 227);
+            border-style: solid;
+            border-color: rgb(103 177 189);
+        }
+        .nut:hover{
+            background-color: rgb(103 177 189);
+        }
+          </style>
+</head>
+<h1 class="tieude">Đánh Giá Xếp Loại Cán Bộ</h1>
+<p>
+    <h2 class="btn arrow-button"><a asp-action="Create">Create</a></h2>
+</p>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr class="tieudebang">
+            <th>
+                @Html.DisplayNameFor(model => model.NamDanhGia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NganhDuocKhenThuong)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCanBoNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdDanhGiaNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NamDanhGia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NganhDuocKhenThuong)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdCanBoNavigation.IdCanBo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdDanhGiaNavigation.IdDanhGiaCongChucVienChuc)
+                </td>
+                <td>
+                        <a asp-action="Edit" asp-route-id="@item.IdDanhGiaXepLoaiCanBo" class="btn btn-sm nut mx-1 ">
+                            <i class="fas fa-edit"></i> Sửa
+                        </a>
+                        <a asp-action="Details" asp-route-id="@item.IdDanhGiaXepLoaiCanBo" class="btn btn-sm nut mx-1">
+                            <i class="fas fa-info-circle"></i> Chi tiết
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@item.IdDanhGiaXepLoaiCanBo" class="btn btn-sm nut mx-1 " style="background-color: rgb(213 86 37);">
+                            <i class="fas fa-trash-alt"></i> Xóa
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

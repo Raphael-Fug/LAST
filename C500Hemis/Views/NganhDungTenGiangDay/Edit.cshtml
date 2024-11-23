@@ -1,0 +1,210 @@
+﻿@model C500Hemis.Models.TbNganhDungTenGiangDay
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cập nhật thông tin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: white;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Add padding to  */
+        .container {
+            padding: 16px;
+            background-color: white;
+        }
+
+        /* Full-width input fields */
+        input[type=text], input[type=date], input[type=email], input[type=number], select {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+
+            input[type=text]:focus, input[type=date], input[type=email], input[type=number], select :focus {
+                background-color: #ddd;
+                outline: none;
+            }
+
+        /* Overwrite default styles of hr */
+        hr {
+            border: 1px solid #f1f1f1;
+            margin-bottom: 25px;
+        }
+
+        /* Set a style for the submit button */
+        .registerbtn {
+            background-color: rgb(236 171 83);
+            color: white;
+            padding: 16px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+        }
+
+            .registerbtn:hover {
+                opacity: 1;
+            }
+
+        /* Add a blue text color to links */
+        a {
+            color: dodgerblue;
+        }
+
+        /* Set a grey background color and center the text of the "sign in" section */
+        .signin {
+            background-color: #f1f1f1;
+            text-align: center;
+        }
+
+        .button1 {
+            background-color: #58257b;
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            -webkit-transition-duration: 0.4s;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+
+
+        .button8 {
+            background-color: forestgreen;
+            color: white;
+            border: 2px solid forestgreen;
+        }
+
+            .button8:hover {
+                background-color: white;
+                color: black;
+                border: 2px solid forestgreen;
+            }
+
+        .btn {
+            background-color: DodgerBlue;
+            border: none;
+            color: white;
+            padding: 12px 16px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 30px;
+        }
+
+
+            .btn:hover {
+                background-color: RoyalBlue;
+            }
+    </style>
+</head>
+<body>
+
+
+    <p style="text-align: center;"><img src="https://upload.wikimedia.org/wikipedia/vi/8/85/Logo_hoc_vien_ANND.png" alt="Học viện An ninh nhân dân"></p>
+
+    <hr />
+
+
+    <h1 style="text-align:center;color: #CCCC00; font-family: Arial, Helvetica, sans-serif"><b>Cập nhật thông tin </b></h1>
+
+    <hr />
+    <div>
+        <div>
+            <form asp-action="Edit" style="Width:100%">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div>
+                    <button asp-action="Index" class="btn" style=" background-color: Forestgreen;text-decoration:none; color: black"><i class="fa fa-home"></i> <b>Trở về</b></button>
+
+                </div>
+                <br />
+
+                <input type="hidden" asp-for="IdNganhDungTenGiangDay" />
+
+                <div class="form-group">
+                    <label for="IdCanBo" class="control-label"><b style="text-align:center">Mã cán bộ:</b></label>
+                    <select for="IdCanBo" asp-items="ViewBag.IdCanBo"></select>
+                    <span asp-validation-for="IdCanBo" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="TenCanBo" class="control-label"><b style="text-align:center">Cán bộ giảng dạy là: </b></label>
+                    <input asp-for="TenCanBo" class="form-control" />
+                    <span asp-validation-for="TenCanBo" class="text-danger"></span>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label asp-for="IdNganhDaoTao" class="control-label"><b style="text-align:center">Mã đào tạo:</b></label>
+                    <select asp-for="IdNganhDaoTao" asp-items="ViewBag.IdNganhDaoTao"></select>
+                    <span asp-validation-for="IdNganhDaoTao" class="text-danger"></span>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label asp-for="TenNganhGiangDay" class="control-label"><b style="text-align:center">Ngành giảng dạy:  </b></label>
+                    <input asp-for="TenNganhGiangDay" class="form-control" />
+                    <span asp-validation-for="TenNganhGiangDay" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NgayBatDau" class="control-label"><b style="text-align:center">Ngày giảng dạy:  </b></label>
+                    <input asp-for="NgayBatDau" class="form-control" />
+                    <span asp-validation-for="NgayBatDau" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NgayKetThuc" class="control-label"><b style="text-align:center">Ngày bắt đầu giảng dạy:  </b></label>
+                    <input asp-for="NgayKetThuc" class="form-control" />
+                    <span asp-validation-for="NgayKetThuc" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TrongSo" class="control-label"><b style="text-align:center">Trọng số:</b></label>
+                    <input asp-for="TrongSo" class="form-control" />
+                    <span asp-validation-for="TrongSo" class="text-danger"></span>
+                </div>
+
+
+                <div style="text-align:center">
+                    <input type="submit" value="Cập nhật" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+</body>
+</html>
+
+
+
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,98 @@
+﻿@model C500Hemis.Models.TbTrinhDoTiengDanToc
+
+@{
+    ViewData["Title"] = "Xóa";
+}
+
+<<<<<<< HEAD
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h1 class="text-danger text-center">Delete Confirmation</h1>
+            <h3 class="mb-4 text-center text-info">Bạn có chắc chắn muốn xóa nội dung này không?</h3>
+
+            <div class="card border-danger shadow-sm mb-4">
+                <div class="card-body">
+                    <h4 class="card-title text-primary">TRÌNH ĐỘ TIẾNG DÂN TỘC</h4>
+                    <hr />
+                    <dl class="row">
+                        <dt class="col-sm-4 font-weight-bold text-success">
+                            ID Cán bộ
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.IdCanBoNavigation.IdCanBo)
+                        </dd>
+
+                        <dt class="col-sm-4 font-weight-bold text-success">
+                            ID Khung năng lực ngoại ngữ
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.IdKhungNangLucNgoaiNguNavigation.IdKhungNangLucNgoaiNgu)
+                        </dd>
+
+                        <dt class="col-sm-4 font-weight-bold text-success">
+                            ID Tiếng dân tộc
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.IdTiengDanTocNavigation.IdTiengDanToc)
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+
+            <form asp-action="Delete" class="mt-4">
+                <input type="hidden" asp-for="IdTrinhDoTiengDanToc" />
+
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-danger btn-lg shadow-sm" style="transition: background-color 0.3s;">
+                        <i class="fas fa-trash-alt"></i> Delete
+                    </button>
+                    <a asp-action="Index" class="btn btn-info btn-lg shadow-sm" style="transition: background-color 0.3s;">
+                        <i class="fas fa-arrow-left"></i> Back to List
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+   
+
+    <style>
+        body {
+            background-color: #DAEBE3; /* Màu nền sáng, nhẹ nhàng */
+        }
+
+        .card {
+            border-radius: 0.5rem; /* Bo góc cho thẻ card */
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333; /* Màu khi hover nút Delete */
+            color: #fff;
+        }
+
+        .btn-info {
+            background-color: #17a2b8; /* Màu nền nút Back to List */
+            color: #fff;
+        }
+
+            .btn-info:hover {
+                background-color: #138496; /* Màu khi hover nút Back to List */
+            }
+
+        .text-danger {
+            font-family: 'Arial Black', sans-serif; /* Thay đổi font cho tiêu đề */
+        }
+
+        .text-primary {
+            font-family: 'Times New Roman', Times, serif; /* Thay đổi font cho tiêu đề card */
+            text-align: center;
+        }
+
+        .text-info {
+            font-family: 'Arial', sans-serif; /* Thay đổi font cho tiêu đề phụ */
+        }
+
+        .text-success {
+            color: #28a745; /* Màu xanh cho các tiêu đề */
+        }
+    </style>

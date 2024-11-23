@@ -1,0 +1,79 @@
+﻿@model C500Hemis.Models.TbHoiThaoHoiNghi
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<style>
+    table.details-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .details-table th, .details-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    .details-table th {
+        color: black;
+        width: 30%;
+    }
+
+    .details-table td {
+        background-color: white; /* Màu xám nhạt */
+    }
+</style>
+
+<h1>Details</h1>
+<table class="details-table">
+    <tr>
+        <th>Mã hội thao hội nghị</th>
+        <td>@Html.DisplayFor(model => model.MaHoiThaoHoiNghi)</td>
+    </tr>
+    <tr>
+        <th>Tên hội thao hội nghị</th>
+        <td>@Html.DisplayFor(model => model.TenHoiThaoHoiNghi)</td>
+    </tr>
+    <tr>
+        <th>Cơ quan có thẩm quyền cấp phép</th>
+        <td>@Html.DisplayFor(model => model.CoQuanCoThamQuyenCapPhep)</td>
+    </tr>
+    <tr>
+        <th>Mục tiêu</th>
+        <td>@Html.DisplayFor(model => model.MucTieu)</td>
+    </tr>
+    <tr>
+        <th>Nội dung</th>
+        <td>@Html.DisplayFor(model => model.NoiDung)</td>
+    </tr>
+    <tr>
+        <th>Số lượng đại biểu tham dự</th>
+        <td>@Html.DisplayFor(model => model.SoLuongDaiBieuThamDu)</td>
+    </tr>
+    <tr>
+        <th>Số lượng đại biểu quốc tế tham dự</th>
+        <td>@Html.DisplayFor(model => model.SoLuongDaiBieuQuocTeThamDu)</td>
+    </tr>
+    <tr>
+        <th>Thời gian tổ chức</th>
+        <td>@Html.DisplayFor(model => model.ThoiGianToChuc)</td>
+    </tr>
+    <tr>
+        <th>Địa điểm tổ chức</th>
+        <td>@Html.DisplayFor(model => model.DiaDiemToChuc)</td>
+    </tr>
+    <tr>
+        <th>Đơn vị chủ trì</th>
+        <td>@Html.DisplayFor(model => model.DonViChuTri)</td>
+    </tr>
+    <tr>
+        <th>Nguồn kinh phí hội thao</th>
+        <td>@Html.DisplayFor(model => model.IdNguonKinhPhiHoiThaoNavigation.IdNguonKinhPhi)</td>
+    </tr>
+</table>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.IdHoiThaoHoiNghi">Sửa</a> |
+    <a asp-action="Index">Quay lại danh sách</a>
+</div>

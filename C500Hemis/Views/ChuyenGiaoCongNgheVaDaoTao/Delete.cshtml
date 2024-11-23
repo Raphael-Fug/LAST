@@ -1,0 +1,81 @@
+﻿@model C500Hemis.Models.TbChuyenGiaoCongNgheVaDaoTao
+
+@{
+    ViewData["Title"] = "Xác nhận xóa";
+}
+
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h1 class="text-danger">Xóa Bản Ghi</h1>
+        <h3 class="text-warning">Bạn có chắc chắn muốn xóa bản ghi này không?</h3>
+    </div>
+    <div class="card shadow-lg">
+        <div class="card-body">
+            <h4 class="card-title text-left">Thông tin chính</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-4 font-weight-bold">
+                    ID nhiệm vụ
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.IdChuyenGiaoCongNgheVaDaoTao)
+                </dd>
+                <dt class="col-sm-4 font-weight-bold">
+                    Mã hợp đồng
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.MaSoHopDong)
+                </dd>
+                <dt class="col-sm-4 font-weight-bold">
+                    Tên công nghệ chuyển giao
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Ten)
+                </dd>
+                <dt class="col-sm-4 font-weight-bold">
+                    Chủ sở hữu
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.ChuSoHuu)
+                </dd>
+                <dt class="col-sm-4 font-weight-bold">
+                    Hiệu lực hợp đồng
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.IdTrangThaiHopDongNavigation.TrangThaiHopDong)
+                </dd>
+            </dl>
+        </div>
+    </div>
+@*     Các nút chức năng
+ *@    <form asp-action="Delete" class="mt-4 text-center">
+        <input type="hidden" asp-for="IdChuyenGiaoCongNgheVaDaoTao" />
+        <div class="d-flex justify-content-between mt-3">
+        <button type="submit" class="btn btn-outline-primary">Xóa</button>
+        <a asp-action="Index" class="btn btn-outline-primary">Quay lại danh sách</a>
+        </div>
+    </form>
+</div>
+
+<style>
+    body {
+        background-image: url('@Url.Content("~/images/snapedit_1729475551212.jpeg")'); /* Đường dẫn đến hình ảnh nền */
+        background-size: cover; /* Tự động căn chỉnh */
+        background-position: center; /* Căn giữa hình ảnh */
+        background-repeat: no-repeat; /* Không lặp lại hình ảnh */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .card {
+        background-color: rgba(255, 255, 255, 0.95); /* Nền trắng với độ trong suốt */
+        border-radius: 10px;
+    }
+
+    .btn:hover {
+        opacity: 0.8;
+    }
+
+    footer {
+        visibility: hidden;
+    }
+</style>

@@ -1,0 +1,121 @@
+﻿@model C500Hemis.Models.TbToChucHopTacDoanhNghiep
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+  
+<style>
+    div {
+        margin: auto
+    }
+
+    body {
+        background-color: #05c46b;
+        font-family: Verdana;
+    }
+
+    /* Căn giữa toàn bộ nội dung */
+    .center-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Chiều cao toàn màn hình */
+    }
+
+    form {
+        background-color: #fff;
+        max-width: 500px;
+        padding: 30px 20px;
+        box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+    }
+
+    h1, h4 {
+        text-align: center;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+        .form-group label {
+            margin-bottom: 5px;
+            display: block;
+        }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .btn-primary {
+        width: 100%;
+        padding: 10px;
+        background-color: #05c46b;
+        border: none;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+        .btn-primary:hover {
+            background-color: #048a55;
+        }
+</style>
+
+<div>
+    <h4>TbToChucHopTacDoanhNghiep</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MaToChucHopTacDoanhNghiep)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MaToChucHopTacDoanhNghiep)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TenToChucHopTacDoanhNghiep)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TenToChucHopTacDoanhNghiep)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NoiDungHopTac)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NoiDungHopTac)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NgayKyKet)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NgayKyKet)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.KetQuaHopTac)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.KetQuaHopTac)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GiaTriGiaoDichCuaThiTruong)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GiaTriGiaoDichCuaThiTruong)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdLoaiDeAnNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdLoaiDeAnNavigation.IdLoaiDeAnChuongTrinh)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.IdToChucHopTacDoanhNghiep">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

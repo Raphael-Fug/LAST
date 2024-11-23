@@ -1,0 +1,70 @@
+﻿@model C500Hemis.Models.TbDeAnDuAnChuongTrinh
+
+@{
+    ViewData["Title"] = "Details";
+}
+<style>
+    table {
+        width: 100%; /* Chiều rộng bảng 100% */
+        border-collapse: collapse; /* Gộp đường viền ô */
+    }
+
+    th, td {
+        border: 1px solid #000; /* Đường viền đen cho các ô */
+        text-align: left;
+        padding: 8px; /* Khoảng cách giữa nội dung và đường viền ô */
+    }
+
+    th {
+        font-weight: bold; /* Chữ đậm cho tiêu đề */
+    }
+
+    tr:hover {
+        background-color: transparent; /* Không có màu nền khi di chuột qua hàng */
+    }
+</style>
+<h1>Details</h1>
+
+<div>
+    <h4>TbDeAnDuAnChuongTrinh</h4>
+    <hr />
+    <table>
+        <tr>
+            <th>Mã đề án, dự án, chương trình</th>
+            <td>@Html.DisplayFor(model => model.MaDeAnDuAnChuongTrinh)</td>
+        </tr>
+        <tr>
+            <th>Tên đề án, dự án, chương trình</th>
+            <td>@Html.DisplayFor(model => model.TenDeAnDuAnChuongTrinh)</td>
+        </tr>
+        <tr>
+            <th>Nội dung tóm tắt</th>
+            <td>@Html.DisplayFor(model => model.NoiDungTomTat)</td>
+        </tr>
+        <tr>
+            <th>Mục tiêu</th>
+            <td>@Html.DisplayFor(model => model.MucTieu)</td>
+        </tr>
+        <tr>
+            <th>Thời gian hợp tác từ</th>
+            <td>@Html.DisplayFor(model => model.ThoiGianHopTacTu)</td>
+        </tr>
+        <tr>
+            <th>Thời gian hợp tác đến</th>
+            <td>@Html.DisplayFor(model => model.ThoiGianHopTacDen)</td>
+        </tr>
+        <tr>
+            <th>Tổng kinh phí</th>
+            <td>@Html.DisplayFor(model => model.TongKinhPhi)</td>
+        </tr>
+        <tr>
+            <th>Nguồn kinh phí đề án, dự án, chương trình</th>
+            <td> @Html.DisplayFor(model => model.IdNguonKinhPhiDeAnDuAnChuongTrinhNavigation.IdNguonKinhPhiChoDeAn)</td>
+        </tr>
+    </table>
+    <form asp-action="Edit">
+        <input type="hidden" asp-for="IdDeAnDuAnChuongTrinh" />
+        <input type="submit" value="Edit" class="btn btn-danger" />
+        <a asp-action="Index">Back to List</a>
+    </form>
+    

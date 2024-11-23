@@ -1,0 +1,195 @@
+﻿@model IEnumerable<C500Hemis.Models.TbNganhDungTenGiangDay>
+
+@{
+    ViewData["Title"] = "Ngành dùng tên giảng dạy";
+}
+
+@section Heads {
+    <link href="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-2.1.7/r-3.0.3/datatables.min.css" rel="stylesheet">
+}
+
+
+@section Styles{
+<title>Danh sách ngành dùng tên giảng dạy</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width:device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+
+<link href="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet" />
+<style>
+    table, th, td {
+        border: 3px solid black;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        text-align: center;
+    }
+
+    table {
+        border-radius: 300px;
+        border-color: #96D4D4;
+    }
+
+
+    .button1 {
+        background-color: #58257b;
+        border: none;
+        color: white;
+        padding: 16px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        -webkit-transition-duration: 0.4s;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+
+
+    .button8 {
+        background-color: forestgreen;
+        color: white;
+        border: 2px solid forestgreen;
+    }
+
+        .button8:hover {
+            background-color: white;
+            color: black;
+            border: 2px solid forestgreen;
+        }
+
+    .btn {
+        background-color: DodgerBlue;
+        border: none;
+        color: white;
+        padding: 12px 16px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 30px;
+    }
+
+        /*Thay doi hgerhertre*/
+        .btn:hover {
+            background-color: RoyalBlue;
+        }
+
+</style>
+
+}
+
+
+
+
+<body>
+
+    <div class="container">
+        <h1 style="text-align: center; color: 	#CCCC00"><b>Danh sách ngành dùng tên giảng dạy</b></h1><br /><br />
+        <p style="text-align: center;"><img src="https://upload.wikimedia.org/wikipedia/vi/8/85/Logo_hoc_vien_ANND.png" alt="Học viện An ninh nhân dân"></p>
+    </div>
+
+    <div class="page-section features" style="margin: 150px 0px">
+        <div class="container">
+
+            <p style="text-align:center">
+                <div>
+                </div>
+
+                <table class="display" style="width:100%" id="ntable">
+
+                    <thead>
+                        <tr style="background-color:forestgreen; color: white">
+                            <th style="text-align:center">
+                                Mã số ngành đào tạo
+                            </th>
+                            <th style="text-align:center">
+                                Ngành
+                            </th>
+                            <th style="text-align:center">
+                                Cán bộ giảng dạy
+                            </th>
+                            <th style="text-align:center"> Chức năng </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td style="text-align:center">
+                                    @Html.DisplayFor(modelItem => item.IdNganhDaoTao)
+                                </td>
+                                <td style="text-align:center">
+                                    @Html.DisplayFor(modelItem => item.TenNganhGiangDay)
+                                </td>
+                                <td style="text-align:center">
+                                    @Html.DisplayFor(modelItem => item.TenCanBo)
+                                </td>
+                                <td style="text-align:center">
+                                    <button class="btn" style=" background-color: orange"><i class="fa fa-pencil"></i><a style="text-decoration:none; color: black" asp-action="Edit" asp-route-id="@item.IdNganhDungTenGiangDay"><b>Cập nhật</b> </a> </button>
+                                    <button class="btn" style=" background-color: grey"><i class="fa fa-info-circle"></i> <a style="text-decoration:none; color: black" asp-action="Details" asp-route-id="@item.IdNganhDungTenGiangDay"><b>Chi tiết</b></a> </button>
+                                    <button class="btn" style=" background-color: Red"><i class="fa fa-trash"></i>  <a style="text-decoration:none; color: black" asp-action="Delete" asp-route-id="@item.IdNganhDungTenGiangDay"><b>Xóa</b> </a></button>
+
+                                </td>
+                            </tr>
+
+                        }
+                    </tbody>
+
+                </table>
+
+
+            <p style="text-align:center">
+
+                <button class="button1 button8"><a asp-action="Create" style="text-decoration:none; color: black"><b>Tạo mới</b></a></button>
+            </p>
+
+
+
+        </div>
+
+
+        @section Scripts{
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+        <script src="https://cdn.datatables.net/v/dt/jszip-3.10.1/dt-2.1.8/b-3.1.2/b-colvis-3.1.2/b-html5-3.1.2/b-print-3.1.2/datatables.min.js"></script>
+        <script>
+
+            new DataTable('#ntable', {
+                searching: true, // Mặc định là true, set false để tắt chức năng search
+                processing: true,
+                info: false, // Tắt thông tin về table VD: Showing 1 to 14 of 14 entries
+                language: {
+                    processing: "Message khi đang tải dữ liệu",
+                    search: "Tìm kiếm: ",
+                    lengthMenu: "Số lượng bản ghi trên 1 trang: _MENU_ ",
+                    info: "Bản ghi từ _START_ đến _END_ Tổng công _TOTAL_ bản ghi",
+                    infoEmpty: "Khi không có dữ liệu, Hiển thị 0 bản ghi trong 0 tổng cộng 0 ",
+                    infoFiltered: "(Message bổ sung cho info khi không search đc record nào _MAX_)",
+                    infoPostFix: "Alo Alo", // Cái này khi thêm vào nó sẽ đứng sau info
+                    loadingRecords: "",
+                    zeroRecords: "Khi tìm kiếm không match với record nào",
+                    emptyTable: "Không có dữ liệu",
+                    paginate: {
+                        first: "Trang đầu",
+                        previous: "Trang trước",
+                        next: "Trang sau",
+                        last: "Trang cuối"
+                    },
+                    aria: {
+                        sortAscending: ": Message khi đang sắp xếp theo column",
+                        sortDescending: ": Message khi đang sắp xếp theo column",
+                    }
+                },
+            });
+        </script>
+    </div>
+        }
+
+
+
+</body>
+

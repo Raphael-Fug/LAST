@@ -1,0 +1,140 @@
+﻿@model C500Hemis.Models.TbChuyenGiaoCongNgheVaDaoTao
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+
+<div class="table-container">
+    <div class="table-responsive">
+        <h1 style="text-align:center; font-family:'Times New Roman', Times, serif;">
+            Chi tiết hợp đồng
+        </h1>
+        <table class="table table-custom table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th scope="col" style="background-color: #96D4D4; color:black">Tên thuộc tính</th>
+                    <th scope="col" style="background-color: #96D4D4; color:black">Giá trị</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mã số hợp đồng</td>
+                    <td>@Html.DisplayFor(model => model.MaSoHopDong)</td>
+                </tr>
+                <tr>
+                    <td>Tên công nghệ và đào tạo chuyển giao</td>
+                    <td>@Html.DisplayFor(model => model.Ten)</td>
+                </tr>
+                <tr>
+                    <td>Tổng chi phí thực hiện</td>
+                    <td>@Html.DisplayFor(model => model.TongChiPhiThucHien) đồng</td>
+                </tr>
+                <tr>
+                    <td>Tổng thời gian thực hiện</td>
+                    <td>@Html.DisplayFor(model => model.TongThoiGianThucHien) tháng</td>
+                </tr>
+                <tr>
+                    <td>Phương thức chuyển giao</td>
+                    <td>@Html.DisplayFor(model => model.PhuongThucChuyenGiaoCongNghe)</td>
+                </tr>
+                <tr>
+                    <td>Chủ sở hữu</td>
+                    <td>@Html.DisplayFor(model => model.ChuSoHuu)</td>
+                </tr>
+                <tr>
+                    <td>Đơn vị chủ trì</td>
+                    <td>@Html.DisplayFor(model => model.DonViChuTri)</td>
+                </tr>
+                <tr>
+                    <td>Đơn vị phối hợp</td>
+                    <td>@Html.DisplayFor(model => model.DonViPhoiHop)</td>
+                </tr>
+                <tr>
+                    <td>Đơn vị nhận chuyển giao</td>
+                    <td>@Html.DisplayFor(model => model.DonViNhanChuyenGiao)</td>
+                </tr>
+                <tr>
+                    <td>Tóm tắt</td>
+                    <td>@Html.DisplayFor(model => model.TomTat)</td>
+                </tr>
+                <tr>
+                    <td>Tên dự án</td>
+                    <td>@Html.DisplayFor(model => model.TenDuAn)</td>
+                </tr>
+                <tr>
+                    <td>Giá trị hợp đồng</td>
+                    <td>@Html.DisplayFor(model => model.GiaTriHopDong) đồng</td>
+                </tr>
+                <tr>
+                    <td>Số người được đào tạo</td>
+                    <td>@Html.DisplayFor(model => model.SoNguoiDuocDaoTaoChuyenGiaoCn)</td>
+                </tr>
+                <tr>
+                    <td>ID hình thức chuyển giao</td>
+                    <td>@Html.DisplayFor(model => model.IdHinhThucChuyenGiaoCongNgheNavigation.HinhThucChuyenGiaoCongNghe)</td>
+                </tr>
+                <tr>
+                    <td>ID lĩnh vực nghiên cứu</td>
+                    <td>@Html.DisplayFor(model => model.IdLinhVucNghienCuuNavigation.LinhVucNghienCuu)</td>
+                </tr>
+                <tr>
+                    <td>ID ngành kinh tế</td>
+                    <td>@Html.DisplayFor(model => model.IdNganhKinhTeNavigation.NganhKinhTe)</td>
+                </tr>
+                <tr>
+                    <td>ID nhiệm vụ</td>
+                    <td>@Html.DisplayFor(model => model.IdNhiemVuKhcnNavigation.TenNhiemVu)</td>
+                </tr>
+                <tr>
+                    <td>ID trạng thái hợp đồng</td>
+                    <td>@Html.DisplayFor(model => model.IdTrangThaiHopDongNavigation.TrangThaiHopDong)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="d-flex justify-content-between mt-3">
+    <a asp-action="Edit" asp-route-id="@Model?.IdChuyenGiaoCongNgheVaDaoTao" class="btn btn-outline-primary">Chỉnh sửa</a>
+    <a asp-action="Index" class="btn btn-outline-primary">Quay lại danh sách</a>
+</div>
+<style>
+    body {
+        background-image: url('@Url.Content("~/images/snapedit_1729475551212.jpeg")'); /* Thay thế bằng URL hình nền của bạn */
+        background-size: cover; /* Làm cho hình nền tự căn chỉnh */
+        background-repeat: no-repeat; /* Không lặp lại hình nền */
+        background-position: center; /* Căn giữa hình nền */
+        color: #333; /* Màu chữ chính */
+    }
+
+    .table-container {
+        background-color: rgba(255, 255, 255, 0.8); /* Nền trắng trong suốt cho bảng */
+        padding: 20px; /* Khoảng cách bên trong */
+        border-radius: 10px; /* Bo tròn góc */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Đổ bóng cho bảng */
+    }
+
+    .table-custom {
+        background-color: #f9f9f9; /* Màu nền nhẹ cho bảng */
+    }
+
+        .table-custom th {
+            background-color: lightslategray; /* Màu nền tiêu đề */
+            color: white; /* Màu chữ tiêu đề */
+        }
+
+        .table-custom td {
+            background-color: #ffffff; /* Màu nền ô dữ liệu */
+        }
+
+        .table-custom tr:hover td {
+            background-color: #e9ecef; /* Màu nền khi hover */
+        }
+
+    footer {
+        visibility: hidden;
+    }
+</style>
+

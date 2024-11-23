@@ -1,0 +1,58 @@
+﻿@model IEnumerable<C500Hemis.Models.TbQuaTrinhDaoTaoCuaCanBo>
+
+@{
+    ViewData["Title"] = "Danh Sách Quá Trình Đào Tạo Của Cán Bộ";
+}
+
+<h1 class="text-center">Danh Sách Quá Trình Đào Tạo Của Cán Bộ</h1>
+
+<p class="text-center">
+    <a class="btn btn-primary" asp-action="Create">Tạo Mới</a>
+</p>
+
+<form asp-controller="QuaTrinhDaoTaoCuaCanBo" asp-action="Index" method="get" class="text-center mb-3">
+    <div class="input-group justify-content-center">
+        <input type="number" name="Search" class="form-control" placeholder="Tìm kiếm theo Id cán bộ" />
+        <button class="btn btn-outline-secondary" type="submit">Tìm Kiếm</button>
+    </div>
+</form>
+
+<div class="table-responsive">
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>Cơ sở đào tạo</th>
+                <th>Thời gian bắt đầu</th>
+                <th>Thời gián kết thúc</th>
+                <th>Năm tốt nghiệp</th>
+                <th>Id Cán bộ</th>
+                <th>Loại hình đạo tạo</th>
+                <th>Ngành đào tạo</th>
+                <th>Quốc gia đào tạo</th>
+                <th>Trình độ đào tạo</th>
+                <th>Thao Tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.CoSoDaoTao)</td>
+                    <td>@Html.DisplayFor(modelItem => item.ThoiGianBatDau)</td>
+                    <td>@Html.DisplayFor(modelItem => item.ThoiGianKetThuc)</td>
+                    <td>@Html.DisplayFor(modelItem => item.NamTotNghiep)</td>
+                    <td>@Html.DisplayFor(modelItem => item.IdCanBoNavigation.IdCanBo)</td>
+                    <td>@Html.DisplayFor(modelItem => item.IdLoaiHinhDaoTaoNavigation.IdLoaiHinhDaoTao)</td>
+                    <td>@Html.DisplayFor(modelItem => item.IdNganhDaoTaoNavigation.IdNganhDaoTao)</td>
+                    <td>@Html.DisplayFor(modelItem => item.IdQuocGiaDaoTaoNavigation.IdQuocTich)</td>
+                    <td>@Html.DisplayFor(modelItem => item.IdTrinhDoDaoTaoNavigation.IdTrinhDoDaoTao)</td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@item.IdQuaTrinhDaoTaoCuaCanBo">Sửa</a>
+                        <a class="btn btn-info btn-sm" asp-action="Details" asp-route-id="@item.IdQuaTrinhDaoTaoCuaCanBo">Chi Tiết</a>
+                        <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.IdQuaTrinhDaoTaoCuaCanBo">Xóa</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

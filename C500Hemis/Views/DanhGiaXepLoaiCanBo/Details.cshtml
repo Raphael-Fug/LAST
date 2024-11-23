@@ -1,0 +1,113 @@
+﻿@model C500Hemis.Models.TbDanhGiaXepLoaiCanBo
+
+@{
+    ViewData["Title"] = "Details";
+}
+<head>
+
+    <style>
+        body {
+            background-color: rgb(200, 223, 227);
+        }
+
+        .tieude {
+            color: rgb(28, 99, 110);
+            padding-top: 3%;
+            font-size: 80px;
+            text-align: center;
+            font-family: 'Dancing Script', cursive;
+        }
+
+
+        .arrow-button:hover {
+            background-color: rgb(127, 193, 203);
+        }
+
+        .arrow-button {
+            background-color: rgb(28, 99, 110);
+            color: white;
+            padding: 10px 40px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            clip-path: polygon( 0% 50%, 10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100% );
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 30px;
+            width: 150px;
+            margin: auto;
+            margin-top: 5px;
+            padding-top: 4px;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .arrow-button a:hover {
+            color: white;
+        }
+        .row dt{
+            text-align: right;
+            font-weight: bold;
+        }
+        .row dt, dd{
+            font-size:30px;
+            color: rgb(28, 99, 110);
+        }
+    </style>
+</head>
+
+<h1 class="tieude">Details</h1>
+
+<div>
+
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-6">
+            @Html.DisplayNameFor(model => model.NamDanhGia):
+        </dt>
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.NamDanhGia)
+        </dd>
+        <dt class="col-sm-6">
+            @Html.DisplayNameFor(model => model.NganhDuocKhenThuong):
+        </dt>
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.NganhDuocKhenThuong)
+        </dd>
+        <dt class="col-sm-6">
+            @Html.DisplayNameFor(model => model.IdCanBoNavigation):
+        </dt>
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.IdCanBoNavigation.IdCanBo)
+        </dd>
+        <dt class="col-sm-6">
+            @Html.DisplayNameFor(model => model.IdDanhGiaNavigation):
+        </dt>
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.IdDanhGiaNavigation.IdDanhGiaCongChucVienChuc)
+        </dd>
+    </dl>
+</div>
+<div>
+
+    <div>
+
+        <p class="btn arrow-button">
+            <a asp-action="Edit" asp-route-id="@Model?.IdDanhGiaXepLoaiCanBo">Edit</a>
+        </p>
+
+    </div>
+    <div>
+
+        <p class="btn arrow-button">
+            <a asp-action="Index">Back</a>
+        </p>
+
+    </div>
+</div>

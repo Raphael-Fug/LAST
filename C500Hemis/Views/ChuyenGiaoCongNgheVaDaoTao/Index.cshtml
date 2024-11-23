@@ -1,0 +1,166 @@
+﻿@model IEnumerable<C500Hemis.Models.TbChuyenGiaoCongNgheVaDaoTao>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/5.0.3/css/fixedColumns.dataTables.css">
+    <style>
+        /* Đảm bảo rằng bảng demo cuộn */
+        th, td {
+            white-space: nowrap;
+            border: 1px solid #96D4D4;
+            border-collapse: collapse;/* Tạo viền */
+/*             color: aliceblue; /* test */
+ */        }
+
+        div.dataTables_wrapper {
+            width: 800px;
+            margin: 0 auto;
+        }
+        thead {
+            background-color: #96D4D4;
+/*             background-color: rgba(150, 212, 212, 0.5);
+ */            
+        }
+/*         Chỉnh sửa datatable 
+ */        table.dataTable thead tr > .dtfc-fixed-start,
+        table.dataTable thead tr > .dtfc-fixed-end,
+        table.dataTable tfoot tr > .dtfc-fixed-start,
+        table.dataTable tfoot tr > .dtfc-fixed-end {
+            background-color: #96D4D4;
+/*             background-color: rgba(150, 212, 212, 0.5);
+ */        }
+
+        table.dataTable tbody tr > .dtfc-fixed-start,
+        table.dataTable tbody tr > .dtfc-fixed-end {
+            z-index: 1;
+/*             background-color: rgba(255, 255, 255, 0.5);
+ */        }
+        footer {
+            visibility: hidden;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            background-image: url('@Url.Content("~/images/snapedit_1729475551212.jpeg")'); /* Thay đổi link này thành link hình ảnh của bạn */
+            background-size: cover; /* Căn chỉnh hình ảnh cho vừa */
+            background-position: center; /* Căn giữa hình ảnh */
+            background-repeat: no-repeat; /* Không lặp lại hình ảnh */
+        }
+
+        .input-group input {
+            background-color: rgba(255, 255, 255, 0.5); /* Màu nền với độ mờ */
+            border: 1px solid #96D4D4; /* Viền của ô nhập */
+        }
+        .test{
+            color:black;
+        }
+    </style>
+</head>
+<body>
+    <!-- Tiêu đề và đếm -->
+    <a asp-controller="ChuyenGiaoCongNgheVaDaoTao" asp-action="Index" style="text-decoration:none; color: black">
+        <h1 style="text-align:center; font-family:'Times New Roman'; ">
+            Chuyển giao công nghệ và đào tạo (@Model.Count())
+        </h1>
+    </a>
+
+    <!-- form tìm kiếm và tạo mới -->
+    <form asp-controller="ChuyenGiaoCongNgheVaDaoTao" asp-action="Index" method="get" class="text-center mb-4">
+        <div class="input-group justify-content-center">
+            <input type="number" name="Search" class="form-control w-50" placeholder="Tìm kiếm theo ID công nghệ chuyển giao" aria-label="Search" />
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button class="btn btn-outline-primary" type="submit">Tìm kiếm</button>
+                <a class="btn btn-outline-primary" asp-action="Create">Tạo mới</a>
+            </div>
+        </div>
+    </form>
+
+    <table id="example" class="table display nowrap" style="width:100%">
+        <thead>
+            <tr>
+                <th>ID chuyển giao</th>
+                <th>Mã hợp đồng</th>
+                <th>Tên công nghệ chuyển giao</th>
+                <th>Tổng chi phí</th>
+                <th>Tổng thời gian thực hiện</th>
+                <th>Phương thức chuyển giao</th>
+                <th>Chủ sở hữu</th>
+                <th>Đơn vị chủ trì</th>
+                <th>Đơn vị phối hợp</th>
+                <th>Đơn vị nhận chuyển giao</th>
+                <th>Tóm tắt</th>
+                <th>Tên dự án</th>
+                <th>Giá trị hợp đồng</th>
+                <th>Số người được đào tạo chuyển giao</th>
+                <th>Hình thức chuyển giao</th>
+                <th>Lĩnh vực nghiên cứu</th>
+                <th>Ngành kinh tế</th>
+                <th>Mã nhiệm vụ NCKH</th>
+                <th>Trạng thái hợp đồng</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr onclick="window.location.href='@Url.Action("Details", new { id = item.IdChuyenGiaoCongNgheVaDaoTao })'">
+                    <td>@Html.DisplayFor(modelItem => @item.IdChuyenGiaoCongNgheVaDaoTao)</td>
+                    <td>@Html.DisplayFor(modelItem => @item.MaSoHopDong)</td>
+                    <td>@Html.DisplayFor(modelItem => @item.Ten)</td>
+                    <td style ="text-align: right">@Html.DisplayFor(modelItem => @item.TongChiPhiThucHien) đồng</td>
+                    <td style = "text-align: right">@Html.DisplayFor(modelItem => @item.TongThoiGianThucHien) tháng</td>
+                    <td>@Html.DisplayFor(modelItem => @item.PhuongThucChuyenGiaoCongNghe)</td>
+                    <td>@Html.DisplayFor(modelItem => @item.ChuSoHuu)</td>
+                    <td>@Html.DisplayFor(modelItem => @item.DonViChuTri)</td>
+                    <td>@Html.DisplayFor(modelItem => @item.DonViPhoiHop)</td>
+                    <td>@Html.DisplayFor(modelItem => @item.DonViNhanChuyenGiao)</td>
+                    <td>@Html.DisplayFor(modelItem => @item.TomTat)</td>
+                    <td>@Html.DisplayFor(modelItem => @item.TenDuAn)</td>
+                    <td style="text-align: right">@Html.DisplayFor(modelItem => @item.GiaTriHopDong) đồng</td>
+                    <td>@Html.DisplayFor(modelItem => @item.SoNguoiDuocDaoTaoChuyenGiaoCn)</td>
+                    <td>@Html.DisplayFor(modelItem => @item.IdHinhThucChuyenGiaoCongNgheNavigation.HinhThucChuyenGiaoCongNghe)</td>
+                    <td>@Html.DisplayFor(modelItem => @item.IdLinhVucNghienCuuNavigation.LinhVucNghienCuu)</td>
+                    <td>@Html.DisplayFor(modelItem => @item.IdNganhKinhTeNavigation.NganhKinhTe)</td>
+                    <td>@Html.DisplayFor(modelItem => @item.IdNhiemVuKhcnNavigation.MaNhiemVu)</td>
+                    <td>@Html.DisplayFor(modelItem => @item.IdTrangThaiHopDongNavigation.TrangThaiHopDong)</td>
+                    <td>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.IdChuyenGiaoCongNgheVaDaoTao" title="Chỉnh sửa mục này">Sửa</a>
+                            <a class="btn btn-outline-primary" asp-action="Delete" asp-route-id="@item.IdChuyenGiaoCongNgheVaDaoTao" title="Xóa mục này" onclick="return confirm('Bạn có chắc chắn muốn xóa mục này không?');">Xóa</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Thêm các thư viện JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/fixedcolumns/5.0.3/js/dataTables.fixedColumns.js"></script>
+    <script>
+        $(document).ready(function () {
+            new DataTable('#example', {
+                fixedColumns: {
+                    start: 1,
+                    end: 1
+                },
+                paging: false,
+                searching: false, // Tắt chức năng tìm kiếm
+                scrollCollapse: true,
+                scrollX: true,
+                scrollY: 300
+            });
+        });
+    </script>
+</body>
+</html>

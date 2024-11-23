@@ -1,0 +1,236 @@
+﻿@model C500Hemis.Models.TbChuyenGiaoCongNgheVaDaoTao
+
+@{
+    ViewData["Title"] = "Tạo mới";
+}
+
+
+<div class="container mt-5">
+    <div class="card shadow-lg border-0">
+        <div class="card-header text-center">
+            <h3 class="mb-0">Tạo Mới Chuyển Giao Công Nghệ và Đào Tạo</h3>
+        </div>
+        <div class="card-body">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+                <p class="text-danger">@ViewBag.ErrorMessage</p>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="IdChuyenGiaoCongNgheVaDaoTao" class="form-label">ID chuyển giao(*)</label>
+                        <input asp-for="IdChuyenGiaoCongNgheVaDaoTao" class="form-control" />
+                        <span asp-validation-for="IdChuyenGiaoCongNgheVaDaoTao" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="IdNhiemVuKhcn" class="form-label fw-bold">Nhiệm Vụ</label>
+                        <div class="input-group has-validation">
+                            <input list="nhiemVuOptions"
+                                   id="nhiemVuKhcn"
+                                   name="IdNhiemVuKhcn"
+                                   class="form-control"
+                                   placeholder="Gõ để tìm kiếm nhiệm vụ..."
+                                   aria-describedby="nhiemVuHelp"
+                                   aria-required="true" />
+                            <datalist id="nhiemVuOptions">
+                                @foreach (var item in ViewBag.IdNhiemVuKhcn)
+                                {
+                                    <option value="@item.Value">@item.Text</option>
+                                }
+                            </datalist>
+                        </div>
+                        <small id="nhiemVuHelp" class="form-text text-muted">
+                            Vui lòng chọn nhiệm vụ từ danh sách hoặc nhập một giá trị hợp lệ.
+                        </small>
+                        <span asp-validation-for="IdNhiemVuKhcn" class="text-danger small"></span>
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="MaSoHopDong" class="form-label">Mã số hợp đồng(*)</label>
+                        <input asp-for="MaSoHopDong" class="form-control" />
+                        <span asp-validation-for="MaSoHopDong" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Ten" class="form-label">Tên công nghệ và đào tạo chuyển giao(*)</label>
+                        <input asp-for="Ten" class="form-control" />
+                        <span asp-validation-for="Ten" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="TongChiPhiThucHien" class="form-label">Tổng chi phí thực hiện</label>
+                        <input asp-for="TongChiPhiThucHien" class="form-control" />
+                        <span asp-validation-for="TongChiPhiThucHien" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="TongThoiGianThucHien" class="form-label">Tổng thời gian thực hiện (tháng)</label>
+                        <input asp-for="TongThoiGianThucHien" class="form-control" />
+                        <span asp-validation-for="TongThoiGianThucHien" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="IdHinhThucChuyenGiaoCongNghe" class="form-label">Hình thức chuyển giao</label>
+                        <select asp-for="IdHinhThucChuyenGiaoCongNghe" class="form-select" asp-items="ViewBag.IdHinhThucChuyenGiaoCongNghe"></select>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="PhuongThucChuyenGiaoCongNghe" class="form-label">Phương thức chuyển giao</label>
+                        <input asp-for="PhuongThucChuyenGiaoCongNghe" class="form-control" />
+                        <span asp-validation-for="PhuongThucChuyenGiaoCongNghe" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="ChuSoHuu" class="form-label">Chủ sở hữu</label>
+                        <input asp-for="ChuSoHuu" class="form-control" />
+                        <span asp-validation-for="ChuSoHuu" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="DonViChuTri" class="form-label">Đơn vị chủ trì</label>
+                        <input asp-for="DonViChuTri" class="form-control" />
+                        <span asp-validation-for="DonViChuTri" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="DonViPhoiHop" class="form-label">Đơn vị phối hợp</label>
+                        <input asp-for="DonViPhoiHop" class="form-control" />
+                        <span asp-validation-for="DonViPhoiHop" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="DonViNhanChuyenGiao" class="form-label">Đơn vị nhận chuyển giao</label>
+                        <input asp-for="DonViNhanChuyenGiao" class="form-control" />
+                        <span asp-validation-for="DonViNhanChuyenGiao" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="TomTat" class="form-label">Tóm tắt</label>
+                        <input asp-for="TomTat" class="form-control" />
+                        <span asp-validation-for="TomTat" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="TenDuAn" class="form-label">Tên dự án(*)</label>
+                        <input asp-for="TenDuAn" class="form-control" />
+                        <span asp-validation-for="TenDuAn" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="GiaTriHopDong" class="form-label">Giá trị hợp đồng</label>
+                        <input asp-for="GiaTriHopDong" class="form-control" />
+                        <span asp-validation-for="GiaTriHopDong" class="text-danger"></span>
+                    </div>
+
+                        <!-- Field: Thi Đua -->
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="IdNganhKinhTe" class="form-label fw-bold">Ngành Kinh Tế</label>
+                        <div class="input-group has-validation">
+                            <input list="KtOptions"
+                                   id="IdNganhKinhTe"
+                                   name="IdNganhKinhTe"
+                                   class="form-control"
+                                   placeholder="Gõ để tìm kiếm ngành kinh tế..."
+                                   aria-describedby="nganhKinhTeHelp"
+                                   aria-required="true">
+                            <datalist id="KtOptions">
+                                @foreach (var item in ViewBag.IdNganhKinhTe)
+                                {
+                                    <option value="@item.Value">@item.Text</option>
+                                }
+                            </datalist>
+                        </div>
+                        <small id="nganhKinhTeHelp" class="form-text text-muted">
+                            Vui lòng chọn ngành kinh tế từ danh sách hoặc nhập một giá trị hợp lệ.
+                        </small>
+                        
+                        <span asp-validation-for="IdNganhKinhTe" class="text-danger small"></span>
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="IdTrangThaiHopDong" class="form-label">Trạng thái hợp đồng</label>
+                        <select asp-for="IdTrangThaiHopDong" class="form-select" asp-items="ViewBag.IdTrangThaiHopDong"></select>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="SoNguoiDuocDaoTaoChuyenGiaoCn" class="form-label">Số người được đào tạo</label>
+                        <input asp-for="SoNguoiDuocDaoTaoChuyenGiaoCn" class="form-control" />
+                        <span asp-validation-for="SoNguoiDuocDaoTaoChuyenGiaoCn" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="IdLinhVucNghienCuu" class="form-label">Lĩnh vực nghiên cứu</label>
+                        <select asp-for="IdLinhVucNghienCuu" class="form-select" asp-items="ViewBag.IdLinhVucNghienCuu"></select>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between mt-3">
+                    <a asp-action="Index" class="btn btn-outline-primary">Quay lại danh sách</a>
+                    <button type="submit" class="btn btn-outline-primary">Tạo mới</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<style>
+    body {
+        background-image: url('@Url.Content("~/images/snapedit_1729475551212.jpeg")'); /* Đường dẫn đến hình ảnh nền */
+        /*         bổ xung hình ảnh
+     */ background-size: cover; /* Tự động căn chỉnh */
+        background-position: center; /* Căn giữa hình ảnh */
+        background-repeat: no-repeat; /* Không lặp lại hình ảnh */
+    }
+
+    .card {
+        background-color: rgba(255, 255, 255, 0.9); /* Nền trắng với độ trong suốt */
+    }
+
+    .card-header {
+        background-color: #96D4D4;
+        color: black;
+        font-family:'Times New Roman', Times, serif;
+    }
+
+    .form-label {
+        font-weight: bold;
+    }
+
+    .form-control {
+        border: 1px solid #ced4da; /* Màu viền */
+    }
+
+        .form-control:focus {
+            border-color: #007bff; /* Màu viền khi focus */
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Hiệu ứng bóng */
+        }
+
+    .btn-primary {
+        background-color: #007bff; /* Màu nút chính */
+        border-color: #007bff;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3; /* Màu nút khi hover */
+            border-color: #0056b3;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d; /* Màu nút phụ */
+        border-color: #6c757d;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268; /* Màu nút phụ khi hover */
+            border-color: #545b62;
+        }
+
+    footer {
+        visibility: hidden;
+    }
+</style>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

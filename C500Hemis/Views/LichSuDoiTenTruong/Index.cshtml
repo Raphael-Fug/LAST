@@ -1,0 +1,171 @@
+﻿@model IEnumerable<C500Hemis.Models.TbLichSuDoiTenTruong>
+
+@{
+    ViewData["Title"] = "Danh Sách Lịch Sử Đổi Tên Trường";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/5.0.3/css/fixedColumns.dataTables.css">
+    <style>
+        /* Đảm bảo rằng bảng demo cuộn */
+        th, td {
+            white-space: nowrap;
+            border: 1px solid #96D4D4;
+            border-collapse: collapse; /* Tạo viền */
+            /*             color: aliceblue; /* test */
+        }
+
+        div.dataTables_wrapper {
+            width: 800px;
+            margin: 0 auto;
+        }
+
+        thead {
+            background-color: #96D4D4;
+            /*             background-color: rgba(150, 212, 212, 0.5);
+         */
+        }
+
+        table.dataTable thead tr > .dtfc-fixed-start,
+        table.dataTable thead tr > .dtfc-fixed-end,
+        table.dataTable tfoot tr > .dtfc-fixed-start,
+        table.dataTable tfoot tr > .dtfc-fixed-end {
+            background-color: #96D4D4;
+            /*             background-color: rgba(150, 212, 212, 0.5);
+         */
+        }
+
+        table.dataTable tbody tr > .dtfc-fixed-start,
+        table.dataTable tbody tr > .dtfc-fixed-end {
+            z-index: 1;
+            /*             background-color: rgba(255, 255, 255, 0.5);
+         */
+        }
+
+        footer {
+            visibility: hidden;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            background-image: url('@Url.Content("~/images/snapedit_1729475551212.jpeg")'); /* Thay đổi link này thành link hình ảnh của bạn */
+            background-size: cover; /* Căn chỉnh hình ảnh cho vừa */
+            background-position: center; /* Căn giữa hình ảnh */
+            background-repeat: no-repeat; /* Không lặp lại hình ảnh */
+        }
+
+        .input-group input {
+            background-color: rgba(255, 255, 255, 0.5); /* Màu nền với độ mờ */
+            border: 1px solid #96D4D4; /* Viền của ô nhập */
+        }
+
+        .test {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <a asp-controller="LichSuDoiTenTruong" asp-action="Index" style="text-decoration:none; color: black">
+        <h1 style="text-align:center; font-family:'Times New Roman'; ">
+            Lịch sử đổi tên trường (@Model.Count())
+        </h1>
+    </a>
+
+    <!-- Search form -->
+    <form asp-controller="LichSuDoiTenTruong" asp-action="Index" method="get" class="text-center mb-4">
+        <div class="input-group justify-content-center">
+            <input type="number" name="Search" class="form-control w-50" placeholder="Tìm kiếm theo ID" aria-label="Search" />
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button class="btn btn-outline-primary" type="submit">Tìm kiếm</button>
+                <a class="btn btn-outline-primary" asp-action="Create">Tạo mới</a>
+            </div>
+        </div>
+    </form>
+
+    <table id="example" class="table display nowrap" style="width:100%">
+        <thead>
+            <tr>
+                <th>
+                    STT
+                </th>
+                <th>
+                    ID lịch sử
+                </th>
+                <th>
+                    Tên trường cũ
+                </th>
+                <th>
+                    Tên trường cũ bằng tiếng anh
+                </th>
+                <th>
+                    Số quyết định đổi tên
+                </th>
+                <th>
+                    Ngày ký quyết định
+                </th>
+                <th>Hành Động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int stt = 1;
+            }
+            @foreach (var item in Model)
+            {
+
+                <tr onclick="window.location.href='@Url.Action("Details", new { id = item.IdLichSuDoiTenTruong })'">
+                    <td>
+                        @stt
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdLichSuDoiTenTruong)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TenTruongCu)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TenTruongCuTiengAnh)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SoQuyetDinhDoiTen)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NgayKyQuyetDinhDoiTen)
+                    </td>
+                    <td class="text-center">
+                        <a asp-action="Edit" asp-route-id="@item.IdLichSuDoiTenTruong" class="btn btn-outline-primary">Sửa</a>
+                        <a asp-action="Delete" asp-route-id="@item.IdLichSuDoiTenTruong" class="btn btn-outline-primary">Xóa</a>
+                    </td>
+                </tr>
+                stt++;
+            }
+        </tbody>
+    </table>
+
+    <!-- Thêm các thư viện JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/fixedcolumns/5.0.3/js/dataTables.fixedColumns.js"></script>
+    <script>
+        $(document).ready(function () {
+            new DataTable('#example', {
+                fixedColumns: {
+                    start: 1,
+                    end: 1
+                },
+                paging: false,
+                searching: false, // Tắt chức năng tìm kiếm
+                scrollCollapse: true,
+                scrollX: true,
+                scrollY: 300
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+﻿@model C500Hemis.Models.TbChiTieuTuyenSinhTheoNganh
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>TbChiTieuTuyenSinhTheoNganh</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IdChiTieuTuyenSinhTheoNganh" class="control-label"></label>
+                <input asp-for="IdChiTieuTuyenSinhTheoNganh" class="form-control" />
+                <span asp-validation-for="IdChiTieuTuyenSinhTheoNganh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdLoaiHinhDaoTao" class="control-label"></label>
+                <select asp-for="IdLoaiHinhDaoTao" class ="form-control" asp-items="ViewBag.IdLoaiHinhDaoTao"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdNganhDaoTao" class="control-label"></label>
+                <select asp-for="IdNganhDaoTao" class ="form-control" asp-items="ViewBag.IdNganhDaoTao"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nam" class="control-label"></label>
+                <input asp-for="Nam" class="form-control" />
+                <span asp-validation-for="Nam" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChiTieu" class="control-label"></label>
+                <input asp-for="ChiTieu" class="form-control" />
+                <span asp-validation-for="ChiTieu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

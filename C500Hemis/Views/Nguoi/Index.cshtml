@@ -1,0 +1,195 @@
+﻿@model IEnumerable<C500Hemis.Models.TbNguoi>
+
+@{
+    ViewData["Title"] = "Người";
+}
+
+<h1>Danh sách người trong cơ sở dữ liệu (<b>@Model.Count()</b> )</h1>
+
+<p>
+    <a asp-action="Create">Thêm mới người</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                STT
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ho)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ten)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoCccd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayCapCccd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NoiCapCccd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgaySinh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdTonGiao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayVaoDoan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayVaoDang)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayVaoDangChinhThuc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayNhapNgu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayXuatNgu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdChucDanhKhoaHocNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdChuyenMonDaoTaoNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdTonGiaoNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdDanTocNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdGiaDinhChinhSachNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdGioiTinhNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdKhungNangLucNgoaiNgucNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdNgoaiNguNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdQuocTichNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdThuongBinhHangNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdTrinhDoDaoTaoNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdTrinhDoLyLuanChinhTriNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdTrinhDoQuanLyNhaNuocNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdTrinhDoTinHocNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int dem = 0;
+        }
+        @foreach (var item in Model) {
+            dem++;
+            <tr>
+            <td>
+                @dem
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ho)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ten)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoCccd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayCapCccd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoiCapCccd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgaySinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdTonGiao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayVaoDoan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayVaoDang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayVaoDangChinhThuc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayNhapNgu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayXuatNgu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdChucDanhKhoaHocNavigation.IdChucDanhKhoaHoc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdChuyenMonDaoTaoNavigation.IdNganhDaoTao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdTonGiaoNavigation.IdTonGiao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdDanTocNavigation.IdDanToc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdGiaDinhChinhSachNavigation.IdHoGiaDinhChinhSach)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdGioiTinhNavigation.IdGioiTinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdKhungNangLucNgoaiNgucNavigation.IdKhungNangLucNgoaiNgu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdNgoaiNguNavigation.IdNgoaiNgu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdQuocTichNavigation.IdQuocTich)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdThuongBinhHangNavigation.IdHangThuongBinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdTrinhDoDaoTaoNavigation.IdTrinhDoDaoTao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdTrinhDoLyLuanChinhTriNavigation.IdTrinhDoLyLuanChinhTri)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdTrinhDoQuanLyNhaNuocNavigation.IdTrinhDoQuanLyNhaNuoc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdTrinhDoTinHocNavigation.IdTrinhDoTinHoc)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdNguoi">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdNguoi">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdNguoi">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

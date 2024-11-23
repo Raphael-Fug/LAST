@@ -1,0 +1,299 @@
+﻿@model IEnumerable<C500Hemis.Models.TbCanBo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@section Heads {
+    <link href="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-2.1.7/r-3.0.3/datatables.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+}
+<style>
+       th{
+
+           color:black;
+           font-family:Arial, Helvetica, sans-serif;
+           font-size:large;
+
+       }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin-bottom: 50px;
+
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        p a {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+            p a:hover {
+                background-color: #218838;
+            }
+
+    th, td{
+        text-align:center;
+    }
+    table{
+        padding-bottom: 100px;
+    }
+</style>
+<h1>Cán bộ</h1>
+<table class="table table-hover" id="view_table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MaCanBo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoBaoHiemXaHoi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DienThoai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayChuyenTrangThai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoQuyetDinhHuuNghiViec)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayQuyetDinhHuuNghiViec)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HinhThucChuyenDen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayKetThucTamNghi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CoQuanCongTac)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayTuyenDung)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChungChiSuPhamGiangVien)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LaCongChuc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LaVienChuc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CoDayMonMacLeNin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CoDayMonSuPham)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoGiayPhepLaoDong)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ThamNienCongTac)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TenDoanhNghiep)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NamKinhNghiemGiangDay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GiangVienDapUngTt03)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdChucDanhGiangVienNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdChucDanhNgheNghiepNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdChucDanhNghienCuuKhoaHocNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdChucVuCongTacNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdHuyenNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdNgachNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdNguoiNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdTinhNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdTrangThaiLamViecNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdXaNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaCanBo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoBaoHiemXaHoi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DienThoai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayChuyenTrangThai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoQuyetDinhHuuNghiViec)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayQuyetDinhHuuNghiViec)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HinhThucChuyenDen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayKetThucTamNghi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CoQuanCongTac)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayTuyenDung)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChungChiSuPhamGiangVien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LaCongChuc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LaVienChuc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CoDayMonMacLeNin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CoDayMonSuPham)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoGiayPhepLaoDong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThamNienCongTac)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenDoanhNghiep)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NamKinhNghiemGiangDay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GiangVienDapUngTt03)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdChucDanhGiangVienNavigation.IdChucDanhGiangVien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdChucDanhNgheNghiepNavigation.IdChucDanhNgheNghiep)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdChucDanhNghienCuuKhoaHocNavigation.IdChucDanhNghienCuuKhoaHoc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdChucVuCongTacNavigation.IdChucVu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdHuyenNavigation.IdHuyen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdNgachNavigation.IdNgach)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdNguoiNavigation.IdNguoi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdTinhNavigation.IdTinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdTrangThaiLamViecNavigation.IdTrangThaiCanBo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdXaNavigation.IdXa)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdCanBo" style="background:#28a745; color: white ; padding: 10px 20px ; text-decoration: none ; border-radius: 5px ; font-weight: bold;" class="btn btn-edit">
+                        <i class="fa-solid fa-pen-to-square"></i> Sửa
+                    </a>
+                    <a asp-action="Details" asp-route-id="@item.IdCanBo" style="background:blue; color: white ; padding: 10px 20px ; text-decoration: none ; border-radius: 5px ; font-weight: bold;" class="btn btn-details">
+                        <i class="fa-solid fa-circle-info"></i> Chi tiết
+                    </a>
+                    <a asp-action="Delete" asp-route-id="@item.IdCanBo" style="background:red; color: white ; padding: 10px 20px ; text-decoration: none ; border-radius: 5px ; font-weight: bold;" class="btn btn-delete">
+                        <i class="fa-solid fa-trash-can"></i> Xóa
+                    </a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/v/dt/jszip-3.10.1/dt-2.1.8/b-3.1.2/b-colvis-3.1.2/b-html5-3.1.2/b-print-3.1.2/datatables.min.js"></script>
+    <script>
+        //Datatable trong datatable.net. Tìm hiểu thêm thông tin: https://datatables.net/manual/
+        var table = new DataTable("#view_table", {
+            language: {
+                //Điều chỉnh phần hiển thị label của thanh tìm kiếm - Xem thêm thông tin: https://datatables.net/reference/option/language.search
+                search: "Tìm kiếm",
+                //Điều chỉnh phần hiển thị thông tin của table - Xem thêm thông tin: https://datatables.net/reference/option/language.info
+                info: "Hiển thị _MAX_ trong _TOTAL_ bản ghi",
+            },
+            createdRow: (row, data, index) => {
+            },
+            layout: {//Layout: https://datatables.net/examples/layout/index.html
+                topStart: {
+                    buttons: [//extension buttons: https://datatables.net/extensions/buttons/config
+                        {
+                            className: 'btn btn-primary', //Thêm class cho button
+                            text: 'Tạo mới',
+                            action: function (e, dt, node, config) {//Hành động của button
+                                window.location.href = '@Url.Action("Create")';
+                            }
+                        }
+                    ]
+                }
+            }
+        });
+        //HTMLDOM Element: https://developer.mozilla.org/en-US/docs/Web/API/Element
+        //Datatables API: https://datatables.net/reference/api/table().header()
+        var row = table.table().header().lastElementChild;
+        row.lastElementChild.remove();
+        row.appendChild(document.createElement('th'));
+        console.log(row.lastElementChild);
+    </script>
+}

@@ -1,0 +1,220 @@
+﻿@model IEnumerable<C500Hemis.Models.TbGiaoVienQpan>
+<script src="https://kit.fontawesome.com/5c202d0407.js" crossorigin="anonymous"></script>
+@{
+    ViewData["Title"] = "Giảng viên QPAN";
+    int stt = 0;
+}
+@section Heads { 
+    <link href="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-2.1.7/r-3.0.3/datatables.min.css" rel="stylesheet">
+    <script src="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-2.1.7/r-3.0.3/datatables.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+}
+
+<h1 class="text-center my-4">DANH SÁCH GIÁO VIÊN QUỐC PHÒNG AN NINH</h1>
+<h5 style="text-align:center ">Gồm có <strong style="color:red">@Model.Count()</strong> giáo viên</h5>
+
+<div class="text-right mb-3">
+    <a asp-action="Create" class="btn btn-success">
+        <i style="margin-right:10px" class="fas fa-plus"></i> Thêm giáo viên mới
+    </a>
+
+</div>
+<table id="ntable">
+    <thead>
+        <tr style="background-color:#fafbed ; color:#713d0a">
+            <th class="Id">
+                STT
+            </th>
+            <th class="NamBatDauBietPhai">
+                 @Html.DisplayNameFor(model => model.NamBatDauBietPhai) 
+            </th>
+            <th class="SoNamBietPhai">  
+                 @Html.DisplayNameFor(model => model.SoNamBietPhai) 
+            </th>
+            <th class="DaoTaoGdqpan">
+                @Html.DisplayNameFor(model => model.DaoTaoGdqpan) 
+            </th>
+            <th class="SoTruongCongTac">
+                @Html.DisplayNameFor(model => model.SoTruongCongTac) 
+            </th>
+            <th class="option"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            var text = stt % 2 == 0 ? "even" : "odd";
+            <tr class="@text">
+                <td class="Id">
+                    @(++stt)
+                </td>
+                <td class="NamBatDauBietPhai">
+                    @Html.DisplayFor(modelItem => item.NamBatDauBietPhai)
+
+                </td>
+                <td class="SoNamBietPhai">
+                    @Html.DisplayFor(modelItem => item.SoNamBietPhai)
+                </td>
+                <td class="DaoTaoGdqpan">
+                    @Html.DisplayFor(modelItem => item.DaoTaoGdqpan)
+                </td>
+                <td class="SoTruongCongTac">
+                    @Html.DisplayFor(modelItem => item.SoTruongCongTac)
+                </td>
+                <td class="option">
+                    <a class="btn1" id="btn-edit" asp-action="Edit" asp-route-id="@item.IdGiaoVienQpan" ><b style="margin-right:10px" class="fa-solid fa-user-pen"></b>Chỉnh sửa</a> |
+                    <a class="btn1" id="btn-details" asp-action="Details" asp-route-id="@item.IdGiaoVienQpan"><b style="margin-right:10px" class="fa-solid fa-circle-info"></b>Chi tiết</a> |
+                    <a class="btn1" id="btn-delete" asp-action="Delete" asp-route-id="@item.IdGiaoVienQpan"><b style="margin-right:10px" class="fa-solid fa-trash"></b>Xóa bỏ</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@* ======== css ========= *@
+<style>
+/* ===== button option ======= */
+    a{
+        text-decoration:none;
+    }
+
+    body{
+        background-color: #fafbed;
+    }
+    .btn1 {
+        
+        border-radius: 6px;
+        box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+        box-sizing: border-box;
+        color: #FFFFFF;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 16px;
+        min-height: 40px;
+        outline: 0;
+        padding: 10px 14px;
+        text-align: center;
+        text-rendering: geometricprecision;
+        text-transform: none;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        vertical-align: middle;
+    }
+
+    /* ====== table ====== */
+    .even {
+        background-color: #f4e4cb !important; /* Màu cho dòng chẵn */
+    }
+
+    .odd {
+        background-color: #fafbed !important; /* Màu cho dòng lẻ */
+    }
+
+    #ntable{
+        border-radius:30% !important;
+    }
+
+    .Id{
+        width:5%;
+        text-align:left !important;
+    }
+
+    .NamBatDauBietPhai{
+        width:12%;
+    }
+
+    .SoNamBietPhai{
+        width:12%;
+    }
+
+    .DaoTaoGdqpan{
+        width:20%;
+    }
+
+    .SoTruongCongTac{
+        width:20%;
+    }
+    .option{
+        width:31%;
+    }
+    /* delete */
+    #btn-delete{
+    background: #FF4742;
+    border: 1px solid #FF4742;
+    }
+    #btn-delete:hover,
+    #btn-delete:active {
+        background-color: initial;
+        background-position: 0 0;
+        
+        color:red;
+    }
+
+    #btn-delete:active {
+        opacity: .5;
+    }
+
+    /* edit */
+    #btn-edit {
+        background: blue;
+        border: 1px solid blue;
+    }
+    #btn-edit:hover,
+    #btn-edit:active {
+        background-color: initial;
+        background-position: 0 0;
+        color: blue;
+    }
+
+    #btn-edit:active {
+        opacity: .5;
+    }
+
+    /* details */
+    #btn-details {
+        background: #0f172a;
+        border: 1px solid #0f172a;
+    }
+
+        #btn-details:hover,
+        #btn-details:active {
+            background-color: initial;
+            background-position: 0 0;
+            color: #0f172a;
+        }
+
+        #btn-details:active {
+            opacity: .5;
+        }
+</style>
+
+@* ======== datatable ======== *@
+<script>
+    new DataTable('#ntable', {
+        lengthMenu:[5,10,20,50,100],
+        language: {
+            processing: "Đang tải dữ liệu",
+            search: "Tìm kiếm",
+            lengthMenu: "Điều chỉnh số lượng bản ghi trên 1 trang _MENU_ ",
+            info: "Tổng cộng _TOTAL_ bản ghi",
+            infoEmpty: "Chưa có giáo viên nào trong danh sách",
+            infoFiltered: "",
+            infoPostFix: "", // Cái này khi thêm vào nó sẽ đứng sau info
+            loadingRecords: "",
+            zeroRecords: "Không tìm thấy dữ liệu",
+            emptyTable: "Không có dữ liệu",
+            paginate: {
+                first: "<<",
+                previous: "<",
+                next: ">",
+                last: ">>"
+            },
+            aria: {
+                sortAscending: ": Đang sắp xếp",
+                sortDescending: ": Đang sắp xếp",
+            }
+        },
+    });
+</script>

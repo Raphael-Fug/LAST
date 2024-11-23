@@ -1,0 +1,126 @@
+﻿@model C500Hemis.Models.TbKhoaBoiDuongTapHuanThamGiaCuaCanBo
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<style>
+    body{
+        background-image: url(https://upload.wikimedia.org/wikipedia/vi/8/85/Logo_hoc_vien_ANND.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: rgb(230,241,216);
+    }
+    .form group{
+        margin-left:300px;
+    }
+    .row{
+        background-color: rgba(230,241,216,0.75);
+    }
+    .container {
+        width: 900px ;
+        margin: 0 revert-layer;
+        overflow: hidden;
+    }
+
+    .main-content {
+        padding: 2rem;
+        background: rgba(231,234,243,0.5);
+        margin-top: 0.5rem;
+        border-radius: 6px;
+        box-shadow: 0 0 10px rgba(50, 50, 110, 0.85);
+        width: 850px;
+        height: 400px;
+    }
+
+    #post {
+        width: 350px;
+        height: 320px;
+        background: rgba(231, 234, 243, 0.0);
+        float: left;
+    }
+
+    #sidebar {
+        width: 350px;
+        height: 320px;
+        background: rgba(231, 234, 243, 0.0);
+        float: right;
+    }
+
+    .btn-blue {
+        background-color: deepskyblue;
+    }
+
+</style>
+<h1 style="text-align:center">Chỉnh sửa thông tin</h1>
+<h3 align="center">Khóa huấn luyện tập huấn tham gia của cán bộ</h3>
+<div class="container">
+    <div class="main-content">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdKhoaBoiDuongTapHuanThamGiaCuaCanBo" /> 
+            <div id="post">
+            <div class="form-group">
+                    <label asp-for="IdCanBo" class="control-label"><strong>ID cán bộ</strong></label>
+                <select asp-for="IdCanBo" class="form-control" asp-items="ViewBag.IdCanBo"></select>
+                <span asp-validation-for="IdCanBo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                    <label asp-for="TenKhoaBoiDuongTapHuan" class="control-label"><strong>Tên khóa bồi dưỡng tập huấn</strong></label>
+                <input asp-for="TenKhoaBoiDuongTapHuan" class="form-control" />
+                <span asp-validation-for="TenKhoaBoiDuongTapHuan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                    <label asp-for="DonViToChuc" class="control-label"><strong>Đơn vị tổ chức</strong></label>
+                <input asp-for="DonViToChuc" class="form-control" />
+                <span asp-validation-for="DonViToChuc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                    <label asp-for="IdLoaiBoiDuong" class="control-label"><strong>ID loại bồi dưỡn</strong>g</label>
+                <select asp-for="IdLoaiBoiDuong" class="form-control" asp-items="ViewBag.IdLoaiBoiDuong"></select>
+                <span asp-validation-for="IdLoaiBoiDuong" class="text-danger"></span></div>
+            <div class="form-group">
+                    <label asp-for="DiaDiemToChuc" class="control-label"><strong>Địa điểm tổ chức</strong></label>
+                <input asp-for="DiaDiemToChuc" class="form-control" />
+                <span asp-validation-for="DiaDiemToChuc" class="text-danger"></span>
+            </div>
+            </div>
+            <div id="sidebar">
+            <div class="form-group">
+                    <label asp-for="ThoiGianBatDau" class="control-label"><strong>Thời gian bắt đầu</strong></label>
+                <input asp-for="ThoiGianBatDau" class="form-control" />
+                <span asp-validation-for="ThoiGianBatDau" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ThoiGianKetThuc" class="control-label"><strong>Thời gian kết thúc</strong></label>
+                <input asp-for="ThoiGianKetThuc" class="form-control" />
+                <span asp-validation-for="ThoiGianKetThuc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                    <label asp-for="IdNguonKinhPhi" class="control-label"><strong>ID nguồn kinh phí</strong></label>
+                <select asp-for="IdNguonKinhPhi" class="form-control" asp-items="ViewBag.IdNguonKinhPhi"></select>
+                <span asp-validation-for="IdNguonKinhPhi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                    <label asp-for="ChungChi" class="control-label"><strong>Chứng chỉ</strong</label>
+                <input asp-for="ChungChi" class="form-control" />
+                <span asp-validation-for="ChungChi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                    <label asp-for="NgayCap" class="control-label"><strong>Ngày cấp</strong></label>
+                <input asp-for="NgayCap" class="form-control" />
+                <span asp-validation-for="NgayCap" class="text-danger"></span>
+            </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Lưu thay đổi" class="btn btn-primary" style="background-color:darkolivegreen" />
+                </div>
+            
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-blue"><strong>Quay lại danh sách</strong></a>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}}

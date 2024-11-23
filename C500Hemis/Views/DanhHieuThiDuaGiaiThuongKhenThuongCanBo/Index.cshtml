@@ -1,0 +1,193 @@
+﻿@model IEnumerable<C500Hemis.Models.TbDanhHieuThiDuaGiaiThuongKhenThuongCanBo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DANH SÁCH</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+    <style>
+
+        .table-custom {
+            border-collapse: separate;
+            border-spacing: 0 15px;
+        }
+
+            .table-custom th {
+                background-color: darkgrey;
+                color: floralwhite;
+                font-weight: bold;
+                text-align: center;
+            }
+
+            .table-custom td {
+                background-color: white;
+                vertical-align: middle;
+                padding: 15px;
+                text-align: center;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            .table-custom tbody tr:hover td {
+                background-color: lightgray;
+            }
+
+        .btn-custom {
+            margin-right: 5px;
+            border-radius: 0.25rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .btn-custom i {
+                margin-right: 5px;
+            }
+
+        .btn-edit {
+            background-color: #ffcc00;
+            color: black;
+        }
+
+        .btn-details {
+            background-color: #00b3cc;
+            color: white;
+        }
+
+        .btn-delete {
+            background-color: #ff3300;
+            color: white;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .table-custom th:nth-child(2),
+        .table-custom td:nth-child(2) {
+            width: 150px;
+        }
+
+        .table-custom th:nth-child(4),
+        .table-custom td:nth-child(4) {
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid mt-5">
+        <h1 class="text-center mb-4">DANH HIỆU THI ĐUA KHEN THƯỞNG</h1>
+        <form class="d-flex" method="get">
+            <input placeholder="ID Cán Bộ" type="text" name="IDCB" value="@ViewBag.IdCanBo" style="margin-right: 10px;" />
+            <button class="btn btn-primary" style="margin-right: 10px;">
+                <span class="bi-search"></span> Tìm Kiếm
+            </button>
+            <a href="/DanhHieuThiDuaGiaiThuongKhenThuongCanBo/Create" class="btn btn-primary" style="margin-right: 10px;">
+                <i class="bi bi-file-earmark-plus-fill"></i> Thêm Mới
+            </a>
+            <button class="btn btn-primary" type="submit" name="SapXep" value="SapXep">
+                <i class="bi bi-sort-numeric-down"></i> Sắp xếp
+            </button>
+        </form>
+
+
+
+        <table class="table table-custom">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Số Quyết Định</th>
+                    <th>Năm Khen Thưởng</th>
+                    <th>ID Cán Bộ</th>
+                    <th>Cấp Khen Thưởng</th>
+                    <th>Loại Danh Hiệu</th>
+                    <th>Phương Thức Khen Thưởng</th>
+                    <th>Thi Đua Giải Thưởng</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Count() > 0)
+                {
+                    int stt = 1;
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@stt</td>
+                            <td>@item.SoQuyetDinh</td>
+                            <td>@item.NamKhenThuong?.ToString("yyyy")</td>
+                            <td>@item.IdCanBoNavigation?.IdCanBo</td>
+                            <td>@item.IdCapKhenThuongNavigation?.IdCapKhenThuong</td>
+                            <td>@item.IdLoaiDanhHieuThiDuaGiaiThuongKhenThuongNavigation?.IdLoaiDanhHieuThiDuaGiaiThuongKhenThuong</td>
+                            <td>@item.IdPhuongThucKhenThuongNavigation?.IdPhuongThucKhenThuong</td>
+                            <td>@item.IdThiDuaGiaiThuongKhenThuongNavigation?.IdThiDuaGiaiThuongKhenThuong</td>
+                            <td class="action-buttons">
+                                <a asp-action="Edit" asp-route-id="@item.IdDanhHieuThiDuaGiaiThuongKhenThuongCanBo" class="btn btn-warning btn-custom btn-sm">
+                                    <i class="fas fa-edit"></i> Sửa
+                                </a>
+                                <a asp-action="Details" asp-route-id="@item.IdDanhHieuThiDuaGiaiThuongKhenThuongCanBo" class="btn btn-info btn-custom btn-sm">
+                                    <i class="fas fa-info-circle"></i> Chi tiết
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@item.IdDanhHieuThiDuaGiaiThuongKhenThuongCanBo" class="btn btn-danger btn-custom btn-sm">
+                                    <i class="fas fa-trash-alt"></i> Xóa
+                                </a>
+                            </td>
+                        </tr>
+                        stt++;
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="9" class="text-center">Không có dữ liệu</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.table-custom').DataTable({
+                "paging": true,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "language": {
+                    "lengthMenu": "Hiển thị _MENU_ mục mỗi trang",
+                    "zeroRecords": "Không tìm thấy dữ liệu",
+                    "info": "Trang _PAGE_ trong _PAGES_",
+                    "infoEmpty": "Không có dữ liệu",
+                    "infoFiltered": "(lọc từ _MAX_ tổng số mục)",
+                    "search": "Tìm kiếm:",
+                    "paginate": {
+                        "first": "Đầu tiên",
+                        "last": "Cuối cùng",
+                        "next": "Sau",
+                        "previous": "Trước"
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

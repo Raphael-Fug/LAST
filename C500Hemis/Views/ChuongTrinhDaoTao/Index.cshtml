@@ -1,0 +1,217 @@
+﻿@model IEnumerable<C500Hemis.Models.TbChuongTrinhDaoTao>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/IndexCTDT.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap"
+          rel="stylesheet" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          rel="stylesheet" />
+    <style>
+        /* Giới hạn chiều rộng của bảng và thêm thanh trượt ngang */
+        .table-container {
+            width: 100%; /* Chiếm toàn bộ chiều rộng */
+            overflow-x: auto; /* Thêm thanh trượt ngang */
+            white-space: nowrap; /* Không cho phép xuống dòng các cột */
+        }
+
+        /* Tùy chỉnh để căn đều lề 2 bên */
+        .fixed-width-container {
+            max-width: 90vw; /* Chiều rộng tối đa bằng 80% cửa sổ hiển thị */
+            margin: 0 auto; /* Căn giữa phần tử */
+        }
+
+        /* Đảm bảo bảng hiển thị đầy đủ mà không co lại quá nhỏ */
+        table {
+            min-width: 1000px; /* Đặt chiều rộng tối thiểu để có thể cuộn */
+        }
+
+        .arrow-button {
+            background-color: rgb(28, 99, 110);
+            color: white;
+            padding: 10px 40px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            clip-path: polygon( 0% 50%, 10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100% );
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 30px;
+            white-space: nowrap; /* Đảm bảo nội dung không bị xuống dòng */
+            display: inline-block; /* Dùng inline-block để các nút hiển thị trên một hàng */
+            gap: 10px; /* Khoảng cách giữa các nút */
+            padding-top: 4px;
+        }
+
+            .arrow-button:hover {
+                background-color: rgb(127, 193, 203);
+            }
+    </style>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 2px solid rgb(17 104 118);
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="tieude" style="font-size:6rem;">Index</h1>
+
+    <p>
+        <h2 class="btn" style="background-color:currentColor"><a asp-action="Create">Create New</a></h2>
+    </p>
+
+    <div class="table-container" style="margin-bottom:15px;">
+        <table class="table table-bordered" id="customers">
+            <thead>
+                <tr class="tieudebang">
+                    <th>@Html.DisplayNameFor(model => model.MaChuongTrinhDaoTao)</th>
+                    <th>@Html.DisplayNameFor(model => model.TenChuongTrinh)</th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TenChuongTrinhBangTiengAnh)
+                    </th>
+                    <th>@Html.DisplayNameFor(model => model.NamBatDauTuyenSinh)</th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TenCoSoDaoTaoNuocNgoai)
+                    </th>
+                    <th>@Html.DisplayNameFor(model => model.DiaDiemDaoTao)</th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NgayBanHanhChuanDauRa)
+                    </th>
+                    <th>@Html.DisplayNameFor(model => model.ThoiGianDaoTaoChuan)</th>
+                    <th>@Html.DisplayNameFor(model => model.ChuanDauRa)</th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LoaiChungChiDuocChapThuan)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DonViThucHienChuongTrinh)
+                    </th>
+                    <th>@Html.DisplayNameFor(model => model.ChuanDauRaVeNgoaiNgu)</th>
+                    <th>@Html.DisplayNameFor(model => model.ChuanDauRaVeTinHoc)</th>
+                    <th>@Html.DisplayNameFor(model => model.HocPhiTaiVietNam)</th>
+                    <th>@Html.DisplayNameFor(model => model.HocPhiTaiNuocNgoai)</th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdDonViCapBangNavigation)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdHocCheDaoTaoNavigation)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model =>
+                                 model.IdLoaiChuongTrinhDaoTaoNavigation)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model =>
+                                 model.IdLoaiChuongTrinhLienKetDaoTaoNavigation)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdNganhDaoTaoNavigation)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model =>
+                                 model.IdQuocGiaCuaTruSoChinhNavigation)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model =>
+                                 model.IdTrangThaiCuaChuongTrinhNavigation)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdTrinhDoDaoTaoNavigation)
+                    </th>
+                    <th class="tuychon">Tùy Chọn</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.MaChuongTrinhDaoTao)</td>
+                        <td>@Html.DisplayFor(modelItem => item.TenChuongTrinh)</td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TenChuongTrinhBangTiengAnh)
+                        </td>
+                        <td>@Html.DisplayFor(modelItem => item.NamBatDauTuyenSinh)</td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TenCoSoDaoTaoNuocNgoai)
+                        </td>
+                        <td>@Html.DisplayFor(modelItem => item.DiaDiemDaoTao)</td>
+                        <td>@Html.DisplayFor(modelItem => item.NgayBanHanhChuanDauRa)</td>
+                        <td>@Html.DisplayFor(modelItem => item.ThoiGianDaoTaoChuan)</td>
+                        <td>@Html.DisplayFor(modelItem => item.ChuanDauRa)</td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LoaiChungChiDuocChapThuan)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DonViThucHienChuongTrinh)
+                        </td>
+                        <td>@Html.DisplayFor(modelItem => item.ChuanDauRaVeNgoaiNgu)</td>
+                        <td>@Html.DisplayFor(modelItem => item.ChuanDauRaVeTinHoc)</td>
+                        <td>@Html.DisplayFor(modelItem => item.HocPhiTaiVietNam)</td>
+                        <td>@Html.DisplayFor(modelItem => item.HocPhiTaiNuocNgoai)</td>
+                        <td>
+                            @Html.DisplayFor(modelItem =>
+                                     item.IdDonViCapBangNavigation.IdDonViCapBang)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem =>
+                                     item.IdHocCheDaoTaoNavigation.IdHocCheDaoTao)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem =>
+                                     item.IdLoaiChuongTrinhDaoTaoNavigation.IdLoaiChuongTrinhDaoTao)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem =>
+                                     item.IdLoaiChuongTrinhLienKetDaoTaoNavigation.IdLoaiChuongTrinhLienKetDaoTao)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem =>
+                                     item.IdNganhDaoTaoNavigation.IdNganhDaoTao)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem =>
+                                     item.IdQuocGiaCuaTruSoChinhNavigation.IdQuocTich)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem =>
+                                     item.IdTrangThaiCuaChuongTrinhNavigation.IdTrangThaiChuongTrinhDaoTao)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem =>
+                                     item.IdTrinhDoDaoTaoNavigation.IdTrinhDoDaoTao)
+                        </td>
+                        <td class="tuychon">
+                            <a asp-action="Edit"
+                               asp-route-id="@item.IdChuongTrinhDaoTao"
+                               class="btn btn-warning">Edit</a>
+                            <a asp-action="Details"
+                               asp-route-id="@item.IdChuongTrinhDaoTao"
+                               class="btn btn-warning">Details</a>
+                            <a asp-action="Delete"
+                               asp-route-id="@item.IdChuongTrinhDaoTao"
+                               class="btn btn-warning">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html></C500Hemis.Models.TbChuongTrinhDaoTao
+>

@@ -1,0 +1,48 @@
+﻿@model C500Hemis.Models.TbPhongThiNghiem
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>TbPhongThiNghiem</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MucDoDapUngNhuCauNckh)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MucDoDapUngNhuCauNckh)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NamDuaVaoSuDung)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NamDuaVaoSuDung)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdCongTrinhCsvcNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdCongTrinhCsvcNavigation.IdCongTrinhCoSoVatChat)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdLinhVucNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdLinhVucNavigation.IdLinhVucNghienCuu)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdLoaiPhongThiNghiemNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdLoaiPhongThiNghiemNavigation.IdLoaiPhongThiNghiem)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.IdPhongThiNghiem">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

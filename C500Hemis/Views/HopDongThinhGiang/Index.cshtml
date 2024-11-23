@@ -1,0 +1,196 @@
+﻿@model IEnumerable<C500Hemis.Models.TbHopDongThinhGiang>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<head>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<style>
+    h1 {
+        font-family: Apice;
+        text-align: center;
+    }
+    thead{
+        background-color: #16423C;
+    }
+    tbody{
+        background-color: #E9EFEC;
+    }
+    ntable{
+        border: 2px solid #0053b3;
+    }
+    th{
+        border: solid black 0.5px;
+        padding: 20px;
+        text-align: left;
+        color: #C4DAD2;
+    }
+    td{
+        border: solid black 0.5px;
+    }
+
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+        a:hover {
+            text-decoration: underline;
+            color: darkred;
+        }
+    ntable {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+   th:hover {
+        background-color: #6A9C89;
+    }
+    td:hover{
+        background-color: #6A9C89;
+    }
+    footer {
+        text-align: center;
+        margin-top: 20px;
+        color: #666;
+    }
+    .butcreate{
+        border: solid black 2px;
+        color: white;
+        background-color: #424242;
+        border-radius: 10px;
+        padding: 10px 15px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+    .butcreate:hover{
+        background-color: #48CFCB;
+        color: black;
+    }
+    .butcreate a:hover{
+        color: black;
+    }
+    .butcreate a{
+        text-decoration: none;
+        color: white;
+    }
+</style>
+
+<h1>Hợp đồng thỉnh giảng</h1>
+
+<table class="ntable" id="ntable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MaHopDongThinhGiang)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoSoLaoDong)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayCapSoLaoDong)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NoiCapSoLaoDong)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CoGiaTriTu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CoGiaTriDen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TyLeThoiGianGiangDay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCanBoNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdTrangThaiHopDongNavigation)
+            </th>
+            <th>
+                Chức năng
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaHopDongThinhGiang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoSoLaoDong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayCapSoLaoDong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoiCapSoLaoDong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CoGiaTriTu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CoGiaTriDen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TyLeThoiGianGiangDay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCanBoNavigation.IdCanBo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdTrangThaiHopDongNavigation.IdTrangThaiHopDong)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdHopDongThinhGiang"><i class='bx bx-edit-alt'></i></a> |
+                    <a asp-action="Details" asp-route-id="@item.IdHopDongThinhGiang"><i class='bx bx-info-circle'></i></a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdHopDongThinhGiang"><i class='bx bx-trash-alt'></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<button class="butcreate"><a asp-action="Create">Tạo mới</a></button>
+
+<script>
+    new DataTable('#ntable', {
+        searching: true, // Mặc định là true, set false để tắt chức năng search
+        processing: true,
+        info: false, // Tắt thông tin về table VD: Showing 1 to 14 of 14 entries
+        language: {
+            processing: "Message khi đang tải dữ liệu",
+            search: "Tìm kiếm",
+            lengthMenu: "Điều chỉnh số lượng bản ghi trên 1 trang _MENU_ ",
+            info: "Bản ghi từ _START_ đến _END_ Tổng công _TOTAL_ bản ghi",
+            infoEmpty: "Khi không có dữ liệu, Hiển thị 0 bản ghi trong 0 tổng cộng 0 ",
+            infoFiltered: "(Message bổ sung cho info khi không search đc record nào _MAX_)",
+            infoPostFix: "Alo Alo", // Cái này khi thêm vào nó sẽ đứng sau info
+            loadingRecords: "",
+            zeroRecords: "Khi tìm kiếm không match với record nào",
+            emptyTable: "Không có dữ liệu",
+            paginate: {
+                first: "Trang đầu",
+                previous: "Trang trước",
+                next: "Trang sau",
+                last: "Trang cuối"
+            },
+            aria: {
+                sortAscending: ": Message khi đang sắp xếp theo column",
+                sortDescending: ": Message khi đang sắp xếp theo column",
+            }
+        },
+    });
+</script>

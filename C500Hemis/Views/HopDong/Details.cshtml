@@ -1,0 +1,106 @@
+﻿@model C500Hemis.Models.TbHopDong
+
+@{
+    ViewData["Title"] = "Chi Tiết Hợp Đồng";
+}
+
+<div class="container mt-5">
+    <!-- Sử dụng card layout để hiển thị chi tiết hợp đồng -->
+    <div class="container mt-5 d-flex justify-content-center">
+        <!-- Giới hạn chiều rộng của card để tránh tràn ngang -->
+        <div class="card shadow-lg border-0" style="width: 700px;">
+            <div class="card-header bg-info text-white">
+                <h3 class="mb-0 text-center">Thông Tin Chi Tiết Hợp Đồng</h3>
+            </div>
+            <div class="card-body">
+                <dl class="row">
+                    <!-- Mã hợp đồng -->
+                    <dt class="col-sm-4 font-weight-bold">
+                        @Html.DisplayNameFor(model => model.SoHopDong)
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.SoHopDong)
+                    </dd>
+
+                    <!-- Số quyết định -->
+                    <dt class="col-sm-4 font-weight-bold">
+                        @Html.DisplayNameFor(model => model.SoQuyetDinh)
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.SoQuyetDinh)
+                    </dd>
+
+                    <!-- Ngày quyết định -->
+                    <dt class="col-sm-4 font-weight-bold">
+                        @Html.DisplayNameFor(model => model.NgayQuyetDinh)
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.NgayQuyetDinh)
+                    </dd>
+
+                    <!-- Có giá trị từ -->
+                    <dt class="col-sm-4 font-weight-bold">
+                        @Html.DisplayNameFor(model => model.CoGiaTriTu)
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.CoGiaTriTu)
+                    </dd>
+
+                    <!-- Có giá trị đến -->
+                    <dt class="col-sm-4 font-weight-bold">
+                        @Html.DisplayNameFor(model => model.CoGiaTriDen)
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.CoGiaTriDen)
+                    </dd>
+
+                    <!-- Làm việc toàn thời gian -->
+                    <dt class="col-sm-4 font-weight-bold">
+                        @Html.DisplayNameFor(model => model.LamViecToanThoiGian)
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.LamViecToanThoiGian)
+                    </dd>
+
+                    <!-- Cán bộ -->
+                    <dt class="col-sm-4 font-weight-bold">
+                        @Html.DisplayNameFor(model => model.IdCanBoNavigation)
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.IdCanBoNavigation.IdCanBo)
+                    </dd>
+
+                    <!-- Loại hợp đồng -->
+                    <dt class="col-sm-4 font-weight-bold">
+                    @Html.DisplayNameFor(model => model.IdLoaiHopDongNavigation)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.IdLoaiHopDongNavigation.IdLoaiHopDong)
+                </dd>
+
+                <!-- Tình trạng hợp đồng -->
+                <dt class="col-sm-4 font-weight-bold">
+                    @Html.DisplayNameFor(model => model.IdTinhTrangHopDongNavigation)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.IdTinhTrangHopDongNavigation.IdTinhTrangHopDong)
+                </dd>
+            </dl>
+        </div>
+        <div class="card-footer text-center">
+            <!-- Các nút chức năng được căn giữa với icon -->
+            <a asp-action="Edit" asp-route-id="@Model?.IdHopDong" class="btn btn-warning mx-1">
+                <i class="bi bi-pencil-square"></i> Chỉnh Sửa
+            </a>
+            <a asp-action="Index" class="btn btn-secondary mx-1">
+                <i class="bi bi-arrow-left-circle"></i> Quay Lại
+            </a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

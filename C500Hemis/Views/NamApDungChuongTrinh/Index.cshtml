@@ -1,0 +1,59 @@
+﻿@model IEnumerable<C500Hemis.Models.TbNamApDungChuongTrinh>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SoTinChiToiThieuDeTotNghiep)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TongHocPhiToanKhoa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NamApDung)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChiTieuTuyenSinhHangNam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdChuongTrinhDaoTaoNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoTinChiToiThieuDeTotNghiep)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TongHocPhiToanKhoa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NamApDung)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChiTieuTuyenSinhHangNam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdChuongTrinhDaoTaoNavigation.IdChuongTrinhDaoTao)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdNamApDungChuongTrinh">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdNamApDungChuongTrinh">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdNamApDungChuongTrinh">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

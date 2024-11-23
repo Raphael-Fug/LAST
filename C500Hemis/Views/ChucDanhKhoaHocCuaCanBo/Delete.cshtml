@@ -1,0 +1,59 @@
+﻿@model C500Hemis.Models.TbChucDanhKhoaHocCuaCanBo
+<link href="~/themify-icons/themify-icons.css" rel="stylesheet" />
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Xóa</h1>
+
+<h3 class="text-danger">
+    Bạn có chắc chắn muốn xóa cái này không?<h3>
+        <div class="card shadow-sm p-3 mb-5 bg-white rounded">
+            <div class="card-body">
+                <h4 class="card-title text-primary">Chức danh khóa học của cán bộ</h4>
+                <hr />
+                <dl class="row">
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.SoQuyetDinh)
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.SoQuyetDinh)
+                    </dd>
+
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.NgayQuyetDinh)
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.NgayQuyetDinh)
+                    </dd>
+
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.IdCanBoNavigation)
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.IdCanBoNavigation.IdCanBo)
+                    </dd>
+
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.IdChucDanhKhoaHocNavigation)
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.IdChucDanhKhoaHocNavigation.IdChucDanhKhoaHoc)
+                    </dd>
+
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.IdThamQuyenQuyetDinhNavigation)
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.IdThamQuyenQuyetDinhNavigation.IdLoaiQuyetDinh)
+                    </dd>
+                </dl>
+
+                <form asp-action="Delete" class="mt-4">
+                    <input type="hidden" asp-for="IdChucDanhKhoaHocCuaCanBo" />
+                    <input type="submit" value="Xóa" class="btn btn-danger" />
+                    <a asp-action="Index" class="btn btn-secondary ml-2">Quay lại danh sách</a>
+                </form>
+            </div>
+        </div>
+

@@ -1,0 +1,141 @@
+﻿
+@model C500Hemis.Models.TbGiaoVienQpan
+<script src="https://kit.fontawesome.com/5c202d0407.js" crossorigin="anonymous"></script>
+@{
+    ViewData["Title"] = "Chi tiết";
+}
+
+<h1>Chi tiết</h1>
+
+<div class="container">
+    <dl>
+        <dt>
+            @Html.DisplayNameFor(model => model.NamBatDauBietPhai)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NamBatDauBietPhai)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SoNamBietPhai)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SoNamBietPhai)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DaoTaoGdqpan)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DaoTaoGdqpan)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SoTruongCongTac)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SoTruongCongTac)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IdCanBoNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IdCanBoNavigation.IdCanBo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IdLoaiGiangVienQpNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IdLoaiGiangVienQpNavigation.IdLoaiGiangVienQuocPhong)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IdQuanHamNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IdQuanHamNavigation.IdQuanHam)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn1" id="btn-edit" asp-action="Edit" asp-route-id="@Model?.IdGiaoVienQpan">Chỉnh sửa</a> |
+    <a class="btn1" id="btn-back" asp-action="Index">Trở về danh sách</a>
+</div>
+<style>
+    a{
+        text-decoration:none;
+    }
+    body{
+        background-color: #fafbed;
+        height:100vh; /* chỉnh chiều dài của trang */
+    }
+    /* Container chính */
+    .container {
+        margin: 20px auto;
+        padding: 20px;
+        max-width: 800px;
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Tiêu đề */
+    h4 {
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 10px;
+    }
+    /* ========= button =========== */
+    .btn1 {
+        border-radius: 6px;
+        box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+        box-sizing: border-box;
+        color: #FFFFFF;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 16px;
+        min-height: 40px;
+        outline: 0;
+        padding: 10px 14px;
+        text-align: center;
+        text-rendering: geometricprecision;
+        text-transform: none;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        vertical-align: middle;
+    }
+    /* ======== edit ======= */
+    #btn-edit {
+        background: blue;
+        border: 1px solid blue;
+    }
+
+        #btn-edit:hover,
+        #btn-edit:active {
+            background-color: initial;
+            background-position: 0 0;
+            color: blue;
+        }
+
+        #btn-edit:active {
+            opacity: .5;
+        }
+
+        /* ======== back ======== */
+
+    #btn-back {
+        background: green;
+        border: 1px solid green;
+    }
+
+        #btn-back:hover,
+        #btn-back:active {
+            background-color: initial;
+            background-position: 0 0;
+            color: green;
+        }
+
+        #btn-back:active {
+            opacity: .5;
+        }
+</style>

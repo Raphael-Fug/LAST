@@ -1,0 +1,83 @@
+﻿@model C500Hemis.Models.TbDoanCongTac
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 >Thông tin chi tiết</h1>
+
+
+<style>
+    table {
+        width: 100%; /* Chiều rộng bảng 100% */
+        border-collapse: collapse; /* Gộp đường viền ô */
+    }
+
+    th, td {
+        border: 1px solid #000; /* Đường viền đen cho các ô */
+        text-align: left;
+        padding: 8px; /* Khoảng cách giữa nội dung và đường viền ô */
+    }
+
+    th {
+        font-weight: bold; /* Chữ đậm cho tiêu đề */
+    }
+
+    tr:hover {
+        background-color: transparent; /* Không có màu nền khi di chuột qua hàng */
+    }
+</style>
+
+
+<div class="container">
+    <h4 style="text-align:center">Đoàn công tác</h4>
+    <hr />
+    <table>
+        <tr>
+            <th>Mã đoàn công tác:</th>
+            <td>@Html.DisplayFor(model => model.MaDoanCongTac)</td>
+        </tr>
+        <tr>
+            <th> Tên đoàn công tác  </th>
+            <td>@Html.DisplayFor(model => model.TenDoanCongTac)</td>
+        </tr>
+        <tr>
+            <th>Số quyết định</th>
+            <td>@Html.DisplayFor(model => model.SoQuyetDinh)</td>
+        </tr>
+        <tr>
+            <th>Ngày quyết định</th>
+            <td>@Html.DisplayFor(model => model.NgayQuyetDinh)</td>
+        </tr>
+        <tr>
+            <th>Thời gian bắt đầu</th>
+            <td>@Html.DisplayFor(model => model.ThoiGianBatDau)</td>
+        </tr>
+        <tr>
+            <th>Thời gian kết thúc</th>
+            <td>@Html.DisplayFor(model => model.ThoiGianketThuc)</td>
+        </tr>
+        <tr>
+            <th>Mục đích công tác</th>
+            <td>@Html.DisplayFor(model => model.MucDichCongTac)</td>
+        </tr>
+        <tr>
+            <th>Kết quả công tác</th>
+            <td>@Html.DisplayFor(model => model.KetQuaCongTac)</td>
+        </tr>
+        <tr>
+            <th> Phân loại đoàn ra/vào</th>
+            <td>@Html.DisplayFor(model => model.IdPhanLoaiDoanRaDoanVaoNavigation.IdPhanLoaiDoanRaDoanVao)</td>
+        </tr>
+        <tr>
+            <th>Quốc gia đoàn được cử</th>
+            <td>@Html.DisplayFor(model => model.IdQuocGiaDoanNavigation.IdQuocTich)</td>
+        </tr>
+        
+       
+    </table>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.IdDoanCongTac"> Sửa </a> |
+    <a asp-action="Index"> Quay lại </a>
+</div>

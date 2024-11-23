@@ -1,0 +1,81 @@
+﻿@model C500Hemis.Models.TbChuongTrinhDaoTao
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card shadow-sm">
+                <div class="card-header bg-info text-white">
+                    <h2 class="mb-0">Chương Trình Đào Tạo - Chi Tiết</h2>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-4">Mã Chương Trình:</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.MaChuongTrinhDaoTao)</dd>
+
+                        <dt class="col-sm-4">Tên Chương Trình:</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.TenChuongTrinh)</dd>
+
+                        <dt class="col-sm-4">Tên Chương Trình (Tiếng Anh):</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.TenChuongTrinhBangTiengAnh)</dd>
+
+                        <dt class="col-sm-4">Năm Bắt Đầu Tuyển Sinh:</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.NamBatDauTuyenSinh)</dd>
+
+                        <dt class="col-sm-4">Cơ Sở Đào Tạo Nước Ngoài:</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.TenCoSoDaoTaoNuocNgoai)</dd>
+
+                        <dt class="col-sm-4">Địa Điểm Đào Tạo:</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.DiaDiemDaoTao)</dd>
+
+                        <dt class="col-sm-4">Ngày Ban Hành Chuẩn Đầu Ra:</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.NgayBanHanhChuanDauRa)</dd>
+
+                        <dt class="col-sm-4">Thời Gian Đào Tạo Chuẩn:</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.ThoiGianDaoTaoChuan)</dd>
+
+                        <dt class="col-sm-4">Chuẩn Đầu Ra:</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.ChuanDauRa)</dd>
+
+                        <dt class="col-sm-4">Loại Chứng Chỉ:</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.LoaiChungChiDuocChapThuan)</dd>
+
+                        <dt class="col-sm-4">Đơn Vị Thực Hiện Chương Trình:</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.DonViThucHienChuongTrinh)</dd>
+
+                        <dt class="col-sm-4">Chuẩn Đầu Ra Ngoại Ngữ:</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.ChuanDauRaVeNgoaiNgu)</dd>
+
+                        <dt class="col-sm-4">Chuẩn Đầu Ra Tin Học:</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.ChuanDauRaVeTinHoc)</dd>
+
+                        <dt class="col-sm-4">Học Phí Tại Việt Nam:</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.HocPhiTaiVietNam)</dd>
+
+                        <dt class="col-sm-4">Học Phí Tại Nước Ngoài:</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.HocPhiTaiNuocNgoai)</dd>
+
+                        <dt class="col-sm-4">Đơn Vị Cấp Bằng:</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.IdDonViCapBangNavigation.IdDonViCapBang)</dd>
+
+                        <dt class="col-sm-4">Học Chế Đào Tạo:</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.IdHocCheDaoTaoNavigation.IdHocCheDaoTao)</dd>
+
+                        <dt class="col-sm-4">Loại Chương Trình Đào Tạo:</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.IdLoaiChuongTrinhDaoTaoNavigation.IdLoaiChuongTrinhDaoTao)</dd>
+
+                        <dt class="col-sm-4">Ngành Đào Tạo:</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.IdNganhDaoTaoNavigation.IdNganhDaoTao)</dd>
+                    </dl>
+                </div>
+                <div class="card-footer text-right">
+                    <a asp-action="Edit" asp-route-id="@Model?.IdChuongTrinhDaoTao" class="btn btn-warning">Edit</a>
+                    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,166 @@
+﻿@model C500Hemis.Models.TbKyLuatCanBo
+
+@{
+    ViewData["Title"] = "XÓA HỒ SƠ";
+}
+@section Styles {
+    <style>
+        /* Thiết lập cơ bản cho form */
+       .total{
+            display: flex;
+            justify-content: center;
+            margin-top:50px;
+            margin-bottom: 50px;
+       }
+        .form_del {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+            width:50%;
+        }
+
+        h1 {
+            font-size: 36px;
+            text-align: center;
+            color: #e3342f; /* Đổi màu cho cảnh báo */
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            text-align: center;
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Định dạng cho bảng thông tin, ô nhỏ phía trong */
+        .row {
+            display: grid;
+            grid-template-columns: 50% 50%; /* Mỗi cột chiếm 50% */
+            gap: 10px; /* Khoảng cách giữa các phần tử */
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            margin: 20px;
+        }
+
+        dt {
+            font-weight: bold;
+            color: #444;
+            white-space: nowrap; /* Tránh xuống dòng */
+            align-self: center; /* Canh giữa theo trục dọc */
+            text-align: right; /* Căn phải để khoảng cách giữa dt và dd đều đặn hơn */
+            padding-right: 10px; /* Thêm khoảng cách giữa dt và dd */
+            
+        }
+
+        dd {
+            color: #555;
+            margin-bottom: 0;
+            align-self: center; /* Canh giữa theo trục dọc */
+        }
+
+        .btn-danger {
+            background-color: #e3342f;
+            border: none;
+            padding: 12px 20px;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+            transform: scale(1.05);
+        }
+
+        /* Nút quay lại */
+        .back {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #6c757d;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-left: 10px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .back:hover {
+            background-color: #5a6268;
+            transform: scale(1.05);
+        }
+
+        /* Canh giữa form */
+        .submit {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+    </style>
+}
+
+
+<div class="total">
+    <div class="form_del">
+        <h1><b>XÓA HỒ SƠ CÁN BỘ BỊ KỶ LUẬT</b></h1>
+
+        <h3>Đồng chí có muốn xóa hồ sơ này không?</h3>
+
+        <dl class="row">
+            <dt class="col-sm-2">
+                Lý do bị kỷ luật
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.LyDo)
+            </dd>
+            <dt class="col-sm-2">
+                Ngày nhận quyết định
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.NgayThangNamQuyetDinh)
+            </dd>
+            <dt class="col-sm-2">
+                Số quyết định
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.SoQuyetDinh)
+            </dd>
+            <dt class="col-sm-2">
+                Năm bị kỷ luật
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.NamBiKyLuat)
+            </dd>
+            <dt class="col-sm-2">
+                ID cán bộ
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.IdCanBoNavigation.IdNguoiNavigation.name)
+            </dd>
+            <dt class="col-sm-2">
+                Cấp quyết định
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.IdCapQuyetDinhNavigation.IdCapKhenThuong)
+            </dd>
+            <dt class="col-sm-2">
+                Hình thức kỷ luật
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.IdLoaiKyLuatNavigation.IdLoaiKyLuat)
+            </dd>
+        </dl>
+
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="IdKyLuatCanBo" />
+            <input type="submit" value="Xác nhận xóa" class="btn btn-danger" /> |
+            <a asp-action="Index" class="back">Quay lại</a>
+        </form>
+    </div>
+</div>
+

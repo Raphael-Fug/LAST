@@ -1,0 +1,79 @@
+﻿@model C500Hemis.Models.TbChucDanhKhoaHocCuaCanBo
+
+@{
+    ViewData["Title"] = "Chỉnh Sửa Chức Danh Khoa Học Của Cán Bộ";
+}
+
+<div class="container mt-5">
+    <h1 class="text-center">Chỉnh Sửa</h1>
+    <h4 class="text-center">Thông Tin Chức Danh Khoa Học</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card shadow">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">Chỉnh Sửa Chức Danh Khoa Học</h5>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                        <input type="hidden" asp-for="IdChucDanhKhoaHocCuaCanBo" />
+
+                        <div class="form-group mb-3">
+                            <label asp-for="IdCanBo" class="control-label">Cán Bộ</label>
+                            <select asp-for="IdCanBo" class="form-control" asp-items="ViewBag.IdCanBo">
+                                <option value="">--- Chọn Cán Bộ ---</option>
+                            </select>
+                            <span asp-validation-for="IdCanBo" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="IdChucDanhKhoaHoc" class="control-label">Chức Danh Khoa Học</label>
+                            <select asp-for="IdChucDanhKhoaHoc" class="form-control" asp-items="ViewBag.IdChucDanhKhoaHoc">
+                                <option value="">--- Chọn Chức Danh Khoa Học ---</option>
+                            </select>
+                            <span asp-validation-for="IdChucDanhKhoaHoc" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="IdThamQuyenQuyetDinh" class="control-label">Thẩm Quyền Quyết Định</label>
+                            <select asp-for="IdThamQuyenQuyetDinh" class="form-control" asp-items="ViewBag.IdThamQuyenQuyetDinh">
+                                <option value="">--- Chọn Thẩm Quyền ---</option>
+                            </select>
+                            <span asp-validation-for="IdThamQuyenQuyetDinh" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="SoQuyetDinh" class="control-label">Số Quyết Định</label>
+                            <input asp-for="SoQuyetDinh" class="form-control" placeholder="Nhập số quyết định" />
+                            <span asp-validation-for="SoQuyetDinh" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="NgayQuyetDinh" class="control-label">Ngày Quyết Định</label>
+                            <input asp-for="NgayQuyetDinh" class="form-control" type="date" />
+                            <span asp-validation-for="NgayQuyetDinh" class="text-danger"></span>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-save"></i> Lưu
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-3">
+        <a asp-action="Index" class="btn btn-secondary">Quay Lại Danh Sách</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

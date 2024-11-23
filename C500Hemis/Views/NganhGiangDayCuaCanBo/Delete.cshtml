@@ -1,0 +1,59 @@
+﻿@model C500Hemis.Models.TbNganhGiangDayCuaCanBo
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<body style="background-color: #e0f7fa; font-family: Arial, sans-serif; padding: 20px; margin: 0;">
+
+    <h1 style="font-size: 32px; color: #c0392b; text-align: center; background-color: #A8E6CE; padding: 15px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">Delete</h1>
+
+    <h3 style="font-size: 22px; color: #e74c3c; text-align: center; margin-bottom: 30px;">Are you sure you want to delete this?</h3>
+
+    <div style="background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); max-width: 800px; margin: 0 auto;">
+
+        <h4 style="font-size: 24px; color: #34495e; margin-bottom: 15px;">Ngành Giảng Dạy Của Cán Bộ</h4>
+        <hr style="border-top: 1px solid #bdc3c7; margin-bottom: 20px;" />
+
+        <dl class="row" style="margin: 0; padding: 0;">
+            <dt class="col-sm-3" style="font-weight: bold; color: #00796b; margin-bottom: 10px;">
+                @Html.DisplayNameFor(model => model.LaNganhChinh)
+            </dt>
+            <dd class="col-sm-9" style="color: #7f8c8d; margin-bottom: 10px;">
+                @Html.DisplayFor(model => model.LaNganhChinh)
+            </dd>
+            <dt class="col-sm-3" style="font-weight: bold; color: #00796b; margin-bottom: 10px;">
+                @Html.DisplayNameFor(model => model.DonViThinhGiang)
+            </dt>
+            <dd class="col-sm-9" style="color: #7f8c8d; margin-bottom: 10px;">
+                @Html.DisplayFor(model => model.DonViThinhGiang)
+            </dd>
+            <dt class="col-sm-3" style="font-weight: bold; color: #00796b; margin-bottom: 10px;">
+                @Html.DisplayNameFor(model => model.IdCanBoNavigation)
+            </dt>
+            <dd class="col-sm-9" style="color: #7f8c8d; margin-bottom: 10px;">
+                @Html.DisplayFor(model => model.IdCanBoNavigation.IdCanBo)
+            </dd>
+            <dt class="col-sm-3" style="font-weight: bold; color: #00796b; margin-bottom: 10px;">
+                @Html.DisplayNameFor(model => model.IdNganhNavigation)
+            </dt>
+            <dd class="col-sm-9" style="color: #7f8c8d; margin-bottom: 10px;">
+                @Html.DisplayFor(model => model.IdNganhNavigation.IdNganhDaoTao)
+            </dd>
+            <dt class="col-sm-3" style="font-weight: bold; color: #00796b; margin-bottom: 10px;">
+                @Html.DisplayNameFor(model => model.IdTrinhDoDaoTaoNavigation)
+            </dt>
+            <dd class="col-sm-9" style="color: #7f8c8d; margin-bottom: 10px;">
+                @Html.DisplayFor(model => model.IdTrinhDoDaoTaoNavigation.IdTrinhDoDaoTao)
+            </dd>
+        </dl>
+
+        <form asp-action="Delete" style="text-align: center; margin-top: 30px;">
+            <input type="hidden" asp-for="IdNganhGiangDayCuaCanBo" />
+            <input type="submit" value="Delete" class="btn btn-danger" style="padding: 12px 30px; background-color: #e74c3c; border: none; color: white; border-radius: 6px; font-size: 16px; cursor: pointer; transition: background-color 0.3s ease;" />
+            <a asp-action="Index" style="color: #3498db; text-decoration: none; margin-left: 15px; font-size: 16px;">Back to List</a>
+        </form>
+
+    </div>
+
+</body>

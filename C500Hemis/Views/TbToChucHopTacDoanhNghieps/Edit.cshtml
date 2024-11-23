@@ -1,0 +1,125 @@
+﻿@model C500Hemis.Models.TbToChucHopTacDoanhNghiep
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<style>
+    div {
+        margin: auto
+    }
+
+    body {
+        background-color: #05c46b;
+        font-family: Verdana;
+    }
+
+    /* Căn giữa toàn bộ nội dung */
+    .center-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Chiều cao toàn màn hình */
+    }
+
+    form {
+        background-color: #fff;
+        max-width: 500px;
+        padding: 30px 20px;
+        box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+    }
+
+    h1, h4 {
+        text-align: center;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+        .form-group label {
+            margin-bottom: 5px;
+            display: block;
+        }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .btn-primary {
+        width: 100%;
+        padding: 10px;
+        background-color: #05c46b;
+        border: none;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+        .btn-primary:hover {
+            background-color: #048a55;
+        }
+</style>
+
+<h4>TbToChucHopTacDoanhNghiep</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdToChucHopTacDoanhNghiep" />
+            <div class="form-group">
+                <label asp-for="MaToChucHopTacDoanhNghiep" class="control-label"></label>
+                <input asp-for="MaToChucHopTacDoanhNghiep" class="form-control" />
+                <span asp-validation-for="MaToChucHopTacDoanhNghiep" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TenToChucHopTacDoanhNghiep" class="control-label"></label>
+                <input asp-for="TenToChucHopTacDoanhNghiep" class="form-control" />
+                <span asp-validation-for="TenToChucHopTacDoanhNghiep" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NoiDungHopTac" class="control-label"></label>
+                <input asp-for="NoiDungHopTac" class="form-control" />
+                <span asp-validation-for="NoiDungHopTac" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NgayKyKet" class="control-label"></label>
+                <input asp-for="NgayKyKet" class="form-control" />
+                <span asp-validation-for="NgayKyKet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KetQuaHopTac" class="control-label"></label>
+                <input asp-for="KetQuaHopTac" class="form-control" />
+                <span asp-validation-for="KetQuaHopTac" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdLoaiDeAn" class="control-label"></label>
+                <select asp-for="IdLoaiDeAn" class="form-control" asp-items="ViewBag.IdLoaiDeAn"></select>
+                <span asp-validation-for="IdLoaiDeAn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GiaTriGiaoDichCuaThiTruong" class="control-label"></label>
+                <input asp-for="GiaTriGiaoDichCuaThiTruong" class="form-control" />
+                <span asp-validation-for="GiaTriGiaoDichCuaThiTruong" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

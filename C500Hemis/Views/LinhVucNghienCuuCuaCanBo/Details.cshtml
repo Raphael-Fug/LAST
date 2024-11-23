@@ -1,0 +1,83 @@
+﻿@model C500Hemis.Models.TbLinhVucNghienCuuCuaCanBo
+
+@{
+    ViewData["Title"] = "Xem chi tiết";
+}
+
+<h1>Xem chi tiết</h1>
+
+<div>
+    <h4>Lĩnh Vực Nghiên Cứu Của Cán Bộ</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LaLinhVucNghienCuuChuyenSau)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LaLinhVucNghienCuuChuyenSau)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SoNamNghienCuu)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SoNamNghienCuu)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdCanBoNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdCanBoNavigation.IdCanBo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdLinhVucNghienCuuNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdLinhVucNghienCuuNavigation.IdLinhVucNghienCuu)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.IdLinhVucNghienCuuCuaCanBo">Edit</a> |
+    <a asp-action="Index">Trở về danh sách</a>
+</div>
+<style>
+/* Định dạng container chính */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h4 {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #343a40;
+}
+
+dl {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+dt {
+    font-weight: bold;
+    color: #343a40;
+}
+
+dd {
+    margin-left: 10px;
+}
+
+/* Định dạng nút hành động */
+a {
+    color: #007bff;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+</style>

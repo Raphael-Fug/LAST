@@ -1,0 +1,109 @@
+﻿@model C500Hemis.Models.TbDanhGiaXepLoaiCanBo
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<head>
+
+    <style>
+        body {
+            background-color: rgb(200, 223, 227);
+        }
+
+        .tieude {
+            color: rgb(28, 99, 110);
+            padding-top: 3%;
+            font-size: 80px;
+            text-align: center;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        b {
+            color: rgb(28, 99, 110);
+        }
+
+        .arrow-button:hover {
+            background-color: rgb(127, 193, 203);
+        }
+
+        .arrow-button {
+            background-color: rgb(28, 99, 110);
+            color: white;
+            padding: 10px 40px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            clip-path: polygon( 0% 50%, 10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100% );
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 30px;
+            width: 150px;
+            margin: auto;
+            margin-top: 5px;
+            padding-top: 4px;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .arrow-button a:hover {
+            color: white;
+        }
+    </style>
+</head>
+<h1 class="tieude">Edit</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdDanhGiaXepLoaiCanBo" />
+            <div class="form-group">
+                <b><label asp-for="IdCanBo" class="control-label"></label></b>
+                <select asp-for="IdCanBo" class="form-control" asp-items="ViewBag.IdCanBo"></select>
+                <span asp-validation-for="IdCanBo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <b><label asp-for="IdDanhGia" class="control-label"></label></b>
+                <select asp-for="IdDanhGia" class="form-control" asp-items="ViewBag.IdDanhGia"></select>
+                <span asp-validation-for="IdDanhGia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <b><label asp-for="NamDanhGia" class="control-label"></label></b>
+                <input asp-for="NamDanhGia" class="form-control" />
+                <span asp-validation-for="NamDanhGia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <b><label asp-for="NganhDuocKhenThuong" class="control-label"></label></b>
+                <input asp-for="NganhDuocKhenThuong" class="form-control" />
+                <span asp-validation-for="NganhDuocKhenThuong" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn arrow-button" />
+            </div>
+        </form>
+        <div>
+
+            <p class="btn arrow-button">
+                <a asp-action="Index">Back</a>
+            </p>
+
+        </div>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

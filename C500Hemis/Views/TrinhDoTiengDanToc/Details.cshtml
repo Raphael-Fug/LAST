@@ -1,0 +1,115 @@
+﻿@model C500Hemis.Models.TbTrinhDoTiengDanToc
+
+@{
+    ViewData["Title"] = "Chi Tiết Trình Độ Tiếng Dân Tộc";
+}
+
+<h1 class="text-center mb-5">Chi Tiết Trình Độ Tiếng Dân Tộc</h1>
+
+<div class="container">
+    @if (Model == null)
+    {
+        <p class="text-danger text-center">Không có thông tin chi tiết.</p>
+    }
+    else
+    {
+        <div class="details-card p-5 mb-5 shadow-lg rounded-lg bg-white">
+            <h4 class="mb-4 text-uppercase text-secondary">Thông tin chi tiết</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-3 text-muted">ID Cán bộ</dt>
+                <dd class="col-sm-9 font-weight-bold">@Html.DisplayFor(model => model.IdCanBoNavigation.IdCanBo)</dd>
+
+                <dt class="col-sm-3 text-muted">Khung năng lực Ngoại ngữ</dt>
+                <dd class="col-sm-9 font-weight-bold">@Html.DisplayFor(model => model.IdKhungNangLucNgoaiNguNavigation.IdKhungNangLucNgoaiNgu)</dd>
+
+                <dt class="col-sm-3 text-muted">Tiếng dân tộc</dt>
+                <dd class="col-sm-9 font-weight-bold">@Html.DisplayFor(model => model.IdTiengDanTocNavigation.IdTiengDanToc)</dd>
+            </dl>
+        </div>
+
+        <div class="text-center">
+            <a class="btn btn-primary btn-lg rounded-pill shadow-sm px-4 mx-2" asp-action="Edit" asp-route-id="@Model.IdTrinhDoTiengDanToc">Sửa</a>
+            <a class="btn btn-secondary btn-lg rounded-pill shadow-sm px-4 mx-2" asp-action="Index">Quay lại danh sách</a>
+        </div>
+    }
+</div>
+
+<!-- CSS Styling -->
+<style>
+    body {
+        background-color: #DAEBE3;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    h1 {
+        color: #333;
+        font-size: 2.8rem;
+        font-weight: bold;
+        margin-bottom: 40px;
+    }
+
+    .details-card {
+        background-color: #ffffff;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        border-radius: 15px;
+    }
+
+    dt {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #6c757d;
+    }
+
+    dd {
+        font-size: 1.1rem;
+        color: #212529;
+    }
+
+    .btn {
+        padding: 12px 25px;
+        font-size: 16px;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        color: white;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+        color: white;
+    }
+
+    .btn:hover {
+        transform: translateY(-3px);
+        opacity: 0.9;
+    }
+
+    .rounded-pill {
+        border-radius: 50px;
+    }
+
+    .text-muted {
+        color: #6c757d;
+    }
+
+    .text-uppercase {
+        text-transform: uppercase;
+    }
+
+    .shadow-lg {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .shadow-sm {
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .font-weight-bold {
+        font-weight: bold;
+    }
+</style>
