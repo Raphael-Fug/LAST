@@ -21,7 +21,10 @@ namespace C500Hemis.Controllers.NH
         // GET: ThongTinViPham
         public async Task<IActionResult> Index()
         {
-            var hemisContext = _context.TbThongTinViPhams.Include(t => t.IdHocVienNavigation).Include(t => t.IdLoaiViPhamNavigation);
+            var hemisContext = _context.TbThongTinViPhams
+                .Include(t => t.IdHocVienNavigation)
+                .ThenInclude(t => t.IdNguoiNavigation)
+                .Include(t => t.IdLoaiViPhamNavigation);
             return View(await hemisContext.ToListAsync());
         }
 
@@ -35,6 +38,7 @@ namespace C500Hemis.Controllers.NH
 
             var tbThongTinViPham = await _context.TbThongTinViPhams
                 .Include(t => t.IdHocVienNavigation)
+                .ThenInclude(t => t.IdNguoiNavigation)
                 .Include(t => t.IdLoaiViPhamNavigation)
                 .FirstOrDefaultAsync(m => m.IdThongTinViPham == id);
             if (tbThongTinViPham == null)
@@ -48,7 +52,7 @@ namespace C500Hemis.Controllers.NH
         // GET: ThongTinViPham/Create
         public IActionResult Create()
         {
-            ViewData["IdHocVien"] = new SelectList(_context.TbHocViens, "IdHocVien", "IdHocVien");
+            ViewData["IdHocVien"] = new SelectList(_context.TbHocViens.Include(t => t.IdNguoiNavigation), "IdHocVien", "IdNguoiNavigation.name");
             ViewData["IdLoaiViPham"] = new SelectList(_context.DmLoaiViPhams, "IdLoaiViPham", "LoaiViPham");
             return View();
         }
@@ -62,11 +66,22 @@ namespace C500Hemis.Controllers.NH
         {
             if (ModelState.IsValid)
             {
-                _context.Add(tbThongTinViPham);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    _context.Add(tbThongTinViPham);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (DbUpdateException ex)
+                {
+                    ViewBag.ErrorMessage = "Lỗi cơ sở dữ liệu: " + ex.Message;
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.ErrorMessage = "Lỗi không xác định: " + ex.Message;
+                }
             }
-            ViewData["IdHocVien"] = new SelectList(_context.TbHocViens, "IdHocVien", "IdHocVien", tbThongTinViPham.IdHocVien);
+            ViewData["IdHocVien"] = new SelectList(_context.TbHocViens.Include(t => t.IdNguoiNavigation), "IdHocVien", "IdNguoiNavigation.name", tbThongTinViPham.IdHocVien);
             ViewData["IdLoaiViPham"] = new SelectList(_context.DmLoaiViPhams, "IdLoaiViPham", "LoaiViPham", tbThongTinViPham.IdLoaiViPham);
             return View(tbThongTinViPham);
         }
@@ -84,7 +99,7 @@ namespace C500Hemis.Controllers.NH
             {
                 return NotFound();
             }
-            ViewData["IdHocVien"] = new SelectList(_context.TbHocViens, "IdHocVien", "IdHocVien", tbThongTinViPham.IdHocVien);
+            ViewData["IdHocVien"] = new SelectList(_context.TbHocViens.Include(t => t.IdNguoiNavigation), "IdHocVien", "IdNguoiNavigation.name", tbThongTinViPham.IdHocVien);
             ViewData["IdLoaiViPham"] = new SelectList(_context.DmLoaiViPhams, "IdLoaiViPham", "LoaiViPham", tbThongTinViPham.IdLoaiViPham);
             return View(tbThongTinViPham);
         }
@@ -119,9 +134,13 @@ namespace C500Hemis.Controllers.NH
                         throw;
                     }
                 }
+                catch (Exception ex)
+                {
+                    ViewBag.ErrorMessage = "Lỗi không xác định: " + ex.Message;
+                }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdHocVien"] = new SelectList(_context.TbHocViens, "IdHocVien", "IdHocVien", tbThongTinViPham.IdHocVien);
+            ViewData["IdHocVien"] = new SelectList(_context.TbHocViens.Include(t => t.IdNguoiNavigation), "IdHocVien", "IdNguoiNavigation.name", tbThongTinViPham.IdHocVien);
             ViewData["IdLoaiViPham"] = new SelectList(_context.DmLoaiViPhams, "IdLoaiViPham", "LoaiViPham", tbThongTinViPham.IdLoaiViPham);
             return View(tbThongTinViPham);
         }
@@ -136,6 +155,7 @@ namespace C500Hemis.Controllers.NH
 
             var tbThongTinViPham = await _context.TbThongTinViPhams
                 .Include(t => t.IdHocVienNavigation)
+                .ThenInclude(t => t.IdNguoiNavigation)
                 .Include(t => t.IdLoaiViPhamNavigation)
                 .FirstOrDefaultAsync(m => m.IdThongTinViPham == id);
             if (tbThongTinViPham == null)

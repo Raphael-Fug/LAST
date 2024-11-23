@@ -21,7 +21,11 @@ namespace C500Hemis.Controllers.NH
         // GET: ThongTinViecLamSauTotNghiep
         public async Task<IActionResult> Index()
         {
-            var hemisContext = _context.TbThongTinViecLamSauTotNghieps.Include(t => t.IdHinhThucTuyenDungNavigation).Include(t => t.IdHocVienNavigation).Include(t => t.IdViTriViecLamNavigation);
+            var hemisContext = _context.TbThongTinViecLamSauTotNghieps
+                .Include(t => t.IdHinhThucTuyenDungNavigation)
+                .Include(t => t.IdHocVienNavigation)
+                .ThenInclude(t => t.IdNguoiNavigation)
+                .Include(t => t.IdViTriViecLamNavigation);
             return View(await hemisContext.ToListAsync());
         }
 
@@ -36,6 +40,7 @@ namespace C500Hemis.Controllers.NH
             var tbThongTinViecLamSauTotNghiep = await _context.TbThongTinViecLamSauTotNghieps
                 .Include(t => t.IdHinhThucTuyenDungNavigation)
                 .Include(t => t.IdHocVienNavigation)
+                .ThenInclude(t => t.IdNguoiNavigation)
                 .Include(t => t.IdViTriViecLamNavigation)
                 .FirstOrDefaultAsync(m => m.IdThongTinViecLamSauTotNghiep == id);
             if (tbThongTinViecLamSauTotNghiep == null)
@@ -50,7 +55,7 @@ namespace C500Hemis.Controllers.NH
         public IActionResult Create()
         {
             ViewData["IdHinhThucTuyenDung"] = new SelectList(_context.DmHinhThucTuyenDungs, "IdHinhThucTuyenDung", "HinhThucTuyenDung");
-            ViewData["IdHocVien"] = new SelectList(_context.TbHocViens, "IdHocVien", "IdHocVien");
+            ViewData["IdHocVien"] = new SelectList(_context.TbHocViens.Include(t => t.IdNguoiNavigation), "IdHocVien", "IdNguoiNavigation.name");
             ViewData["IdViTriViecLam"] = new SelectList(_context.DmViTriViecLams, "IdViTriViecLam", "ViTriViecLam");
             return View();
         }
@@ -64,12 +69,23 @@ namespace C500Hemis.Controllers.NH
         {
             if (ModelState.IsValid)
             {
-                _context.Add(tbThongTinViecLamSauTotNghiep);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    _context.Add(tbThongTinViecLamSauTotNghiep);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (DbUpdateException ex)
+                {
+                    ViewBag.ErrorMessage = "Lỗi cơ sở dữ liệu: " + ex.Message;
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.ErrorMessage = "Lỗi không xác định: " + ex.Message;
+                }
             }
             ViewData["IdHinhThucTuyenDung"] = new SelectList(_context.DmHinhThucTuyenDungs, "IdHinhThucTuyenDung", "HinhThucTuyenDung", tbThongTinViecLamSauTotNghiep.IdHinhThucTuyenDung);
-            ViewData["IdHocVien"] = new SelectList(_context.TbHocViens, "IdHocVien", "IdHocVien", tbThongTinViecLamSauTotNghiep.IdHocVien);
+            ViewData["IdHocVien"] = new SelectList(_context.TbHocViens.Include(t => t.IdNguoiNavigation), "IdHocVien", "IdNguoiNavigation.name", tbThongTinViecLamSauTotNghiep.IdHocVien);
             ViewData["IdViTriViecLam"] = new SelectList(_context.DmViTriViecLams, "IdViTriViecLam", "ViTriViecLam", tbThongTinViecLamSauTotNghiep.IdViTriViecLam);
             return View(tbThongTinViecLamSauTotNghiep);
         }
@@ -88,7 +104,7 @@ namespace C500Hemis.Controllers.NH
                 return NotFound();
             }
             ViewData["IdHinhThucTuyenDung"] = new SelectList(_context.DmHinhThucTuyenDungs, "IdHinhThucTuyenDung", "HinhThucTuyenDung", tbThongTinViecLamSauTotNghiep.IdHinhThucTuyenDung);
-            ViewData["IdHocVien"] = new SelectList(_context.TbHocViens, "IdHocVien", "IdHocVien", tbThongTinViecLamSauTotNghiep.IdHocVien);
+            ViewData["IdHocVien"] = new SelectList(_context.TbHocViens.Include(t => t.IdNguoiNavigation), "IdHocVien", "IdNguoiNavigation.name", tbThongTinViecLamSauTotNghiep.IdHocVien);
             ViewData["IdViTriViecLam"] = new SelectList(_context.DmViTriViecLams, "IdViTriViecLam", "ViTriViecLam", tbThongTinViecLamSauTotNghiep.IdViTriViecLam);
             return View(tbThongTinViecLamSauTotNghiep);
         }
@@ -123,10 +139,14 @@ namespace C500Hemis.Controllers.NH
                         throw;
                     }
                 }
+                catch (Exception ex)
+                {
+                    ViewBag.ErrorMessage = "Lỗi không xác định: " + ex.Message;
+                }
                 return RedirectToAction(nameof(Index));
             }
             ViewData["IdHinhThucTuyenDung"] = new SelectList(_context.DmHinhThucTuyenDungs, "IdHinhThucTuyenDung", "HinhThucTuyenDung", tbThongTinViecLamSauTotNghiep.IdHinhThucTuyenDung);
-            ViewData["IdHocVien"] = new SelectList(_context.TbHocViens, "IdHocVien", "IdHocVien", tbThongTinViecLamSauTotNghiep.IdHocVien);
+            ViewData["IdHocVien"] = new SelectList(_context.TbHocViens.Include(t => t.IdNguoiNavigation), "IdHocVien", "IdNguoiNavigation.name", tbThongTinViecLamSauTotNghiep.IdHocVien);
             ViewData["IdViTriViecLam"] = new SelectList(_context.DmViTriViecLams, "IdViTriViecLam", "ViTriViecLam", tbThongTinViecLamSauTotNghiep.IdViTriViecLam);
             return View(tbThongTinViecLamSauTotNghiep);
         }
@@ -142,6 +162,7 @@ namespace C500Hemis.Controllers.NH
             var tbThongTinViecLamSauTotNghiep = await _context.TbThongTinViecLamSauTotNghieps
                 .Include(t => t.IdHinhThucTuyenDungNavigation)
                 .Include(t => t.IdHocVienNavigation)
+                .ThenInclude(t => t.IdNguoiNavigation)
                 .Include(t => t.IdViTriViecLamNavigation)
                 .FirstOrDefaultAsync(m => m.IdThongTinViecLamSauTotNghiep == id);
             if (tbThongTinViecLamSauTotNghiep == null)

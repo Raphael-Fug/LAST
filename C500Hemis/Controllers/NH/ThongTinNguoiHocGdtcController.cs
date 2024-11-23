@@ -21,7 +21,9 @@ namespace C500Hemis.Controllers.NH
         // GET: ThongTinNguoiHocGdtc
         public async Task<IActionResult> Index()
         {
-            var hemisContext = _context.TbThongTinNguoiHocGdtcs.Include(t => t.IdHocVienNavigation);
+            var hemisContext = _context.TbThongTinNguoiHocGdtcs
+                .Include(t => t.IdHocVienNavigation)
+                .ThenInclude(t => t.IdNguoiNavigation);
             return View(await hemisContext.ToListAsync());
         }
 
@@ -35,6 +37,7 @@ namespace C500Hemis.Controllers.NH
 
             var tbThongTinNguoiHocGdtc = await _context.TbThongTinNguoiHocGdtcs
                 .Include(t => t.IdHocVienNavigation)
+                .ThenInclude(t => t.IdNguoiNavigation)
                 .FirstOrDefaultAsync(m => m.IdThongTinNguoiHocGdtc == id);
             if (tbThongTinNguoiHocGdtc == null)
             {
@@ -47,7 +50,7 @@ namespace C500Hemis.Controllers.NH
         // GET: ThongTinNguoiHocGdtc/Create
         public IActionResult Create()
         {
-            ViewData["IdHocVien"] = new SelectList(_context.TbHocViens, "IdHocVien", "IdHocVien");
+            ViewData["IdHocVien"] = new SelectList(_context.TbHocViens.Include(t => t.IdNguoiNavigation), "IdHocVien", "IdNguoiNavigation.name");
             return View();
         }
 
@@ -60,11 +63,22 @@ namespace C500Hemis.Controllers.NH
         {
             if (ModelState.IsValid)
             {
-                _context.Add(tbThongTinNguoiHocGdtc);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    _context.Add(tbThongTinNguoiHocGdtc);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (DbUpdateException ex)
+                {
+                    ViewBag.ErrorMessage = "Lỗi cơ sở dữ liệu: " + ex.Message;
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.ErrorMessage = "Lỗi không xác định: " + ex.Message;
+                }
             }
-            ViewData["IdHocVien"] = new SelectList(_context.TbHocViens, "IdHocVien", "IdHocVien", tbThongTinNguoiHocGdtc.IdHocVien);
+            ViewData["IdHocVien"] = new SelectList(_context.TbHocViens.Include(t => t.IdNguoiNavigation), "IdHocVien", "IdNguoiNavigation.name", tbThongTinNguoiHocGdtc.IdHocVien);
             return View(tbThongTinNguoiHocGdtc);
         }
 
@@ -81,7 +95,7 @@ namespace C500Hemis.Controllers.NH
             {
                 return NotFound();
             }
-            ViewData["IdHocVien"] = new SelectList(_context.TbHocViens, "IdHocVien", "IdHocVien", tbThongTinNguoiHocGdtc.IdHocVien);
+            ViewData["IdHocVien"] = new SelectList(_context.TbHocViens.Include(t => t.IdNguoiNavigation), "IdHocVien", "IdNguoiNavigation.name", tbThongTinNguoiHocGdtc.IdHocVien);
             return View(tbThongTinNguoiHocGdtc);
         }
 
@@ -115,9 +129,13 @@ namespace C500Hemis.Controllers.NH
                         throw;
                     }
                 }
+                catch (Exception ex)
+                {
+                    ViewBag.ErrorMessage = "Lỗi không xác định: " + ex.Message;
+                }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdHocVien"] = new SelectList(_context.TbHocViens, "IdHocVien", "IdHocVien", tbThongTinNguoiHocGdtc.IdHocVien);
+            ViewData["IdHocVien"] = new SelectList(_context.TbHocViens.Include(t => t.IdNguoiNavigation), "IdHocVien", "IdNguoiNavigation.name", tbThongTinNguoiHocGdtc.IdHocVien);
             return View(tbThongTinNguoiHocGdtc);
         }
 
@@ -131,6 +149,7 @@ namespace C500Hemis.Controllers.NH
 
             var tbThongTinNguoiHocGdtc = await _context.TbThongTinNguoiHocGdtcs
                 .Include(t => t.IdHocVienNavigation)
+                .ThenInclude(t => t.IdNguoiNavigation)
                 .FirstOrDefaultAsync(m => m.IdThongTinNguoiHocGdtc == id);
             if (tbThongTinNguoiHocGdtc == null)
             {

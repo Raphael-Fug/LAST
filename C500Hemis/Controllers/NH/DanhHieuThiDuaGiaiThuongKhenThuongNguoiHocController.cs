@@ -21,7 +21,15 @@ namespace C500Hemis.Controllers.NH
         // GET: DanhHieuThiDuaGiaiThuongKhenThuongNguoiHoc
         public async Task<IActionResult> Index()
         {
-            var hemisContext = _context.TbDanhHieuThiDuaGiaiThuongKhenThuongNguoiHocs.Include(t => t.IdCapKhenThuongNavigation).Include(t => t.IdDanhHieuThiDuaGiaiThuongKhenThuongNavigation).Include(t => t.IdHocVienNavigation).Include(t => t.IdLoaiDanhHieuThiDuaGiaiThuongKhenThuongNavigation).Include(t => t.IdPhuongThucKhenThuongNavigation);
+            var hemisContext = _context.TbDanhHieuThiDuaGiaiThuongKhenThuongNguoiHocs
+                .Include(t => t.IdCapKhenThuongNavigation)
+                .Include(t => t.IdDanhHieuThiDuaGiaiThuongKhenThuongNavigation)
+                .Include(t => t.IdHocVienNavigation)
+                //
+                .ThenInclude(t => t.IdNguoiNavigation)
+                .Include(t => t.IdLoaiDanhHieuThiDuaGiaiThuongKhenThuongNavigation)
+                .Include(t => t.IdPhuongThucKhenThuongNavigation);
+
             return View(await hemisContext.ToListAsync());
         }
 
@@ -37,6 +45,7 @@ namespace C500Hemis.Controllers.NH
                 .Include(t => t.IdCapKhenThuongNavigation)
                 .Include(t => t.IdDanhHieuThiDuaGiaiThuongKhenThuongNavigation)
                 .Include(t => t.IdHocVienNavigation)
+                .ThenInclude(t => t.IdNguoiNavigation)
                 .Include(t => t.IdLoaiDanhHieuThiDuaGiaiThuongKhenThuongNavigation)
                 .Include(t => t.IdPhuongThucKhenThuongNavigation)
                 .FirstOrDefaultAsync(m => m.IdDanhHieuThiDuaGiaiThuongKhenThuongNguoiHoc == id);
@@ -53,7 +62,7 @@ namespace C500Hemis.Controllers.NH
         {
             ViewData["IdCapKhenThuong"] = new SelectList(_context.DmCapKhenThuongs, "IdCapKhenThuong", "CapKhenThuong");
             ViewData["IdDanhHieuThiDuaGiaiThuongKhenThuong"] = new SelectList(_context.DmThiDuaGiaiThuongKhenThuongs, "IdThiDuaGiaiThuongKhenThuong", "ThiDuaGiaiThuongKhenThuong");
-            ViewData["IdHocVien"] = new SelectList(_context.TbHocViens, "IdHocVien", "IdHocVien");
+            ViewData["IdHocVien"] = new SelectList(_context.TbHocViens.Include(t => t.IdNguoiNavigation),"IdHocVien", "IdNguoiNavigation.name");
             ViewData["IdLoaiDanhHieuThiDuaGiaiThuongKhenThuong"] = new SelectList(_context.DmLoaiDanhHieuThiDuaGiaiThuongKhenThuongs, "IdLoaiDanhHieuThiDuaGiaiThuongKhenThuong", "LoaiDanhHieuThiDuaGiaiThuongKhenThuong");
             ViewData["IdPhuongThucKhenThuong"] = new SelectList(_context.DmPhuongThucKhenThuongs, "IdPhuongThucKhenThuong", "PhuongThucKhenThuong");
             return View();
@@ -68,13 +77,24 @@ namespace C500Hemis.Controllers.NH
         {
             if (ModelState.IsValid)
             {
-                _context.Add(tbDanhHieuThiDuaGiaiThuongKhenThuongNguoiHoc);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    _context.Add(tbDanhHieuThiDuaGiaiThuongKhenThuongNguoiHoc);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (DbUpdateException ex)
+                {
+                    ViewBag.ErrorMessage = "Lỗi cơ sở dữ liệu: " + ex.Message;
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.ErrorMessage = "Lỗi không xác định: " + ex.Message;
+                }
             }
             ViewData["IdCapKhenThuong"] = new SelectList(_context.DmCapKhenThuongs, "IdCapKhenThuong", "CapKhenThuong", tbDanhHieuThiDuaGiaiThuongKhenThuongNguoiHoc.IdCapKhenThuong);
             ViewData["IdDanhHieuThiDuaGiaiThuongKhenThuong"] = new SelectList(_context.DmThiDuaGiaiThuongKhenThuongs, "IdThiDuaGiaiThuongKhenThuong", "ThiDuaGiaiThuongKhenThuong", tbDanhHieuThiDuaGiaiThuongKhenThuongNguoiHoc.IdDanhHieuThiDuaGiaiThuongKhenThuong);
-            ViewData["IdHocVien"] = new SelectList(_context.TbHocViens, "IdHocVien", "IdHocVien", tbDanhHieuThiDuaGiaiThuongKhenThuongNguoiHoc.IdHocVien);
+            ViewData["IdHocVien"] = new SelectList(_context.TbHocViens.Include(t => t.IdNguoiNavigation), "IdHocVien", "IdNguoiNavigation.name", tbDanhHieuThiDuaGiaiThuongKhenThuongNguoiHoc.IdHocVien);
             ViewData["IdLoaiDanhHieuThiDuaGiaiThuongKhenThuong"] = new SelectList(_context.DmLoaiDanhHieuThiDuaGiaiThuongKhenThuongs, "LoaiDanhHieuThiDuaGiaiThuongKhenThuong", "IdLoaiDanhHieuThiDuaGiaiThuongKhenThuong", tbDanhHieuThiDuaGiaiThuongKhenThuongNguoiHoc.IdLoaiDanhHieuThiDuaGiaiThuongKhenThuong);
             ViewData["IdPhuongThucKhenThuong"] = new SelectList(_context.DmPhuongThucKhenThuongs, "IdPhuongThucKhenThuong", "PhuongThucKhenThuong", tbDanhHieuThiDuaGiaiThuongKhenThuongNguoiHoc.IdPhuongThucKhenThuong);
             return View(tbDanhHieuThiDuaGiaiThuongKhenThuongNguoiHoc);
@@ -95,7 +115,7 @@ namespace C500Hemis.Controllers.NH
             }
             ViewData["IdCapKhenThuong"] = new SelectList(_context.DmCapKhenThuongs, "IdCapKhenThuong", "CapKhenThuong", tbDanhHieuThiDuaGiaiThuongKhenThuongNguoiHoc.IdCapKhenThuong);
             ViewData["IdDanhHieuThiDuaGiaiThuongKhenThuong"] = new SelectList(_context.DmThiDuaGiaiThuongKhenThuongs, "IdThiDuaGiaiThuongKhenThuong", "ThiDuaGiaiThuongKhenThuong", tbDanhHieuThiDuaGiaiThuongKhenThuongNguoiHoc.IdDanhHieuThiDuaGiaiThuongKhenThuong);
-            ViewData["IdHocVien"] = new SelectList(_context.TbHocViens, "IdHocVien", "IdHocVien", tbDanhHieuThiDuaGiaiThuongKhenThuongNguoiHoc.IdHocVien);
+            ViewData["IdHocVien"] = new SelectList(_context.TbHocViens.Include(t => t.IdNguoiNavigation), "IdHocVien", "IdNguoiNavigation.name", tbDanhHieuThiDuaGiaiThuongKhenThuongNguoiHoc.IdHocVien);
             ViewData["IdLoaiDanhHieuThiDuaGiaiThuongKhenThuong"] = new SelectList(_context.DmLoaiDanhHieuThiDuaGiaiThuongKhenThuongs, "IdLoaiDanhHieuThiDuaGiaiThuongKhenThuong", "LoaiDanhHieuThiDuaGiaiThuongKhenThuong", tbDanhHieuThiDuaGiaiThuongKhenThuongNguoiHoc.IdLoaiDanhHieuThiDuaGiaiThuongKhenThuong);
             ViewData["IdPhuongThucKhenThuong"] = new SelectList(_context.DmPhuongThucKhenThuongs, "IdPhuongThucKhenThuong", "PhuongThucKhenThuong", tbDanhHieuThiDuaGiaiThuongKhenThuongNguoiHoc.IdPhuongThucKhenThuong);
             return View(tbDanhHieuThiDuaGiaiThuongKhenThuongNguoiHoc);
@@ -131,11 +151,15 @@ namespace C500Hemis.Controllers.NH
                         throw;
                     }
                 }
+                catch(Exception ex)
+                {
+                    ViewBag.ErrorMessage = "Lỗi không xác định: " + ex.Message;
+                }
                 return RedirectToAction(nameof(Index));
             }
             ViewData["IdCapKhenThuong"] = new SelectList(_context.DmCapKhenThuongs, "IdCapKhenThuong", "CapKhenThuong", tbDanhHieuThiDuaGiaiThuongKhenThuongNguoiHoc.IdCapKhenThuong);
             ViewData["IdDanhHieuThiDuaGiaiThuongKhenThuong"] = new SelectList(_context.DmThiDuaGiaiThuongKhenThuongs, "IdThiDuaGiaiThuongKhenThuong", "ThiDuaGiaiThuongKhenThuong", tbDanhHieuThiDuaGiaiThuongKhenThuongNguoiHoc.IdDanhHieuThiDuaGiaiThuongKhenThuong);
-            ViewData["IdHocVien"] = new SelectList(_context.TbHocViens, "IdHocVien", "IdHocVien", tbDanhHieuThiDuaGiaiThuongKhenThuongNguoiHoc.IdHocVien);
+            ViewData["IdHocVien"] = new SelectList(_context.TbHocViens.Include(t => t.IdNguoiNavigation), "IdHocVien", "IdNguoiNavigation.name", tbDanhHieuThiDuaGiaiThuongKhenThuongNguoiHoc.IdHocVien);
             ViewData["IdLoaiDanhHieuThiDuaGiaiThuongKhenThuong"] = new SelectList(_context.DmLoaiDanhHieuThiDuaGiaiThuongKhenThuongs, "IdLoaiDanhHieuThiDuaGiaiThuongKhenThuong", "LoaiDanhHieuThiDuaGiaiThuongKhenThuong", tbDanhHieuThiDuaGiaiThuongKhenThuongNguoiHoc.IdLoaiDanhHieuThiDuaGiaiThuongKhenThuong);
             ViewData["IdPhuongThucKhenThuong"] = new SelectList(_context.DmPhuongThucKhenThuongs, "IdPhuongThucKhenThuong", "PhuongThucKhenThuong", tbDanhHieuThiDuaGiaiThuongKhenThuongNguoiHoc.IdPhuongThucKhenThuong);
             return View(tbDanhHieuThiDuaGiaiThuongKhenThuongNguoiHoc);
@@ -153,6 +177,7 @@ namespace C500Hemis.Controllers.NH
                 .Include(t => t.IdCapKhenThuongNavigation)
                 .Include(t => t.IdDanhHieuThiDuaGiaiThuongKhenThuongNavigation)
                 .Include(t => t.IdHocVienNavigation)
+                .ThenInclude(t => t.IdNguoiNavigation)
                 .Include(t => t.IdLoaiDanhHieuThiDuaGiaiThuongKhenThuongNavigation)
                 .Include(t => t.IdPhuongThucKhenThuongNavigation)
                 .FirstOrDefaultAsync(m => m.IdDanhHieuThiDuaGiaiThuongKhenThuongNguoiHoc == id);

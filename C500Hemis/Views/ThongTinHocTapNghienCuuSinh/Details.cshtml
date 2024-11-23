@@ -178,7 +178,7 @@
             @Html.DisplayNameFor(model => model.IdHocVienNavigation)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdHocVienNavigation.IdHocVien)
+            @Html.DisplayFor(model => model.IdHocVienNavigation.IdNguoiNavigation.name)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.IdLoaiHinhDaoTaoNavigation)
@@ -196,13 +196,13 @@
             @Html.DisplayNameFor(model => model.IdNguoiHuongDanChinhNavigation)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdNguoiHuongDanChinhNavigation.IdCanBo)
+            @Html.DisplayFor(model => model.IdNguoiHuongDanChinhNavigation.IdNguoiNavigation.name)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.IdNguoiHuongDanPhuNavigation)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdNguoiHuongDanPhuNavigation.IdCanBo)
+            @Html.DisplayFor(model => model.IdNguoiHuongDanPhuNavigation.IdNguoiNavigation.name)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.IdSinhVienNamNavigation)

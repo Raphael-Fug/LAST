@@ -21,7 +21,12 @@ namespace C500Hemis.Controllers.NH
         // GET: HocVien
         public async Task<IActionResult> Index()
         {
-            var hemisContext = _context.TbHocViens.Include(t => t.IdHuyenNavigation).Include(t => t.IdLoaiKhuyetTatNavigation).Include(t => t.IdNguoiNavigation).Include(t => t.IdTinhNavigation).Include(t => t.IdXaNavigation);
+            var hemisContext = _context.TbHocViens
+                .Include(t => t.IdHuyenNavigation)
+                .Include(t => t.IdLoaiKhuyetTatNavigation)
+                .Include(t => t.IdNguoiNavigation)
+                .Include(t => t.IdTinhNavigation)
+                .Include(t => t.IdXaNavigation);
             return View(await hemisContext.ToListAsync());
         }
 
@@ -68,9 +73,20 @@ namespace C500Hemis.Controllers.NH
         {
             if (ModelState.IsValid)
             {
-                _context.Add(tbHocVien);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    _context.Add(tbHocVien);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (DbUpdateException ex)
+                {
+                    ViewBag.ErrorMessage = "Lỗi cơ sở dữ liệu: " + ex.Message;
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.ErrorMessage = "Lỗi không xác định: " + ex.Message;
+                }
             }
             ViewData["IdHuyen"] = new SelectList(_context.DmHuyens, "IdHuyen", "TenHuyen", tbHocVien.IdHuyen);
             ViewData["IdLoaiKhuyetTat"] = new SelectList(_context.DmLoaiKhuyetTats, "IdLoaiKhuyetTat", "LoaiKhuyetTat", tbHocVien.IdLoaiKhuyetTat);
@@ -130,6 +146,10 @@ namespace C500Hemis.Controllers.NH
                     {
                         throw;
                     }
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.ErrorMessage = "Lỗi không xác định: " + ex.Message;
                 }
                 return RedirectToAction(nameof(Index));
             }
